@@ -1,6 +1,5 @@
-<?php require_once("../private/shared/header.php");
+<?php 
+require_once('../private/initialize.php');
+include(SHARED_PATH . '/header.php');
 
-    require_once("login/index.php");
-
- require_once("../private/shared/footer.php");
-
+?>
