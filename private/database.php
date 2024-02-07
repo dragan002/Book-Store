@@ -17,3 +17,9 @@ function  confirm_db_connection() {
         exit($msg);
     }
 }
+
+function db_disconnect($conn) {
+    if(isset($conn)) {
+        mysqli_close($conn);
+    }
+}
