@@ -2,11 +2,29 @@
 require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
-if(is_post_request()) {
-    if(isset($_POST['submit'])) {
-        echo "sumibt";
+    if(is_post_request()) {
+        if(isset($_POST['submit'])) {
+
+          $title = trim($_POST['title']);
+          $title = mysqli_escape_string($db, $title);
+
+          $price = floatval(trim($_POST['price']));
+          $price = mysqli_escape_string($db, $price);
+
+          $author = trim($_POST['author']);
+          $author = mysqli_escape_string($db, $author);
+          
+          $description = trim($_POST['description']);
+          $description = mysqli_escape_string($db, $description);
+
+          $quanitity = intval(trim($_POST['quantity']));
+          $quanitity = mysqli_escape_string($db, $quanitity);
+
+          $stock = isset( $_POST["in-stock"] ) ? "Yes" : "No";
+        } 
+    } else {
+        die('Request Method is not POST');
     }
-}
 ?>
 
 <div class="container mt-5">
@@ -40,6 +58,6 @@ if(is_post_request()) {
                 <input type="checkbox" class="form-check-input" id="inStock" name="inStock">
                 <label class="form-check-label" for="inStock">Is in Stock?</label>
             </div>
-            <button type="submit" class="btn btn-primary">Create Book</button>
+            <button type="submit" name="submit" class="btn btn-primary">Create Book</button>
         </form>
     </div>
