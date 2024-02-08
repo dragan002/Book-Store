@@ -14,5 +14,5 @@
     require('query_functions.php');
     require('validation_functions.php');
 
-    db_connect();
+    $db = db_connect();
 ?>

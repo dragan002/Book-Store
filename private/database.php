@@ -9,12 +9,18 @@ function db_connect() {
     return $conn;
 }
 
-function  confirm_db_connection() {
+function confirm_db_connection() {
     if(mysqli_connect_errno()) {
         $msg = "Database failed: ";
         $msg .=  mysqli_connect_error();
         $msg .= "( " . mysqli_connect_error() . " )";
         exit($msg);
+    }
+}
+
+function confirm_result_set($result_set) {
+    if(!$result_set) {
+        die('Error in query') . mysqli_error(db_connect());
     }
 }
 
