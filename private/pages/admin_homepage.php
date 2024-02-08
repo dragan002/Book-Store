@@ -7,12 +7,13 @@ $books = find_all_books();
 
 <div class="container mt-5">
         <div class="mb-3">
-            <a href="#" class="btn btn-success">Add New Book</a>
+            <a href="admin_create.php" class="btn btn-success">Add New Book</a>
         </div>
 
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Title</th>
                     <th>Price</th>
                     <th>Author</th>
@@ -28,6 +29,7 @@ $books = find_all_books();
                 <!-- Your table rows go here -->
                 <?php while($book = mysqli_fetch_assoc($books)) { ?>
                 <tr>
+                    <td><?php echo $book['id']; ?></td>
                     <td><?php echo $book['book_title']; ?></td>
                     <td><?php echo $book['book_price']; ?></td>
                     <td><?php echo $book['book_author']; ?></td>
