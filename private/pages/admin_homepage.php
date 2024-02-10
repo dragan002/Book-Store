@@ -19,9 +19,7 @@ $books = find_all_books();
                     <th>Author</th>
                     <th>Image</th>
                     <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Is in Stock?</th>
-                    <th>Update</th>
+                    <th>Quantity</th>                    <th>Update</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -36,7 +34,6 @@ $books = find_all_books();
                     <td><img src="<?php $book['book_image']; ?>" style="max-width: 50px;"></td>
                     <td><?php echo $book['book_descr']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
-                    <td><?php echo($book['flag'] == 0) ? 'No' : 'Yes'; ?></td>
                     <td><a href="#" class="btn btn-warning">Update</a></td>
                     <td><a href="#" class="btn btn-danger">Delete</a></td>
                 </tr>

@@ -2,29 +2,33 @@
 require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
-    if(is_post_request()) {
-        if(isset($_POST['submit'])) {
+    
 
-          $title = trim($_POST['title']);
-          $title = mysqli_escape_string($db, $title);
 
-          $price = floatval(trim($_POST['price']));
-          $price = mysqli_escape_string($db, $price);
+if (isset($_POST['submit'])) {
+    $book = [
+        'book_title' => trim($_POST['title']),
+        'book_price' => floatval(trim($_POST['price'])),
+        'book_author' => trim($_POST['author']),
+        'book_image' => $_POST['image'],
+        'book_descr' => trim($_POST['description']),
+        'book_quantity' => intval(trim($_POST['quantity'])),
+    ];
 
-          $author = trim($_POST['author']);
-          $author = mysqli_escape_string($db, $author);
-          
-          $description = trim($_POST['description']);
-          $description = mysqli_escape_string($db, $description);
+    // Additional code for uploading image if needed
 
-          $quanitity = intval(trim($_POST['quantity']));
-          $quanitity = mysqli_escape_string($db, $quanitity);
-
-          $stock = isset( $_POST["in-stock"] ) ? "Yes" : "No";
-        } 
+    if (create_book($book)) {
+        echo '<div class="alert alert-success" role="alert">Book created successfully!</div>';
+        echo '<script>';
+        echo 'setTimeout(function(){ window.location.href = "admin_homepage.php"; }, 2000);';
+        echo '</script>';
     } else {
-        die('Request Method is not POST');
+        echo '<script>';
+        echo 'alert("Error creating the book.");';
+        echo '</script>';
     }
+}
+
 ?>
 
 <div class="container mt-5">
@@ -43,8 +47,8 @@ include(SHARED_PATH . '/admin_header.php');
                 <input type="text" class="form-control" id="author" name="author" required>
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Image URL:</label>
-                <input type="text" class="form-control" id="image" name="image" required>
+                <label for="uploadImage" class="form-label">Upload Image:</label>
+                <input type="file" class="form-control" id="uploadImage" name="image" accept="image/*" required>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description:</label>
@@ -53,10 +57,6 @@ include(SHARED_PATH . '/admin_header.php');
             <div class="mb-3">
                 <label for="quantity" class="form-label">Quantity:</label>
                 <input type="number" class="form-control" id="quantity" name="quantity" required>
-            </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="inStock" name="inStock">
-                <label class="form-check-label" for="inStock">Is in Stock?</label>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Create Book</button>
         </form>

@@ -11,26 +11,20 @@ function find_all_books() {
 
 function create_book($book) {
     global $db;
+    $sql = "INSERT INTO books ";
+    $sql .= "(book_title, book_price, book_author, book_image, book_descr, book_quantity) ";
+    $sql .= "VALUES (?, ?, ?, ?, ?, ?) ";
 
-    $sql = "INSERT INTO books";
-    $sql .= "(book_title, book_price, book_author, book_image, book_descr, book_quantity, flag)";
-    $sql .="VALUES ( ";
-    $sql .= "'" . $book['book_title'] . "', ";
-    $sql .= "'" . $book['book_price'] . "', ";
-    $sql .= "'" . $book['book_author'] . "', ";
-    $sql .= "'" . $book['book_image'] . "', ";
-    $sql .= "'" . $book['book_descr'] . "', ";
-    $sql .= "'" . $book['book_quantity'] . "', ";
-    $sql .= "'" . $book['book_flag'] . "', ";
-    $sql .= " )";
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, 'sdssss', $book['book_title'], $book['book_price'], $book['book_author'], $book['book_image'], $book['book_descr'], $book['book_quantity']);
+    $result = mysqli_stmt_execute($stmt);
 
-    $result = mysqli_query($db, $sql);
-
-    if(!$result) {
+    if (!$result) {
         echo mysqli_error($db);
         db_disconnect($db);
         exit();
     } else {
+        mysqli_stmt_close($stmt);
         return true;
     }
 }
