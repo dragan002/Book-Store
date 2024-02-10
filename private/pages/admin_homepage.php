@@ -19,19 +19,19 @@ $books = find_all_books();
                     <th>Author</th>
                     <th>Image</th>
                     <th>Description</th>
-                    <th>Quantity</th>                    <th>Update</th>
+                    <th>Quantity</th>                    
+                    <th>Update</th>
                     <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Your table rows go here -->
                 <?php while($book = mysqli_fetch_assoc($books)) { ?>
                 <tr>
                     <td><?php echo $book['id']; ?></td>
                     <td><?php echo $book['book_title']; ?></td>
                     <td><?php echo $book['book_price']; ?></td>
                     <td><?php echo $book['book_author']; ?></td>
-                    <td><img src="<?php $book['book_image']; ?>" style="max-width: 50px;"></td>
+                    <td><img src="../../public/image/<?php echo $book['book_image']; ?>" alt="Uploaded Image" style="width: 110%"/></td>
                     <td><?php echo $book['book_descr']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
                     <td><a href="#" class="btn btn-warning">Update</a></td>
