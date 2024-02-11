@@ -3,7 +3,6 @@ require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
 $books = find_all_books();
-
 ?>
 
 <div class="container mt-5">
@@ -35,7 +34,7 @@ $books = find_all_books();
                     <td><img src="../../public/image/<?php echo $book['book_image']; ?>" alt="Uploaded Image" style="width: 110%"/></td>
                     <td><?php echo $book['book_descr']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
-                    <td><a href="#" class="btn btn-warning">Update</a></td>
+                    <td><a href="admin_edit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>
                     <td><a href="#" class="btn btn-danger">Delete</a></td>
                 </tr>
                 <?php } ?>

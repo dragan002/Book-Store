@@ -12,12 +12,12 @@ if(isset($_FILES['image'])&& $_FILES['image']['name'] != ""){
 
 if (isset($_POST['submit'])) {
     $book = [
-        'book_title' => trim($_POST['title']),
-        'book_price' => floatval(trim($_POST['price'])),
-        'book_author' => trim($_POST['author']),
+        'book_title' => h(trim($_POST['title'])),
+        'book_price' => h(floatval(trim($_POST['price']))),
+        'book_author' => h(trim($_POST['author'])),
         'book_image' => $image,
-        'book_descr' => trim($_POST['description']),
-        'book_quantity' => intval(trim($_POST['quantity'])),
+        'book_descr' => h(trim($_POST['description'])),
+        'book_quantity' => h(intval(trim($_POST['quantity']))),
     ];
 
     if (!create_book($book)) {
