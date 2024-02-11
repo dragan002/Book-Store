@@ -32,7 +32,7 @@ $books = find_all_books();
                     <td><?php echo $book['book_title']; ?></td>
                     <td><?php echo $book['book_price']; ?></td>
                     <td><?php echo $book['book_author']; ?></td>
-                    <td><img src="../../public/image/<?php echo $book['book_image']; ?>" alt="Uploaded Image" style="width: 110%"/></td>
+                    <td><img src="../../public/image/<?php echo $book['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
                     <td><?php echo $book['book_descr']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
                     <td><a href="admin_edit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>

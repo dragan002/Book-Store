@@ -1,6 +1,8 @@
 <?php 
 require_once('../private/initialize.php');
-include(SHARED_PATH . '/header.php')
+include(SHARED_PATH . '/header.php');
+
+$books = find_all_books();
 ?>
 
 <!-- Jumbotron (Hero Section) -->
@@ -14,40 +16,24 @@ include(SHARED_PATH . '/header.php')
 <div class="container mt-4">
     <h2 class="text-center mb-4">Featured Books</h2>
     <div class="row">
-        <!-- Sample Book Cards (Add more as needed) -->
-        <div class="col-md-4">
-            <div class="card">
-                <img src="book1.jpg" class="card-img-top" alt="Book 1">
-                <div class="card-body">
-                    <h5 class="card-title">Book Title 1</h5>
-                    <p class="card-text">Description of the book goes here.</p>
-                    <a href="#" class="btn btn-primary">Details</a>
+
+        <?php while($book = mysqli_fetch_assoc($books)) { ?>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="../../public/image/<?php echo $book['book_image']; ?>" class="card-img-top" alt="<?php echo $book['book_title']; ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $book['book_title']; ?></h5>
+                        <p class="card-text"><strong>Author:</strong> <?php echo $book['book_author']; ?></p>
+                        <p class="card-text"><strong>Price:</strong> $<?php echo $book['book_price']; ?></p>
+                        <a href="#" class="btn btn-primary">Details</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <img src="book2.jpg" class="card-img-top" alt="Book 2">
-                <div class="card-body">
-                    <h5 class="card-title">Book Title 2</h5>
-                    <p class="card-text">Description of the book goes here.</p>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <img src="book3.jpg" class="card-img-top" alt="Book 3">
-                <div class="card-body">
-                    <h5 class="card-title">Book Title 3</h5>
-                    <p class="card-text">Description of the book goes here.</p>
-                    <a href="#" class="btn btn-primary">Details</a>
-                </div>
-            </div>
-        </div>
+        <?php } ?>
+
     </div>
 </div>
 
-
 <?php
 include(SHARED_PATH . '/footer.php');
+?>
