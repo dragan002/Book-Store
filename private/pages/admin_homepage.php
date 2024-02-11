@@ -19,7 +19,7 @@ $books = find_all_books();
                     <th>Author</th>
                     <th>Image</th>
                     <th>Description</th>
-                    <th>Quantity</th>                    
+                    <th>Quantity<th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>

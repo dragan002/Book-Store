@@ -34,15 +34,24 @@ function find_by_id($id) {
     global $db;
 
     $sql = "SELECT * FROM books";
-    $sql .= " WHERE  book_id=?'" . $id . "'";
-    $sql .=" LIMIT 1";
+    $sql .= " WHERE id = ?";
+    $sql .= " LIMIT 1";
 
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    $book = mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, 'i', $id);
+    mysqli_stmt_execute($stmt);
+
+    $result_set = mysqli_stmt_get_result($stmt);
+    confirm_result_set($result_set);
+
+    $book = mysqli_fetch_assoc($result_set);
+
+    mysqli_free_result($result_set);
+    mysqli_stmt_close($stmt);
+
     return $book;
 }
+
 function edit_book($book) {
     global $db;
 
