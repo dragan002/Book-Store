@@ -2,10 +2,6 @@
 require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
-    
-
-// Code for uploading image 
-
 if(isset($_FILES['image'])&& $_FILES['image']['name'] != ""){
     $image = $_FILES['image']['name'];
     $directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
@@ -24,15 +20,12 @@ if (isset($_POST['submit'])) {
         'book_quantity' => intval(trim($_POST['quantity'])),
     ];
 
-    if (create_book($book)) {
-        echo '<div class="alert alert-success" role="alert">Book created successfully!</div>';
-        echo '<script>';
-        echo 'setTimeout(function(){ window.location.href = "admin_homepage.php"; }, 2000);';
-        echo '</script>';
-    } else {
+    if (!create_book($book)) {
         echo '<script>';
         echo 'alert("Error creating the book.");';
         echo '</script>';
+    } else {
+        header( "Location: admin_homepage.php");
     }
 }
 

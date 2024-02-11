@@ -5,7 +5,6 @@ require_once('db_credentials.php');
 function db_connect() {
     $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
     confirm_db_connection();
-    echo "test for db"; 
     return $conn;
 }
 
