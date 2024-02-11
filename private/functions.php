@@ -11,3 +11,5 @@ function is_get_request() {
 function h($string='') {
     return htmlspecialchars($string);
 }
+
+?>

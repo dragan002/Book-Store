@@ -3,6 +3,7 @@ require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
 $books = find_all_books();
+
 ?>
 
 <div class="container mt-5">
@@ -19,7 +20,7 @@ $books = find_all_books();
                     <th>Author</th>
                     <th>Image</th>
                     <th>Description</th>
-                    <th>Quantity<th>
+                    <th>Quantity</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
@@ -38,7 +39,6 @@ $books = find_all_books();
                     <td><a href="#" class="btn btn-danger">Delete</a></td>
                 </tr>
                 <?php } ?>
-                <!-- Add more rows as needed -->
             </tbody>
         </table>
     </div>
