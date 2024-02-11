@@ -36,7 +36,7 @@ $books = find_all_books();
                     <td><?php echo $book['book_descr']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
                     <td><a href="admin_edit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>
-                    <td><a href="#" class="btn btn-danger">Delete</a></td>
+                    <td><a href="admin_delete.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
                 </tr>
                 <?php } ?>
             </tbody>

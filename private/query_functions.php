@@ -78,3 +78,23 @@ function edit_book($book) {
         return true;
     }
 }
+
+function delete_book($book) {
+    global $db;
+
+    $sql = "DELETE FROM books ";
+    $sql .= "WHERE id=" . $book['id'] . " ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    if($result) {
+        return true;
+    } else {
+        echo "debugg";
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit();
+    }
+}
+
