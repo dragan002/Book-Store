@@ -98,3 +98,10 @@ function delete_book($book) {
     }
 }
 
+function find_admin() {
+    global $db;
+
+    $sql = "SELECT * FROM admin LIMIT 1";
+    $result = mysqli_query($db, $sql);
+    return $result;
+}
