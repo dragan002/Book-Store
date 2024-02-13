@@ -3,6 +3,7 @@ require_once('../private/initialize.php');
 include(SHARED_PATH . '/header.php');
 
 $books = find_all_books();
+
 ?>
 
 <!-- Jumbotron (Hero Section) -->

@@ -14,9 +14,8 @@ function get_logger_from_post() {
 function authenticate_user($logger, $admini) {
     foreach($admini as $admin) {
         if($admin['email'] == $logger['email'] && $admin['password'] == $logger['password']) {
-            echo "login successfull";
+            return true;
         } else {
-            echo "greska";
             return false;
         }
     }

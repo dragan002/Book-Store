@@ -1,17 +1,22 @@
 <?php
-    require_once('../../private/initialize.php');
-    include(SHARED_PATH . '/login_header.php');
-    include(PUBLIC_PATH . '/login/login.php');
+require_once('../../private/initialize.php');
+include(SHARED_PATH . '/login_header.php');
+include(PUBLIC_PATH . '/login/login.php');
 
-    $logger = get_logger_from_post();
-    
-    if($logger) {
-        $admini = find_admin();
-        authenticate_user($logger, $admini);
+$logger = get_logger_from_post();
+
+if ($logger) {
+    $admini = find_admin();
+    $login_result = authenticate_user($logger, $admini);
+
+    if ($login_result) {
+        // Redirect to the success page
+        header("Location: " . WWW_ROOT . "/../private/pages/admin_homepage.php");
+        exit(); // Ensure no further code is executed after the redirect
+    } else {
+        $login_error = "That username and password combination did not work.";
     }
-    
-    
-
+}
 ?>
 
 <div class="container mt-5">
@@ -23,7 +28,7 @@
                     <h3 class="text-center">Login</h3>
                 </div>
                 <div class="card-body">
-                    <form action="index.php" method="post">
+                    <form action="#" method="post">
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="text" class="form-control" id="email" name="email">
