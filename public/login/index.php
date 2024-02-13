@@ -3,30 +3,13 @@
     include(SHARED_PATH . '/login_header.php');
     include(PUBLIC_PATH . '/login/login.php');
 
-    if (is_post_request()) {
-        if (isset($_POST['login'])) {
-            $logger = [
-                'email' => $_POST['email'],
-                'password' => $_POST['password']
-            ];
-        }
+    $logger = get_logger_from_post();
+    
+    if($logger) {
+        $admini = find_admin();
+        authenticate_user($logger, $admini);
     }
     
-    $admini = find_admin();
-    $loginSuccessful = false;
-    
-    foreach ($admini as $admin) {
-        if ($admin['password'] == $logger['password'] && $admin['email'] == $logger['email']) {
-            $loginSuccessful = true;
-            break;
-        }
-    }
-    
-    if ($loginSuccessful) {
-        echo "unutra si";
-    } else {
-        echo "greska";
-    }
     
 
 ?>
