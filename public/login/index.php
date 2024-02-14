@@ -3,19 +3,31 @@ require_once('../../private/initialize.php');
 include(SHARED_PATH . '/login_header.php');
 include(PUBLIC_PATH . '/login/login.php');
 
-$logger = get_logger_from_post();
+$logger = get_logger_from_form();
 
 if ($logger) {
-    $admini = find_admin();
-    $login_result = authenticate_user($logger, $admini);
+    
+    
+    
+    
+    // Example Usage
+    $id = 1;
+    $admin = find_admin_by_id($id);
+    
+    var_dump($admin);
+    
+    
 
-    if ($login_result) {
-        // Redirect to the success page
-        header("Location: " . WWW_ROOT . "/../private/pages/admin_homepage.php");
-        exit(); // Ensure no further code is executed after the redirect
-    } else {
-        $login_error = "That username and password combination did not work.";
-    }
+
+
+    // $login_result = authenticate_user($logger, $admini);
+
+    // if ($login_result) {
+    //     header("Location: " . WWW_ROOT . "/../private/pages/admin_homepage.php");
+    //     exit(); 
+    // } else {
+    //     echo $login_error = "That username and password combination did not work. <br>";
+    // }
 }
 ?>
 

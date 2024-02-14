@@ -98,10 +98,24 @@ function delete_book($book) {
     }
 }
 
-function find_admin() {
+function find_admin_by_id() {
     global $db;
 
-    $sql = "SELECT * FROM admin LIMIT 1";
-    $result = mysqli_query($db, $sql);
-    return $result;
+    $sql = "SELECT * FROM admin WHERE id = ?";
+    $stmt = mysqli_prepare($db, $sql);
+
+    if (!$stmt) {
+        die("Database query preparation failed: " . mysqli_error($db));
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
+
+    if (!$result) {
+        die("Database query execution failed: " . mysqli_error($db));
+    }
+
+    return mysqli_fetch_assoc($result);
 }
