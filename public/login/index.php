@@ -3,32 +3,24 @@ require_once('../../private/initialize.php');
 include(SHARED_PATH . '/login_header.php');
 include(PUBLIC_PATH . '/login/login.php');
 
-$logger = get_logger_from_form();
+$logger_data = get_logger_from_form();
 
-if ($logger) {
-    
-    
-    
-    
-    // Example Usage
-    $id = 1;
-    $admin = find_admin_by_id($id);
-    
-    var_dump($admin);
-    
-    
+if (!$logger_data) {
+    echo "Error: Please provide both email and password";
+} else {
+    $email =  $logger_data['email'];
+    $password = $logger_data['password'];
 
+    $match = login($email, $password);
 
-
-    // $login_result = authenticate_user($logger, $admini);
-
-    // if ($login_result) {
-    //     header("Location: " . WWW_ROOT . "/../private/pages/admin_homepage.php");
-    //     exit(); 
-    // } else {
-    //     echo $login_error = "That username and password combination did not work. <br>";
-    // }
+    if (!$match) {
+        echo "Error: Incorrect email or password";
+    } else {
+        echo "You are in";
+    }
 }
+
+
 ?>
 
 <div class="container mt-5">
