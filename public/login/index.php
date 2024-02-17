@@ -3,6 +3,7 @@ require_once('../../private/initialize.php');
 include(SHARED_PATH . '/login_header.php');
 include(PUBLIC_PATH . '/login/login.php');
 
+// add();
 $logger_data = get_logger_from_form();
 
 if (!$logger_data) {
@@ -20,8 +21,8 @@ if (!$logger_data) {
     }
 }
 
-
 ?>
+
 
 <div class="container mt-5">
     <div class="row justify-content-center">

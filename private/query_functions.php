@@ -101,20 +101,53 @@ function delete_book($book) {
 function login($email, $password) {
     global $db;
 
-    $sql = "SELECT * FROM admin WHERE email = ? AND  password = ?";
+    $sql = "SELECT * FROM admin WHERE email = ?";
     $stmt = mysqli_prepare($db, $sql);
 
-    if(!$stmt) {
+    if (!$stmt) {
         die('Database failed: ' . mysqli_error($db));
     } 
-    mysqli_stmt_bind_param($stmt, 'ss', $email, $password);
+
+    mysqli_stmt_bind_param($stmt, 's', $email);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     mysqli_stmt_close($stmt);
 
-    if(!$result) {
-        die("Database query execution failed: " .mysqli_error($db));
+    if (!$result) {
+        die("Database query execution failed: " . mysqli_error($db));
     }
+
     $admin = mysqli_fetch_assoc($result);
-    return $admin;
+
+    if ($admin && password_verify($password, $admin['password'])) {
+        return $admin;
+    } else {
+        return false;
+    }
 }
+
+// function add() {
+//     global $db;
+// // Assuming you have an email and plain-text password from your registration form
+// $email = 'admin@gmail.com';
+// $plain_text_password = 'admin';
+
+// // Hash the password using password_hash
+// $hashed_password = password_hash($plain_text_password, PASSWORD_BCRYPT);
+
+// // Your SQL query to insert a new admin
+// $sql = "INSERT INTO admin (email, password) VALUES (?, ?)";
+// $stmt = mysqli_prepare($db, $sql);
+
+// if (!$stmt) {
+//     die('Database failed: ' . mysqli_error($db));
+// }
+
+// // Bind parameters and execute the statement
+// mysqli_stmt_bind_param($stmt, 'ss', $email, $hashed_password);
+// mysqli_stmt_execute($stmt);
+
+// // Close the statement
+// mysqli_stmt_close($stmt);
+
+// }
