@@ -114,7 +114,8 @@ function login($email, $password) {
     mysqli_stmt_close($stmt);
 
     if (!$result) {
-        die("Database query execution failed: " . mysqli_error($db));
+        error_log("Database query execution failed: " . mysqli_error($db));
+        die("Error: Unable to process your request. Please try again later.");
     }
 
     $admin = mysqli_fetch_assoc($result);
