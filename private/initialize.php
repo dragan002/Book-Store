@@ -12,6 +12,7 @@
 
     require('database.php');
     require('query_functions.php');
+    require('public_functions.php');
     require('validation_functions.php');
 
     $db = db_connect();

@@ -27,18 +27,18 @@
                     <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href='../../public/pages/about.php'>About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="../../public/pages/services.php">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="../../public/pages/contact.php">Contact</a>
                 </li>
                 
                 <!-- Login Button -->
                 <li class="nav-item bg-primary">
-                    <a class="nav-link" href="../../public/login/index.php">Login</a>
+                    <a class="nav-link" href="../../public/pages/login.php">Login</a>
                 </li>
             </ul>
         </div>

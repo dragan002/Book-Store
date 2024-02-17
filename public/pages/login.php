@@ -1,7 +1,6 @@
 <?php
 require_once('../../private/initialize.php');
 include(SHARED_PATH . '/login_header.php');
-include(PUBLIC_PATH . '/login/login.php');
 
 // add();
 $errors = [];
