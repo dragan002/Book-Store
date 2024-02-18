@@ -10,6 +10,11 @@ $books = find_all_books();
         <div class="mb-3">
             <a href="admin_create.php" class="btn btn-success">Add New Book</a>
         </div>
+        <form class="form-inline" action="admin_search.php" method="POST">
+            <input style="width: 150px;" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
 
         <table class="table table-striped">
             <thead>

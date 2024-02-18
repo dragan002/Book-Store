@@ -2,24 +2,19 @@
 require_once('../../private/initialize.php');
 include(SHARED_PATH . '/header.php');
 
-if(is_get_request()) {
-    $search = $_GET['search'];
+if(is_post_request()) {
+    $search = $_POST['search'];
 }
 
 $books = find_all_books();
 
-$searched_results = search_books($search);
-
-
+$search_results = search_books($search);
 
 ?>
 
-<!-- Featured Books Section -->
-<div class="container mt-4">
-    <h2 class="text-center mb-4">Featured Books</h2>
-    <div class="row">
+<div class="container mt-5">
 
-    <table class="table table-striped">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -29,12 +24,13 @@ $searched_results = search_books($search);
                     <th>Image</th>
                     <th>Description</th>
                     <th>Quantity</th>
+                    <th>Update</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
-            <?php
-            
-                if (mysqli_num_rows($search_results) > 0) {
+                <?php 
+                            if (mysqli_num_rows($search_results) > 0) {
                     while ($searched = mysqli_fetch_assoc($search_results)) {
                 ?>
                         <tr>
@@ -45,15 +41,14 @@ $searched_results = search_books($search);
                             <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
                             <td><?php echo $searched['book_descr']; ?></td>
                             <td><?php echo $searched['book_quantity']; ?></td>
-                        </tr>
-                <?php
-                    }
-                } else {
-                    echo '<tr><td colspan="7">No results found</td></tr>';
-                }
-                ?>
+                    <td><a href="admin_edit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
+                    <td><a href="admin_delete.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
+                </tr>
+                <?php } } ?>
             </tbody>
         </table>
-
     </div>
-</div>
+
+<?php 
+
+include(SHARED_PATH . '/footer.php');
