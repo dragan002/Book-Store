@@ -6,6 +6,7 @@ $search = $_GET['search'];
 
 $books = find_all_books();
 
+search_books($search);
 
 
 ?>
@@ -15,19 +16,34 @@ $books = find_all_books();
     <h2 class="text-center mb-4">Featured Books</h2>
     <div class="row">
 
-        <?php while($book = mysqli_fetch_assoc($books)) { ?>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="../../public/image/<?php echo $book['book_image']; ?>" class="card-img-top" alt="<?php echo $book['book_title']; ?>">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $book['book_title']; ?></h5>
-                        <p class="card-text"><strong>Author:</strong> <?php echo $book['book_author']; ?></p>
-                        <p class="card-text"><strong>Price:</strong> $<?php echo $book['book_price']; ?></p>
-                        <a href="pages/details.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Details</a>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Author</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if(mysqli_num_rows(search_books($search)) > 0) {
+                        $searched = mysqli_fetch_assoc(search_books($search));
+                    ?>
+                <tr>
+                    <td><?php echo $searched['id']; ?></td>
+                    <td><?php echo $searched['book_title']; ?></td>
+                    <td><?php echo $searched['book_price']; ?></td>
+                    <td><?php echo $searched['book_author']; ?></td>
+                    <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
+                    <td><?php echo $searched['book_descr']; ?></td>
+                    <td><?php echo $searched['book_quantity']; ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
 
     </div>
 </div>

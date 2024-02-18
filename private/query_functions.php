@@ -152,3 +152,23 @@ function login($email, $password) {
 // mysqli_stmt_close($stmt);
 
 // }
+function search_books($search) {
+    global $db;
+
+    $sql = "SELECT * FROM books WHERE id = ? OR book_title LIKE ? OR book_author LIKE ?";
+    $stmt = mysqli_prepare($db, $sql);
+
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, 'iss', $search, $search, $search);
+
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
+
+        mysqli_stmt_close($stmt);
+        
+        return $result;
+    } else {
+        die('Database query failed: ' . mysqli_error($db));
+    }
+}
