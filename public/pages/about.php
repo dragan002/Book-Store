@@ -1,3 +1,9 @@
+<?php 
+require_once('../../private/initialize.php');
+$pageTitle = "About";
+
+include(SHARED_PATH . '/header.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 

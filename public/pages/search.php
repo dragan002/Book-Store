@@ -1,25 +1,15 @@
 <?php 
-require_once('../private/initialize.php');
+require_once('../../private/initialize.php');
 include(SHARED_PATH . '/header.php');
+
+$search = $_GET['search'];
 
 $books = find_all_books();
 
+
+
 ?>
 
-
-<!-- Jumbotron (Hero Section) -->
-<div class="jumbotron text-center">
-    <h1 class="display-4">Welcome to our Book Store</h1>
-    <p class="lead">Explore a vast collection of books and discover new worlds.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Browse Books</a>
-</div>
-<!-- Search Input -->
-<div class="container mt-4">
-    <form class="form-inline my-2 my-lg-0" action="pages/search.php" method="GET">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</div>
 <!-- Featured Books Section -->
 <div class="container mt-4">
     <h2 class="text-center mb-4">Featured Books</h2>
@@ -41,7 +31,3 @@ $books = find_all_books();
 
     </div>
 </div>
-
-<?php
-include(SHARED_PATH . '/footer.php');
-?>
