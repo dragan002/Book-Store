@@ -159,7 +159,9 @@ function search_books($search) {
     $stmt = mysqli_prepare($db, $sql);
 
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, 'iss', $search, $search, $search);
+        $searchTerm = "%" . $search . "%";
+
+        mysqli_stmt_bind_param($stmt, 'iss', $search, $searchTerm, $searchTerm);
 
         mysqli_stmt_execute($stmt);
 

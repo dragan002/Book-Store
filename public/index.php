@@ -8,15 +8,16 @@ $books = find_all_books();
 
 
 <!-- Jumbotron (Hero Section) -->
-<div class="jumbotron text-center">
-    <h1 class="display-4">Welcome to our Book Store</h1>
-    <p class="lead">Explore a vast collection of books and discover new worlds.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Browse Books</a>
+<div class="jumbotron text-center bg-primary text-white">
+    <h1 class="display-4">Immerse Yourself in the World of Books</h1>
+    <p class="lead">Discover the magic of literature with our curated collection.</p>
+    <a class="btn btn-light btn-lg" href="#" role="button">Explore Books</a>
 </div>
+
 <!-- Search Input -->
 <div class="container mt-4">
     <form class="form-inline my-2 my-lg-0" action="pages/search.php" method="GET">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" required>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>

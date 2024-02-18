@@ -2,11 +2,14 @@
 require_once('../../private/initialize.php');
 include(SHARED_PATH . '/header.php');
 
-$search = $_GET['search'];
+if(is_get_request()) {
+    $search = $_GET['search'];
+}
 
 $books = find_all_books();
 
-search_books($search);
+$searched_result = search_books($search);
+
 
 
 ?>
@@ -29,19 +32,27 @@ search_books($search);
                 </tr>
             </thead>
             <tbody>
-                <?php if(mysqli_num_rows(search_books($search)) > 0) {
-                        $searched = mysqli_fetch_assoc(search_books($search));
-                    ?>
-                <tr>
-                    <td><?php echo $searched['id']; ?></td>
-                    <td><?php echo $searched['book_title']; ?></td>
-                    <td><?php echo $searched['book_price']; ?></td>
-                    <td><?php echo $searched['book_author']; ?></td>
-                    <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
-                    <td><?php echo $searched['book_descr']; ?></td>
-                    <td><?php echo $searched['book_quantity']; ?></td>
-                </tr>
-                <?php } ?>
+            <?php
+                $search_results = search_books($search);
+
+                if (mysqli_num_rows($search_results) > 0) {
+                    while ($searched = mysqli_fetch_assoc($search_results)) {
+                ?>
+                        <tr>
+                            <td><?php echo $searched['id']; ?></td>
+                            <td><?php echo $searched['book_title']; ?></td>
+                            <td><?php echo $searched['book_price']; ?></td>
+                            <td><?php echo $searched['book_author']; ?></td>
+                            <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
+                            <td><?php echo $searched['book_descr']; ?></td>
+                            <td><?php echo $searched['book_quantity']; ?></td>
+                        </tr>
+                <?php
+                    }
+                } else {
+                    echo '<tr><td colspan="7">No results found</td></tr>';
+                }
+                ?>
             </tbody>
         </table>
 
