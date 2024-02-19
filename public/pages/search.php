@@ -1,5 +1,5 @@
 <?php 
-require_once('../../private/initialize.php');
+require_once('../../app/initialize.php');
 include(SHARED_PATH . '/header.php');
 
 if(is_get_request()) {
@@ -33,7 +33,7 @@ $searched_results = search_books($search);
             </thead>
             <tbody>
             <?php
-            
+
                 if (mysqli_num_rows($search_results) > 0) {
                     while ($searched = mysqli_fetch_assoc($search_results)) {
                 ?>

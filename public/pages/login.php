@@ -1,5 +1,5 @@
 <?php
-require_once('../../private/initialize.php');
+require_once('../../app/initialize.php');
 include(SHARED_PATH . '/login_header.php');
 
 // add();
@@ -20,7 +20,7 @@ if (is_post_request()) {
             if (!$match) {
                 $errors[] = "Login failed: Invalid email or password";
             } else {
-                header('Location: ../../private/pages/admin_homepage.php');
+                header('Location: ../../app/pages/admin_homepage.php');
                 exit();
             }
         }

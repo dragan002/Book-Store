@@ -14,6 +14,8 @@
     require('query_functions.php');
     require('public_functions.php');
     require('validation_functions.php');
+    require('bookModel/bookModel.php');
+    require('userModel/userModel.php');
 
     $db = db_connect();
 ?>

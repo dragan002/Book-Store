@@ -21,9 +21,7 @@ if (isset($_POST['submit'])) {
     ];
 
     if (!create_book($book)) {
-        echo '<script>';
-        echo 'alert("Error creating the book.");';
-        echo '</script>';
+        echo "There is issue with adding new book";
     } else {
         header( "Location: admin_homepage.php");
     }
