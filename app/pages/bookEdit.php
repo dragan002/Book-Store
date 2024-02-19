@@ -29,6 +29,7 @@
             'book_image' => $image,
             'book_descr' => trim($_POST['description']),
             'book_quantity' => intval(trim($_POST['quantity'])),
+            'category_id' => intval(trim($_POST['category']))
         ];
 
         $result = edit_book($book);
@@ -39,6 +40,11 @@
             echo '<script>alert("Error editing the book.");</script>';
         }
     }
+
+
+    $categories = find_all_categories();
+    $category = find_category_by_id($book['category_id']);
+    $category_name = $category ? $category['category_name'] : 'N/A';
     
     ?>
 
@@ -63,21 +69,16 @@
                     <img src="../../public/image/<?php echo $book['book_image']; ?>" alt="Existing Image" style="max-width: 120px;">
                     <input type="file" class="form-control" id="uploadImage" name="image" accept="image/*">
                 </div>
-                <!-- <div class="mb-3">
-                    <label for="description" class="form-label">Description:</label>
-                    <textarea class="form-control" id="description" name="description" rows="3">
-                        <?php
-                            $category = find_category_by_id($book['category_id']);
-                            $category_name = $category ? $category['category_name'] : 'N/A';
-                            echo $category_name;
-                        ?>
-                    </textarea>
-                </div> -->
+
                 <div class="mb-3">
                     <label for="category" class="form-label">Category:</label><br />
-                    <select id="category" name="category">
-                      <option value="<?php echo $book['category_id']; ?>"><?php echo $category_name; ?></option>
-                        <option value="">Select a category...</option>
+                        <select id="category" name="category">
+                            <?php while ($category = mysqli_fetch_assoc($categories)) { ?>
+                                <option value="<?php echo $category['id']; ?>" <?php echo ($category['id'] == $book['category_id']) ? 'selected' : ''; ?>>
+                                    <?php echo $category['category_name']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
                 </div>
 
                 <div class="mb-3">
