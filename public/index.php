@@ -1,7 +1,7 @@
 <?php 
 require_once('../app/initialize.php');
+$pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
-
 $books = find_all_books();
 
 ?>

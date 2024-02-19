@@ -24,6 +24,7 @@ $books = find_all_books();
                     <th>Price</th>
                     <th>Author</th>
                     <th>Image</th>
+                    <th>cat id</th>
                     <th>Description</th>
                     <th>Quantity</th>
                     <th>Update</th>
@@ -38,6 +39,13 @@ $books = find_all_books();
                     <td><?php echo $book['book_price']; ?></td>
                     <td><?php echo $book['book_author']; ?></td>
                     <td><img src="../../public/image/<?php echo $book['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
+
+                    <?php
+                    $category = find_category_by_id($book['category_id']);
+                    $category_name = $category ? $category['category_name'] : 'N/A';
+                    ?>
+                    
+                    <td><?php echo $category_name; ?></td>
                     <td><?php echo $book['book_descr']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
                     <td><a href="bookEdit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>

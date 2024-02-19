@@ -12,11 +12,11 @@ function create_book($book) {
     global $db;
 
     $sql = "INSERT INTO books ";
-    $sql .= "(book_title, book_price, book_author, book_image, book_descr, book_quantity) ";
-    $sql .= "VALUES (?, ?, ?, ?, ?, ?) ";
+    $sql .= "(book_title, book_price, book_author, book_image, book_descr, book_quantity, category_id) ";
+    $sql .= "VALUES (?, ?, ?, ?, ?, ?, ?) ";
 
     $stmt = mysqli_prepare($db, $sql);
-    mysqli_stmt_bind_param($stmt, 'sdssss', $book['book_title'], $book['book_price'], $book['book_author'], $book['book_image'], $book['book_descr'], $book['book_quantity']);
+    mysqli_stmt_bind_param($stmt, 'sdssss', $book['book_title'], $book['book_price'], $book['book_author'], $book['book_image'], $book['book_descr'], $book['book_quantity'], $book['category_id']);
     $result = mysqli_stmt_execute($stmt);
 
     if (!$result) {
@@ -47,6 +47,26 @@ function find_by_id($id) {
     mysqli_stmt_close($stmt);
 
     return $book;
+}
+
+function find_category_by_id($id) {
+    global $db;
+
+    $sql = "SELECT * FROM categories WHERE id = ? LIMIT 1";
+
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, 'i', $id);
+    mysqli_stmt_execute($stmt);
+
+    $result_set = mysqli_stmt_get_result($stmt);
+    confirm_result_set($result_set);
+
+    $category = mysqli_fetch_assoc($result_set);
+
+    mysqli_free_result($result_set);
+    mysqli_stmt_close($stmt);
+
+    return $category;
 }
 
 function edit_book($book) {
@@ -115,3 +135,4 @@ function search_books($search) {
         die('Database query failed: ' . mysqli_error($db));
     }
 }
+

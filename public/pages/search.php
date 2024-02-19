@@ -8,10 +8,7 @@ if(is_get_request()) {
 
 $books = find_all_books();
 
-$searched_results = search_books($search);
-
-
-
+$search_results = search_books($search);
 ?>
 
 <!-- Featured Books Section -->

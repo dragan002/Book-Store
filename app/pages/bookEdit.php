@@ -63,6 +63,23 @@
                     <img src="../../public/image/<?php echo $book['book_image']; ?>" alt="Existing Image" style="max-width: 120px;">
                     <input type="file" class="form-control" id="uploadImage" name="image" accept="image/*">
                 </div>
+                <!-- <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea class="form-control" id="description" name="description" rows="3">
+                        <?php
+                            $category = find_category_by_id($book['category_id']);
+                            $category_name = $category ? $category['category_name'] : 'N/A';
+                            echo $category_name;
+                        ?>
+                    </textarea>
+                </div> -->
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category:</label><br />
+                    <select id="category" name="category">
+                      <option value="<?php echo $book['category_id']; ?>"><?php echo $category_name; ?></option>
+                        <option value="">Select a category...</option>
+                </div>
+
                 <div class="mb-3">
                     <label for="description" class="form-label">Description:</label>
                     <textarea class="form-control" id="description" name="description" rows="3"><?= $book['book_descr']; ?></textarea>
@@ -74,3 +91,4 @@
                 <button type="submit" name="edit" class="btn btn-primary">Edit Book</button>
             </form>
         </div>
+        

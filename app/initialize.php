@@ -11,7 +11,6 @@
     define('WWW_ROOT', $doc_root); 
 
     require('database/database.php');
-    require('validation_functions.php');
     require('bookModel/bookModel.php');
     require('userModel/userModel.php');
 
