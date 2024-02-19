@@ -57,3 +57,7 @@ $searched_results = search_books($search);
 
     </div>
 </div>
+
+<?php
+include(SHARED_PATH . '/footer.php');
+?>

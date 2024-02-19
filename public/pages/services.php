@@ -65,8 +65,6 @@ include(SHARED_PATH . '/header.php');
         </div>
     </div>
 
-    <!-- Bootstrap JS and Popper.js (required for Bootstrap's JavaScript plugins) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+<?php
+include(SHARED_PATH . '/footer.php');
+?>
