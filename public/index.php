@@ -3,9 +3,8 @@ require_once('../app/initialize.php');
 $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
 $books = find_all_books();
-
+$categories = find_all_categories();
 ?>
-
 
 <!-- Jumbotron (Hero Section) -->
 <div class="jumbotron text-center bg-primary text-white">
@@ -21,9 +20,9 @@ $books = find_all_books();
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>
+
 <!-- Featured Books Section -->
 <div class="container mt-4">
-    <h2 class="text-center mb-4">Featured Books</h2>
     <div class="row">
 
         <?php while($book = mysqli_fetch_assoc($books)) { ?>
@@ -39,6 +38,23 @@ $books = find_all_books();
                 </div>
             </div>
         <?php } ?>
+
+        <!-- Sidebar with Book Categories -->
+        <div class="col-md-3 offset-md-1">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Book Categories</h5>
+            <ul class="list-group">
+                <?php while($category = mysqli_fetch_assoc($categories)) { ?>
+                <li class="list-group-item"><a href=""><?php echo $category['category_name']; ?></li></a>
+                <?php } ?>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
 
     </div>
 </div>

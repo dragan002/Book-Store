@@ -8,6 +8,15 @@ function find_all_books() {
     return $result;
 }
 
+function find_all_category() {
+    global $db;
+
+    $sql = "SELECT * FROM category";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    return $result;
+}
+
 function find_all_categories() {
     global $db;
 
@@ -87,12 +96,13 @@ function edit_book($book) {
     $sql .= "book_author = ?, ";
     $sql .= "book_image = ?, ";
     $sql .= "book_descr = ?, ";
-    $sql .= "book_quantity = ? ";
+    $sql .= "book_quantity = ?, ";
+    $sql .= "category_id = ? ";
     $sql .= "WHERE id = ?"; 
 
     $stmt = mysqli_prepare($db, $sql);
 
-    mysqli_stmt_bind_param($stmt, 'sdssssi', $book['book_title'], $book['book_price'], $book['book_author'], $book['book_image'], $book['book_descr'], $book['book_quantity'], $book['id']);
+    mysqli_stmt_bind_param($stmt, 'sdsdsssi', $book['book_title'], $book['book_price'], $book['book_author'], $book['book_image'], $book['book_descr'], $book['book_quantity'], $book['category_id'], $book['id']);
     $result = mysqli_stmt_execute($stmt);
 
     if (!$result) {
@@ -104,6 +114,7 @@ function edit_book($book) {
         return true;
     }
 }
+
 
 function delete_book($book) {
     global $db;

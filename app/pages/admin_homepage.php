@@ -24,7 +24,7 @@ $books = find_all_books();
                     <th>Price</th>
                     <th>Author</th>
                     <th>Image</th>
-                    <th>cat id</th>
+                    <th>Category</th>
                     <th>Description</th>
                     <th>Quantity</th>
                     <th>Update</th>

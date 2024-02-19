@@ -29,7 +29,7 @@
             'book_image' => $image,
             'book_descr' => trim($_POST['description']),
             'book_quantity' => intval(trim($_POST['quantity'])),
-            'category_id' => intval(trim($_POST['category']))
+            'category_id' => $_POST['category']
         ];
 
         $result = edit_book($book);
