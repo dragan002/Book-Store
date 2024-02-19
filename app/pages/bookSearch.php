@@ -41,8 +41,8 @@ $search_results = search_books($search);
                             <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
                             <td><?php echo $searched['book_descr']; ?></td>
                             <td><?php echo $searched['book_quantity']; ?></td>
-                    <td><a href="admin_edit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
-                    <td><a href="admin_delete.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
+                    <td><a href="bookEdit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
+                    <td><a href="bookDelete.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
                 </tr>
                 <?php } } ?>
             </tbody>

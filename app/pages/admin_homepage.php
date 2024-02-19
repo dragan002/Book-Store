@@ -8,9 +8,9 @@ $books = find_all_books();
 
 <div class="container mt-5">
         <div class="mb-3">
-            <a href="admin_create.php" class="btn btn-success">Add New Book</a>
+            <a href="bookCreate.php" class="btn btn-success">Add New Book</a>
         </div>
-        <form class="form-inline" action="admin_search.php" method="POST">
+        <form class="form-inline" action="bookSearch.php" method="POST">
             <input style="width: 150px;" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
@@ -40,8 +40,8 @@ $books = find_all_books();
                     <td><img src="../../public/image/<?php echo $book['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
                     <td><?php echo $book['book_descr']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
-                    <td><a href="admin_edit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>
-                    <td><a href="admin_delete.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
+                    <td><a href="bookEdit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>
+                    <td><a href="bookDelete.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
                 </tr>
                 <?php } ?>
             </tbody>

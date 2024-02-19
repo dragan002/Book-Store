@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 
 <div class="container mt-5">
         <h2>Create New Book</h2>
-        <form action="admin_create.php" method="POST" enctype="multipart/form-data">
+        <form action="bookCreate.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title:</label>
                 <input type="text" class="form-control" id="title" name="title" required>
