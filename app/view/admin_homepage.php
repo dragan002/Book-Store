@@ -49,7 +49,7 @@ $books = find_all_books();
                     <td><?php echo $book['book_descr']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
                     <td><a href="bookEdit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>
-                    <td><a href="bookDelete.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
+                    <td><a href="../controllers/bookDeleteController.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
                 </tr>
                 <?php } ?>
             </tbody>

@@ -8,15 +8,6 @@ function find_all_books() {
     return $result;
 }
 
-function find_all_category() {
-    global $db;
-
-    $sql = "SELECT * FROM category";
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    return $result;
-}
-
 function find_all_categories() {
     global $db;
 
