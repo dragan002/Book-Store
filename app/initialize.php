@@ -11,8 +11,8 @@
     define('WWW_ROOT', $doc_root); 
 
     require('database/database.php');
-    require('bookModel/bookModel.php');
-    require('userModel/userModel.php');
+    require('models/bookModel.php');
+    require('models/userModel.php');
 
     $db = db_connect();
 ?>

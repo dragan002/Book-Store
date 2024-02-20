@@ -20,7 +20,16 @@ $categories = find_all_categories();
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>
+1. 
+2. srediti kod
+3. dodati novu tablu
+4. dodavanje rezervisi
 
+work ex
+
+
+about me
+trenutno php ucim 
 <!-- Featured Books Section -->
 <div class="container mt-4">
     <div class="row">
