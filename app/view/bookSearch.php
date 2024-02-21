@@ -14,8 +14,10 @@
                     <th>Image</th>
                     <th>Description</th>
                     <th>Quantity</th>
-                    <th>Update</th>
-                    <th>Delete</th>
+                    <?php if(is_post_request()) : ?>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -31,8 +33,10 @@
                         <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
                         <td><?php echo $searched['book_descr']; ?></td>
                         <td><?php echo $searched['book_quantity']; ?></td>
-                        <td><a href="bookEdit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
-                        <td><a href="../controllers/bookDeleteController.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
+                        <?php if(is_post_request()) : ?>
+                            <td><a href="bookEdit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
+                            <td><a href="../controllers/bookDeleteController.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
+                        <?php endif;?>
                     </tr>
                 <?php endforeach; } ?>
             </tbody>

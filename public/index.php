@@ -15,11 +15,12 @@ $categories = find_all_categories();
 
 <!-- Search Input -->
 <div class="container mt-4">
-    <form class="form-inline my-2 my-lg-0" action="view/search.php" method="GET">
+    <form class="form-inline my-2 my-lg-0" action="../app/view/bookSearch.php" method="GET">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" required>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>
+
 <!-- 1. 
 2. srediti kod
 3. dodati novu tablu
@@ -64,3 +65,5 @@ trenutno php ucim  -->
 <?php
 include(SHARED_PATH . '/footer.php');
 ?>
+
+
