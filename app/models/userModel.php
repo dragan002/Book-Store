@@ -10,7 +10,6 @@ function login($email, $password) {
 
         $stmt->execute();
 
-        // Fetch the result
         $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$user_data) {

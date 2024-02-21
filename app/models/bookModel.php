@@ -27,8 +27,6 @@ function find_all_books() {
     }
 }
 
-
-
 // function find_all_categories() {
 //     global $db;
 
@@ -87,7 +85,6 @@ function create_book($book) {
     }
 }
 
-
 function find_book_by_id($id) {
     global $db;
 
@@ -123,10 +120,9 @@ function find_category_by_id($id) {
     } catch (PDOException $e) {
         die("Error: " + $e->getMessage());
     }
-    }
+}
 
-
-    function edit_book($book) {
+function edit_book($book) {
         global $db;
         try {
             $sql = "UPDATE books SET 
@@ -158,9 +154,8 @@ function find_category_by_id($id) {
         }  catch (PDOException $e) {
             die("ERROR: Could not execute $sql. " . $e->getMessage());
         }
-    }
+}
     
-
 function delete_book($book) {
     global $db;
     try {

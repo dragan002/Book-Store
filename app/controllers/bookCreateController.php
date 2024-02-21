@@ -2,6 +2,8 @@
 require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
+$categories = find_all_categories();
+
 if(isset($_FILES['image'])&& $_FILES['image']['name'] != ""){
     $image = $_FILES['image']['name'];
     $directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
@@ -18,6 +20,7 @@ if (isset($_POST['submit'])) {
         'book_image' => $image,
         'book_descr' => htmlspecialchars(trim($_POST['description'])),
         'book_quantity' => htmlspecialchars(intval(trim($_POST['quantity']))),
+        'category_id' => $_POST['category']
     ];
 
     if (!create_book($book)) {
