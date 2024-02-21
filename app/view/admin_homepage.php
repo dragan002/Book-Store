@@ -32,7 +32,7 @@ $books = find_all_books();
                 </tr>
             </thead>
             <tbody>
-                <?php while($book = mysqli_fetch_assoc($books)) { ?>
+                <?php foreach($books as $book) : ?>
                 <tr>
                     <td><?php echo $book['id']; ?></td>
                     <td><?php echo $book['book_title']; ?></td>
@@ -51,7 +51,7 @@ $books = find_all_books();
                     <td><a href="bookEdit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>
                     <td><a href="../controllers/bookDeleteController.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
                 </tr>
-                <?php } ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

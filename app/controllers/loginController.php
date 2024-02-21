@@ -11,19 +11,20 @@ if (is_post_request()) {
         
         if (!$logger_data) {
             $errors[] = "Form submission error: No data received";
-        } else {
-            $email = $logger_data['email'];
-            $password = $logger_data['password'];
+        } 
         
-            $match = login($email, $password);
+        $email = $logger_data['email'];
+        $password = $logger_data['password'];
+    
+        $match = login($email, $password);
+    
+        if (!$match) {
+            return false;
+        } 
+
+        header('Location: ../../app/view/admin_homepage.php');
+        exit();
         
-            if (!$match) {
-                $errors[] = "Login failed: Invalid email or password";
-            } else {
-                header('Location: ../../app/view/admin_homepage.php');
-                exit();
-            }
-        }
     } catch (Exception $e) {
         $errors[] = $e->getMessage();
     }
