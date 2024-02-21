@@ -8,7 +8,7 @@
       }
       $id = $_GET['id'];
 
-    $book = find_by_id($id);
+    $book = find_book_by_id($id);
     
     if(isset($_FILES['image'])&& $_FILES['image']['name'] != ""){
         $image = $_FILES['image']['name'];

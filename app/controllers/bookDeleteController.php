@@ -9,7 +9,7 @@ if(!isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 
-$book = find_by_id($id);
+$book = find_book_by_id($id);
 
 if(delete_book($book)) {
     header('Location: ../view/admin_homepage.php');

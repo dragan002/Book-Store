@@ -26,11 +26,11 @@
                 <div class="mb-3">
                     <label for="category" class="form-label">Category:</label><br />
                         <select id="category" name="category">
-                            <?php while ($category = mysqli_fetch_assoc($categories)) { ?>
+                            <?php foreach($categories as $category) :  ?>
                                 <option value="<?php echo $category['id']; ?>" <?php echo ($category['id'] == $book['category_id']) ? 'selected' : ''; ?>>
                                     <?php echo $category['category_name']; ?>
                                 </option>
-                            <?php } ?>
+                            <?php endforeach; ?>
                         </select>
                 </div>
 

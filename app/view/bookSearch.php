@@ -19,22 +19,22 @@
                 </tr>
             </thead>
             <tbody>
-                <?php 
-                            if (mysqli_num_rows($search_results) > 0) {
-                    while ($searched = mysqli_fetch_assoc($search_results)) {
-                ?>
-                        <tr>
-                            <td><?php echo $searched['id']; ?></td>
-                            <td><?php echo $searched['book_title']; ?></td>
-                            <td><?php echo $searched['book_price']; ?></td>
-                            <td><?php echo $searched['book_author']; ?></td>
-                            <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
-                            <td><?php echo $searched['book_descr']; ?></td>
-                            <td><?php echo $searched['book_quantity']; ?></td>
-                    <td><a href="bookEdit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
-                    <td><a href="bookDelete.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
-                </tr>
-                <?php } } ?>
+            <?php 
+                if (!empty($search_results)) {
+                    foreach($search_results as $searched) : 
+            ?>
+                    <tr>
+                        <td><?php echo $searched['id']; ?></td>
+                        <td><?php echo $searched['book_title']; ?></td>
+                        <td><?php echo $searched['book_price']; ?></td>
+                        <td><?php echo $searched['book_author']; ?></td>
+                        <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
+                        <td><?php echo $searched['book_descr']; ?></td>
+                        <td><?php echo $searched['book_quantity']; ?></td>
+                        <td><a href="bookEdit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
+                        <td><a href="../controllers/bookDeleteController.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                <?php endforeach; } ?>
             </tbody>
         </table>
     </div>
