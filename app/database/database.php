@@ -2,10 +2,20 @@
 
 require_once('db_credentials.php');
 
+// function db_connect() {
+//     $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+//     confirm_db_connection();
+//     return $conn;
+// }
+
 function db_connect() {
-    $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-    confirm_db_connection();
-    return $conn;
+    try {
+        $conn = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_DATABASE, DB_USERNAME, DB_PASSWORD);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    } catch (PDOException $e) {
+        die("Database connection failed: " . $e->getMessage());
+    }
 }
 
 function confirm_db_connection() {
@@ -17,14 +27,14 @@ function confirm_db_connection() {
     }
 }
 
-function confirm_result_set($result_set) {
-    if(!$result_set) {
-        die('Error in query') . mysqli_error(db_connect());
+function confirm_result_set($resulSet) {
+    if(!$resulSet) {
+        die('Error in query') . $resulSet->error(db_connect());
     }
 }
 
 function db_disconnect($conn) {
     if(isset($conn)) {
-        mysqli_close($conn);
+        $conn = null;
     }
 }

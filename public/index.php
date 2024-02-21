@@ -20,7 +20,7 @@ $categories = find_all_categories();
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>
-1. 
+<!-- 1. 
 2. srediti kod
 3. dodati novu tablu
 4. dodavanje rezervisi
@@ -29,12 +29,11 @@ work ex
 
 
 about me
-trenutno php ucim 
+trenutno php ucim  -->
 <!-- Featured Books Section -->
 <div class="container mt-4">
     <div class="row">
-
-        <?php while($book = mysqli_fetch_assoc($books)) { ?>
+        <?php foreach($books as $book) : ?>
             <div class="col-md-4">
                 <div class="card">
                     <img src="../../public/image/<?php echo $book['book_image']; ?>" class="card-img-top" alt="<?php echo $book['book_title']; ?>">
@@ -46,25 +45,19 @@ trenutno php ucim
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php endforeach; ?>
 
         <!-- Sidebar with Book Categories -->
-        <div class="col-md-3 offset-md-1">
+<div class="col-md-3 offset-md-1">
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">Book Categories</h5>
             <ul class="list-group">
-                <?php while($category = mysqli_fetch_assoc($categories)) { ?>
+                <?php foreach($categories as $category) :  ?>
                 <li class="list-group-item"><a href=""><?php echo $category['category_name']; ?></li></a>
-                <?php } ?>
+                <?php endforeach; ?>
             </ul>
         </div>
-    </div>
-</div>
-
-
-
-
     </div>
 </div>
 

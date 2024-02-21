@@ -1,20 +1,57 @@
 <?php
+// function find_all_books() {
+//     global $db;
+
+//     $sql = "SELECT * FROM books";
+//     $result = mysqli_query($db, $sql);
+//     confirm_result_set($result);
+//     return $result;
+// }
+
 function find_all_books() {
     global $db;
 
-    $sql = "SELECT * FROM books";
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    return $result;
+    try {
+        $sql = "SELECT * FROM books";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+    
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        confirm_result_set($result);
+
+        return $result;
+    }  catch (PDOException $e) {
+        die("Error in query:" . $e->getMessage());
+    }
 }
+
+
+// function find_all_categories() {
+//     global $db;
+
+//     $sql = "SELECT * FROM categories";
+//     $result = mysqli_query($db, $sql);
+//     confirm_result_set($result);
+//     return $result;
+// }
 
 function find_all_categories() {
     global $db;
 
-    $sql = "SELECT * FROM categories";
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    return $result;
+    try {
+        $sql = "SELECT * FROM categories";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        confirm_result_set($result);
+        
+        return $result;
+    } catch(PDOException $e) {
+        die("ERROR: Could not execute $sql. " . $e->getMessage());  
+    }
 }
 
 function create_book($book) {
@@ -38,25 +75,25 @@ function create_book($book) {
     }
 }
 
-function find_by_id($id) {
+function find_book_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM books WHERE id = ? LIMIT 1";
+    try {
+        $sql = "SELECT * FROM books WHERE id = :id LIMIT 1";
+    
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $stmt = mysqli_prepare($db, $sql);
-    mysqli_stmt_bind_param($stmt, 'i', $id);
-    mysqli_stmt_execute($stmt);
-
-    $result_set = mysqli_stmt_get_result($stmt);
-    confirm_result_set($result_set);
-
-    $book = mysqli_fetch_assoc($result_set);
-
-    mysqli_free_result($result_set);
-    mysqli_stmt_close($stmt);
-
-    return $book;
+        return $result;
+    }  catch (PDOException $e) {
+        die("Failed to retrieve data from database: " . $e->getMessage());
+    }
 }
+
+
 
 function find_category_by_id($id) {
     global $db;
