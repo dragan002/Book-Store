@@ -4,7 +4,7 @@ function login($email, $password) {
     global $db;
 
     try {
-        $sql = "SELECT * FROM admin WHERE email = ?";
+        $sql = "SELECT * FROM users WHERE email = ?";
         $stmt = $db->prepare($sql);
         $stmt->bindParam(1, $email, PDO::PARAM_STR);
 
@@ -26,6 +26,32 @@ function login($email, $password) {
         die("Something went wrong with login: " . $e->getMessage());
     } finally {
         $stmt = null;
+    }
+}
+
+function createUser($user) {
+    global $db;
+
+    try {
+        $sql = "INSERT INTO users (username, email, password) ";
+        $sql .= "VALUES (:userUsername, :userEmail, :userPassword)";
+
+        $stmt = $db->prepare($sql);
+        
+        $stmt->bindParam(':userUsername', $user['username'], PDO::PARAM_STR);
+        $stmt->bindParam(':userEmail', $user['email'], PDO::PARAM_STR);
+        $stmt->bindParam(':userPassword', $user['password'], PDO::PARAM_STR);
+
+
+        $result = $stmt->execute();
+
+        if (!$result) {
+            die("Failed to insert data into the database: " . $stmt->errorInfo()[2]);
+        }
+
+        return true;
+    } catch (PDOException $e) {
+        die("Failed to insert data into the database: " . $e->getMessage());
     }
 }
 

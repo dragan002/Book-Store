@@ -1,6 +1,5 @@
 <?php
-include('../../app/controllers/loginController.php');
-
+include('../../app/controllers/registrationController.php');
 ?>
 
 <div class="container">
@@ -22,7 +21,7 @@ include('../../app/controllers/loginController.php');
                 <label for="confirm_password" class="form-label">Confirm Password:</label>
                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-primary" name="register">Register</button>
         </form>
     <p>Already have an account? <a href="login.php">Login here</a>.</p>
 </div>
