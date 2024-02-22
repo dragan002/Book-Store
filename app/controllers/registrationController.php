@@ -1,24 +1,35 @@
 <?php
-
 require_once('../../app/initialize.php');
 include(SHARED_PATH . '/header.php');
 
-$errors = [];
 
-if(isset($_POST['register'])) {
+if (isset($_POST['register'])) {
     $user = [
-        'username' => usernameValidation($_POST['username']), 
-        'email' => emailValidation($_POST['email']),
-        'password' => passwordValidation(password_hash($_POST['password'], PASSWORD_DEFAULT)),
+        'username' => $_POST['username'],
+        'email' => $_POST['email'],
+        'password' => $password = (password_hash($_POST['password'], PASSWORD_DEFAULT)),
         'confirm_password' => $_POST['confirm_password']
     ];
 
-    if(!createUser($user)) {
-        die("Error creating user");
-    } else {
-        header("Location: login.php?signup=success");
+    $usernameError = usernameValidation($user['username']);
+    $emailError = emailValidation($user['email']);
+    $passwordError = passwordValidation($user['password']);
+
+    if(password_verify($user['confirm_password'], $password));
+
+    $errors = array_merge($usernameError, $emailError, $passwordError);
+
+    if (empty($errors)) {
+        $createdUser = createUser([
+            'username' => $user['username'],
+            'email' => $user['email'],
+            'password' => $user['password']
+        ]);
+
+        if (!$createdUser) {
+            die("Error creating user");
+        }
+        header("Location: login.php?registration=success");
     }
 }
-        // if (User::create($user)) {
-        //     echo "<script>alert('Registered successfully!')</script>";
-        // }
+?>
