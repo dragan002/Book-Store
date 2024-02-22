@@ -42,7 +42,6 @@ function createUser($user) {
         $stmt->bindParam(':userEmail', $user['email'], PDO::PARAM_STR);
         $stmt->bindParam(':userPassword', $user['password'], PDO::PARAM_STR);
 
-
         $result = $stmt->execute();
 
         if (!$result) {

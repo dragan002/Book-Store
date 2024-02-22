@@ -10,6 +10,7 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'], 0 , $public_end);
 define('WWW_ROOT', $doc_root); 
 
     require('functionsHelpers.php');
+    require('functionsValidation.php');
     require('database/database.php');
     require('models/bookModel.php');
     require('models/userModel.php');
