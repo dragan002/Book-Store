@@ -11,6 +11,7 @@ $categories = find_all_categories();
     <h1 class="display-4">Immerse Yourself in the World of Books</h1>
     <p class="lead">Discover the magic of literature with our curated collection.</p>
     <a class="btn btn-light btn-lg" href="#" role="button">Explore Books</a>
+    <a class="btn btn-success btn-lg" href="pages/registration.php" role="button">Register</a>
 </div>
 
 <!-- Search Input -->
@@ -21,16 +22,6 @@ $categories = find_all_categories();
     </form>
 </div>
 
-<!-- 1. 
-2. srediti kod
-3. dodati novu tablu
-4. dodavanje rezervisi
-
-work ex
-
-
-about me
-trenutno php ucim  -->
 <!-- Featured Books Section -->
 <div class="container mt-4">
     <div class="row">

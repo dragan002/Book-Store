@@ -27,9 +27,9 @@ function confirm_db_connection() {
     }
 }
 
-function confirm_result_set($resulSet) {
-    if(!$resulSet) {
-        die('Error in query') . $resulSet->error(db_connect());
+function confirmResultSet($resultSet) {
+    if(!$resultSet) {
+        die('Error in query') . $resultSet->error(db_connect());
     }
 }
 

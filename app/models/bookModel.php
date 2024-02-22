@@ -18,12 +18,11 @@ function find_all_books() {
     
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-        confirm_result_set($result);
+        confirmResultSet($result);
 
         return $result;
     } catch (PDOException $e) {
         die("Error in query: " . $sql . " - " . $e->getMessage());
-        //if is not set categori in db there will be error msg - check it 
     }
 }
 
@@ -46,7 +45,7 @@ function find_all_categories() {
 
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        confirm_result_set($result);
+        confirmResultSet($result);
         
         return $result;
     } catch(PDOException $e) {
@@ -76,8 +75,6 @@ function create_book($book) {
         if (!$result) {
             die("Failed to insert data into the database: " . $stmt->errorInfo()[2]);
         }
-
-        $stmt = null;
 
         return true;
     } catch (PDOException $e) {
@@ -114,7 +111,7 @@ function find_category_by_id($id) {
 
         $result =  $stmt->fetch(PDO::FETCH_ASSOC);
 
-        confirm_result_set($result);
+        confirmResultSet($result);
 
         return $result;
     } catch (PDOException $e) {
@@ -146,7 +143,7 @@ function edit_book($book) {
             $stmt->bindParam(':id', $book['id'], PDO::PARAM_INT); 
     
             $result = $stmt->execute();
-            confirm_result_set($result);
+            confirmResultSet($result);
     
             $stmt = null;
     
