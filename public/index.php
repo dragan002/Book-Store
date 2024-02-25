@@ -50,7 +50,7 @@ $categories = find_all_categories();
                     <h5 class="card-title">Book Categories</h5>
                     <ul class="list-group">
                         <?php foreach ($categories as $category) :  ?>
-                            <li class="list-group-item"><a href=""><?php echo $category['category_name']; ?></a></li>
+                            <li class="list-group-item"><a href="pages/categoryList.php?id=<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
