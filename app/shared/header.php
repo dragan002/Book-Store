@@ -25,11 +25,11 @@
         <!-- Navigation Links -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="../../public/index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='../../public/pages/about.php'>About Us</a>
+                    <a class="nav-link" href="../../public/pages/about.php">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../../public/pages/services.php">Services</a>
@@ -38,14 +38,23 @@
                     <a class="nav-link" href="../../public/pages/contact.php">Contact</a>
                 </li>
 
-                <!-- Login Button -->
-                <li class="nav-item bg-primary">
-                    <a class="nav-link" href="../../public/pages/login.php">Login</a>
+                <!-- Cart Link -->
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.php">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
+                </li>
+
+                <!-- Login and Register Buttons -->
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-primary" href="../../public/pages/login.php">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-success" href="../../public/pages/registration.php">Register</a>
                 </li>
             </ul>
         </div>
 
     </div>
 </nav>
-
-
+<!-- The rest of your HTML content goes here -->

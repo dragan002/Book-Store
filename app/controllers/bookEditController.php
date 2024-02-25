@@ -10,13 +10,17 @@
 
     $book = find_book_by_id($id);
     
-    if(isset($_FILES['image'])&& $_FILES['image']['name'] != ""){
+    $image = $book['book_image']; 
+    
+    if(isset($_FILES['image']) && $_FILES['image']['name'] != ""){
         $image = $_FILES['image']['name'];
         $directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
         $uploadDirectory = $_SERVER['DOCUMENT_ROOT'] . $directory_self . "../../public/image/";
         $uploadDirectory .= $image;
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadDirectory);
     }
+
+
 
     if (isset($_POST['edit'])) {
         $book = [

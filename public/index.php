@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../app/initialize.php');
 $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
@@ -11,7 +11,6 @@ $categories = find_all_categories();
     <h1 class="display-4">Immerse Yourself in the World of Books</h1>
     <p class="lead">Discover the magic of literature with our curated collection.</p>
     <a class="btn btn-light btn-lg" href="#" role="button">Explore Books</a>
-    <a class="btn btn-success btn-lg" href="pages/registration.php" role="button">Register</a>
 </div>
 
 <!-- Search Input -->
@@ -25,8 +24,8 @@ $categories = find_all_categories();
 <!-- Featured Books Section -->
 <div class="container mt-4">
     <div class="row">
-        <?php foreach($books as $book) : ?>
-            <div class="col-md-4">
+        <?php foreach ($books as $book) : ?>
+            <div class="col-md-4 mb-4">
                 <div class="card">
                     <img src="../../public/image/<?php echo $book['book_image']; ?>" class="card-img-top" alt="<?php echo $book['book_title']; ?>">
                     <div class="card-body">
@@ -34,27 +33,30 @@ $categories = find_all_categories();
                         <p class="card-text"><strong>Author:</strong> <?php echo $book['book_author']; ?></p>
                         <p class="card-text"><strong>Price:</strong> $<?php echo $book['book_price']; ?></p>
                         <a href="pages/details.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Details</a>
+
+                        <a href="#" class="btn btn-success ml-2">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </a>
+
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
 
         <!-- Sidebar with Book Categories -->
-<div class="col-md-3 offset-md-1">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Book Categories</h5>
-            <ul class="list-group">
-                <?php foreach($categories as $category) :  ?>
-                <li class="list-group-item"><a href=""><?php echo $category['category_name']; ?></li></a>
-                <?php endforeach; ?>
-            </ul>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Book Categories</h5>
+                    <ul class="list-group">
+                        <?php foreach ($categories as $category) :  ?>
+                            <li class="list-group-item"><a href=""><?php echo $category['category_name']; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<?php
-include(SHARED_PATH . '/footer.php');
-?>
-
-
+<?php include(SHARED_PATH . '/footer.php'); ?>
