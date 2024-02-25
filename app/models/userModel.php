@@ -31,11 +31,11 @@ function login($email, $password) {
         $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$user_data) {
-            die('Login failed. Email not found.');
+            throw new Exception('Login failed. Email not found.');
         }
 
         if (!password_verify($password, $user_data['password'])) {
-            die('Login failed. Invalid password.');
+            throw new Exception('Login failed. Invalid password.');
         }
 
         return $user_data;
@@ -78,18 +78,6 @@ function get_logger_from_form() {
     $logger = [
     'email' => filter_var($_POST['email'], FILTER_SANITIZE_EMAIL),
     'password' => $_POST['password']
-    ];
-    return $logger;
-}
-
-function get_logger_from_forms() {
-    if(!isset($_GET['email']) && !isset($_GET['password'])) {
-        return false;
-    } 
-
-    $logger = [
-    'email' => filter_var($_GET['email'], FILTER_SANITIZE_EMAIL),
-    'password' => $_GET['password']
     ];
     return $logger;
 }

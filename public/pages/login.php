@@ -17,7 +17,7 @@ include('../../app/controllers/loginController.php');
                     <h3 class="text-center">Login</h3>
                 </div>
                 <div class="card-body">
-                    <form action="#" method="get">
+                    <form action="#" method="POST">
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input type="text" class="form-control" id="email" name="email" required>

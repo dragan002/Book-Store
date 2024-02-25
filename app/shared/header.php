@@ -29,13 +29,13 @@
                     <a class="nav-link" href="../../public/index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href='../../public/view/about.php'>About Us</a>
+                    <a class="nav-link" href='../../public/pages/about.php'>About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../public/view/services.php">Services</a>
+                    <a class="nav-link" href="../../public/pages/services.php">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../public/view/contact.php">Contact</a>
+                    <a class="nav-link" href="../../public/pages/contact.php">Contact</a>
                 </li>
 
                 <!-- Login Button -->

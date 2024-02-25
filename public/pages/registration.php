@@ -4,7 +4,7 @@ include('../../app/controllers/registrationController.php');
 
 <div class="container">
         <h2>Register for the Book Store</h2>
-        <form action="" method="post">
+        <form action="" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Username:</label>
                 <input type="text" class="form-control" id="username" name="username">
