@@ -33,11 +33,11 @@ $categories = find_all_categories();
                         <p class="card-text"><strong>Author:</strong> <?php echo $book['book_author']; ?></p>
                         <p class="card-text"><strong>Price:</strong> $<?php echo $book['book_price']; ?></p>
                         <a href="pages/details.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Details</a>
+                        <a href="pages/categoryList.php?category_id=<?php echo $book['category_id']; ?>" class="btn btn-primary">Category ID</a>
 
                         <a href="#" class="btn btn-success ml-2">
                             <i class="fas fa-shopping-cart"></i> Add to Cart
                         </a>
-
                     </div>
                 </div>
             </div>

@@ -81,7 +81,23 @@ function find_book_by_id($id) {
         die("Failed to retrieve data from database: " . $e->getMessage());
     }
 }
+function find_book_by_category($id) {
+    global $db;
 
+    try {
+        $sql = "SELECT * FROM books WHERE category_id = :category_id";
+    
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':category_id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }  catch (PDOException $e) {
+        die("Failed to retrieve data from database: " . $e->getMessage());
+    }
+}
 function find_category_by_id($id) {
     global $db;
 
