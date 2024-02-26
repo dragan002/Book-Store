@@ -91,7 +91,7 @@ function find_book_by_category($id) {
         $stmt->bindParam(':category_id', $id, PDO::PARAM_INT);
         $stmt->execute();
     
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $result;
     }  catch (PDOException $e) {

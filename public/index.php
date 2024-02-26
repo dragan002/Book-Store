@@ -33,7 +33,6 @@ $categories = find_all_categories();
                         <p class="card-text"><strong>Author:</strong> <?php echo $book['book_author']; ?></p>
                         <p class="card-text"><strong>Price:</strong> $<?php echo $book['book_price']; ?></p>
                         <a href="pages/details.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Details</a>
-                        <a href="pages/categoryList.php?category_id=<?php echo $book['category_id']; ?>" class="btn btn-primary">Category ID</a>
 
                         <a href="#" class="btn btn-success ml-2">
                             <i class="fas fa-shopping-cart"></i> Add to Cart
@@ -50,7 +49,7 @@ $categories = find_all_categories();
                     <h5 class="card-title">Book Categories</h5>
                     <ul class="list-group">
                         <?php foreach ($categories as $category) :  ?>
-                            <li class="list-group-item"><a href="pages/categoryList.php?id=<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></a></li>
+                            <li class="list-group-item"><a href="pages/categoryList.php?category_id=<?php echo $category['id']; ?>"><?php echo $category['category_name']; ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
