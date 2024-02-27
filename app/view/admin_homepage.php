@@ -3,11 +3,15 @@ require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
 $books = find_all_books();
+echo $_SESSION['username'];
 
 ?>
 
 <div class="container mt-5">
         <div class="mb-3">
+        <div class="alert alert-success" role="alert">
+            Hello, <?php echo $_SESSION['username']; ?>! Welcome to the Admin Panel.
+        </div>
             <a href="bookCreate.php" class="btn btn-success">Add New Book</a>
         </div>
         <form class="form-inline" action="bookSearch.php" method="POST">

@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,7 +44,7 @@
                         <a class="nav-link" href="#">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="../controllers/logOutController.php">Logout</a>
                     </li>
                 </ul>
             </div>

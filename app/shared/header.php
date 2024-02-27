@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php echo $pageTitle ?></title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -45,16 +47,26 @@
                     </a>
                 </li>
 
-                <!-- Login and Register Buttons -->
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-primary" href="../../public/pages/login.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-success" href="../../public/pages/registration.php">Register</a>
-                </li>
+                <!-- Login and Register Buttons -->  
+                <?php if(!isset($_SESSION['username'])) { ?>               
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary" href="../../public/pages/login.php">Login</a>
+                    </li>
+                <?php } ?>
+
+                <?php if(!isset($_SESSION['username'])) { ?>               
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-success" href="../../public/pages/registration.php">Register</a>
+                    </li>
+                <?php } ?>
+                
+                <?php if(isset($_SESSION['username'])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../app/controllers/logOutController.php">Logout</a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
-
     </div>
 </nav>
 <!-- The rest of your HTML content goes here -->

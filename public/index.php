@@ -6,12 +6,19 @@ $books = find_all_books();
 $categories = find_all_categories();
 ?>
 
+<?php if(isset($_SESSION['username'])) { ?>
+    <div class="alert alert-success" role="alert">
+        <?php echo "Hello, " . $_SESSION['username']. "! Welcome to BookStore."; ?>
+    </div>
+<?php } ?>
+
 <!-- Jumbotron (Hero Section) -->
 <div class="jumbotron text-center bg-primary text-white">
     <h1 class="display-4">Immerse Yourself in the World of Books</h1>
     <p class="lead">Discover the magic of literature with our curated collection.</p>
     <a class="btn btn-light btn-lg" href="#" role="button">Explore Books</a>
 </div>
+
 
 <div class="container mt-4">
     <form class="form-inline my-2 my-lg-0" action="../app/view/bookSearch.php" method="GET">

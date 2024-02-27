@@ -37,7 +37,10 @@ function login($email, $password) {
         if (!password_verify($password, $user_data['password'])) {
             throw new Exception('Login failed. Invalid password.');
         }
-
+        $_SESSION["loggedin"] = true;
+        $_SESSION["id"] = $user_data['id'];
+        $_SESSION["username"] = $user_data['username'];
+        
         return $user_data;
 
     } catch (PDOException $e) {
