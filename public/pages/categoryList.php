@@ -4,17 +4,17 @@ $pageTitle = "Books by Category";
 
 include(SHARED_PATH . '/header.php');
 
-$id = $_GET['category_id'];
+$categoryId = $_GET['category_id'];
 
-$booksById = find_book_by_category($id);
+$booksByCategory = find_book_by_category($categoryId);
 ?>
 
 <div class="container mt-5">
-    <h2>Books by Category</h2>
+    <h2>Books by Category - <?php echo displayCategoryName($categoryId); ?></h2>
     <hr>
 
     <div class="row">
-        <?php foreach ($booksById as $book) : ?>
+        <?php foreach ($booksByCategory as $book) : ?>
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <img src="../../public/image/<?php echo $book['book_image']; ?>" class="card-img-top" alt="<?php echo $book['book_title']; ?>">

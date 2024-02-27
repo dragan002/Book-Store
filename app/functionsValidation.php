@@ -24,7 +24,6 @@ function passwordValidation($password) {
     return $errors;
 }
 
-
 function confirmPasswordValidation($confirmPassword) {
     if(empty($confirmPassword)) {
         $errors['confirmPassword'] = "Please enter your password again.";

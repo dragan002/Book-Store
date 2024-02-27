@@ -11,5 +11,3 @@ if(is_post_request()) {
 $books = find_all_books();
 $search_results = search_books($search);
 
-
-?>
