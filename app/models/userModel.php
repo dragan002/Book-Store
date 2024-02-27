@@ -102,3 +102,38 @@ function find_user_by_email($email) {
         die("Failed to retrieve data from database: " . $e->getMessage());
     }
 }
+
+function find_user_by_id($id) {
+    global $db;
+
+    try {
+        $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
+    
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }  catch (PDOException $e) {
+        die("Failed to retrieve data from database: " . $e->getMessage());
+    }
+}
+
+function delete_user($user) {
+    global $db;
+    try {
+        $sql = "DELETE FROM users WHERE id =  :id LIMIT 1";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':id', $user['id']);
+    
+        $result = $stmt->execute();
+        
+        $stmt = null;
+    
+        return true;
+    }  catch (PDOException $e) {
+        die("ERROR: Could not execute $sql. " . $e->getMessage());
+    }
+}
