@@ -4,13 +4,8 @@ $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
 $books = find_all_books();
 $categories = find_all_categories();
-?>
 
-<?php if(isset($_SESSION['username'])) { ?>
-    <div class="alert alert-success" role="alert">
-        <?php echo "Hello, " . $_SESSION['username']. "! Welcome to BookStore."; ?>
-    </div>
-<?php } ?>
+?>
 
 <!-- Jumbotron (Hero Section) -->
 <div class="jumbotron text-center bg-primary text-white">
@@ -43,7 +38,7 @@ $categories = find_all_categories();
                 </div>
             </div>
         </div>
-
+    
         <!-- Featured Books Section -->
         <div class="col-md-9">
             <div class="row">
@@ -57,9 +52,12 @@ $categories = find_all_categories();
                                 <p class="card-text"><strong>Price:</strong> $<?php echo $book['book_price']; ?></p>
                                 <a href="pages/details.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Details</a>
 
-                                <a href="#" class="btn btn-success ml-2">
-                                    <i class="fas fa-shopping-cart"></i> Add to Cart
-                                </a>
+                                <?php if(isset($_SESSION['username'])) { ?>
+                                    <a href="#" class="btn btn-success ml-2">
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                    </a>
+                                <?php } ?>
+
                             </div>
                         </div>
                     </div>
@@ -72,6 +70,8 @@ $categories = find_all_categories();
 <?php include(SHARED_PATH . '/footer.php'); ?>
 
 
+
 <!-- registraciju napravio - user je default
 Login kreirao da se mogu posebno ulogati user i admin 
 ubacio kada se klikne na odredjenu kategoriju da izbaci sve knjige iz te kategorije -->
+<!-- Sessije postavljene -->

@@ -25,6 +25,12 @@
         </button>
 
         <!-- Navigation Links -->
+
+        <?php if(isset($_SESSION['username'])) { ?>
+    <div class="alert alert-success text-center" role="alert">
+        Hello, <?php echo $_SESSION['username']; ?>! Welcome to BookStore.
+    </div>
+<?php } ?>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -42,7 +48,7 @@
 
                 <!-- Cart Link -->
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.php">
+                    <a class="nav-link" href="../../public/pages/cartItems.php">
                         <i class="fas fa-shopping-cart"></i> Cart
                     </a>
                 </li>
@@ -62,7 +68,7 @@
                 
                 <?php if(isset($_SESSION['username'])) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="../app/controllers/logOutController.php">Logout</a>
+                        <a class="nav-link" href="../../app/controllers/logOutController.php">Logout</a>
                     </li>
                 <?php } ?>
             </ul>
