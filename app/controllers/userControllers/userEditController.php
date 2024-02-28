@@ -14,6 +14,7 @@ if (isset($_POST['edit'])) {
         'id' => $id,
         'username' => trim($_POST['username']),
         'email' => trim($_POST['email']),
+        'password' => $password = trim((password_hash($_POST['password'], PASSWORD_DEFAULT))),
         'role' => trim($_POST['role']),
     ];
 

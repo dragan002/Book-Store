@@ -144,12 +144,14 @@ function editUser($user) {
         $sql = "UPDATE users SET 
                     username = :username,
                     email = :email,
+                    password = :password,
                     role = :role
                 WHERE id = :id"; 
 
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':username', $user['username'], PDO::PARAM_STR);
         $stmt->bindParam(':email', $user['email'], PDO::PARAM_STR);
+        $stmt->bindParam(':password', $user['password'], PDO::PARAM_STR);
         $stmt->bindParam(':role', $user['role'], PDO::PARAM_STR);
         $stmt->bindParam(':id', $user['id'], PDO::PARAM_INT); 
 
