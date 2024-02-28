@@ -68,7 +68,7 @@
                 
                 <?php if(isset($_SESSION['username'])) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../app/controllers/logOutController.php">Logout</a>
+                        <a class="nav-link" href="../../app/controllers/userControllers/logOutController.php">Logout</a>
                     </li>
                 <?php } ?>
             </ul>

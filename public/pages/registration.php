@@ -1,5 +1,5 @@
 <?php
-include('../../app/controllers/registrationController.php');
+include('../../app/controllers/userControllers/registrationController.php');
 ?>
 
 <div class="container">

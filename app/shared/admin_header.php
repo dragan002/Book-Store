@@ -44,7 +44,7 @@
                         <a class="nav-link" href="../view/adminUsers.php">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../controllers/logOutController.php">Logout</a>
+                        <a class="nav-link" href="../controllers/userControllers/logOutController.php">Logout</a>
                     </li>
                 </ul>
             </div>
