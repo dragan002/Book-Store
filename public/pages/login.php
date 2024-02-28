@@ -11,7 +11,7 @@ if(isset($_GET['registration'])) {
     <div class="row justify-content-center">
         <div class="col-md-6">
 
-        <?php if ($registrationSuccess) : ?>
+        <?php if (isset($registrationSuccess)) : ?>
                 <div class="alert alert-success" role="alert">
                     Registration successful! You can now log in.
                 </div>

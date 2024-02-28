@@ -137,3 +137,29 @@ function delete_user($user) {
         die("ERROR: Could not execute $sql. " . $e->getMessage());
     }
 }
+
+function editUser($user) {
+    global $db;
+    try {
+        $sql = "UPDATE users SET 
+                    username = :username,
+                    email = :email,
+                    role = :role
+                WHERE id = :id"; 
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':username', $user['username'], PDO::PARAM_STR);
+        $stmt->bindParam(':email', $user['email'], PDO::PARAM_STR);
+        $stmt->bindParam(':role', $user['role'], PDO::PARAM_STR);
+        $stmt->bindParam(':id', $user['id'], PDO::PARAM_INT); 
+
+        $result = $stmt->execute();
+        confirmResultSet($result);
+
+        $stmt = null;
+
+        return true;
+    }  catch (PDOException $e) {
+        die("ERROR: Could not execute $sql. " . $e->getMessage());
+    }
+}

@@ -3,7 +3,6 @@ require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
 $books = find_all_books();
-echo $_SESSION['username'];
 
 ?>
 

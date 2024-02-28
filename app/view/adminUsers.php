@@ -38,7 +38,7 @@ echo $_SESSION['username'];
                     <td><?php echo $user['username']; ?></td>
                     <td><?php echo $user['email']; ?></td>
                     <td><?php echo $user['role']; ?></td>
-                    <td><a href="bookEdit.php?id=<?php echo $user['id']; ?>" class="btn btn-warning">Update</a></td>
+                    <td><a href="userEdit.php?id=<?php echo $user['id']; ?>" class="btn btn-warning">Update</a></td>
                     <td><a href="../controllers/userControllers/userDeleteController.php?id=<?php echo $user['id']?>" class="btn btn-danger">Delete</a></td>
                 </tr>
                 <?php endforeach; ?>
