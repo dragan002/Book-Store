@@ -9,12 +9,11 @@ echo $_SESSION['username'];
 
 <div class="container mt-5">
         <div class="mb-3">
-        <div class="alert alert-success" role="alert">
-            Hello, <?php echo $_SESSION['username']; ?>! Welcome to the Admin Panel.
+            <div class="alert alert-success" role="alert">
+                Hello, <?php echo $_SESSION['username']; ?>! Welcome to the Admin Panel.
+            </div>
         </div>
-            <a href="bookCreate.php" class="btn btn-success">Add New User</a>
-        </div>
-        <form class="form-inline" action="bookSearch.php" method="POST">
+        <form class="form-inline" action="userSearch.php" method="POST">
             <input style="width: 150px;" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>

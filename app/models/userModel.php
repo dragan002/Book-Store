@@ -165,3 +165,26 @@ function editUser($user) {
         die("ERROR: Could not execute $sql. " . $e->getMessage());
     }
 }
+
+function searchUser($search) {
+    global $db;
+
+    try {
+        $sql = "SELECT * FROM users WHERE id = :id OR username LIKE :username OR email LIKE :email";
+        $stmt = $db->prepare($sql);
+
+        $searchTerm = "%" . $search . "%";
+
+        $stmt->bindParam(':id', $search, PDO::PARAM_INT);
+        $stmt->bindParam(':username', $searchTerm, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $searchTerm, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    } catch (PDOException $e) {
+        die("Database query failed: " . $e->getMessage());
+    }
+}
