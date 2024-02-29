@@ -188,3 +188,40 @@ function searchUser($search) {
         die("Database query failed: " . $e->getMessage());
     }
 }
+
+function handleSuccessfulLogin($user) {
+    if($user['role'] == 'admin') {
+        header("Location: ../../app/view/admin_homepage.php"); 
+        exit();
+    } else {
+        header("Location: ../../public/index.php");
+        exit();
+    }
+}
+
+function addToCart($book) {
+    global $db;
+
+    try {
+        $sql = "INSERT INTO cart_items (book_title, book_price, book_author, book_image, book_descr) ";
+        $sql .= "VALUES (:book_title, :book_price, :book_author, :book_image, :book_descr)";
+
+        $stmt = $db->prepare($sql);
+        
+        $stmt->bindParam(':book_title', $book['book_title'], PDO::PARAM_STR);
+        $stmt->bindParam(':book_price', $book['book_price'], PDO::PARAM_STR);
+        $stmt->bindParam(':book_author', $book['book_author'], PDO::PARAM_STR);
+        $stmt->bindParam(':book_image', $book['book_image'], PDO::PARAM_STR);
+        $stmt->bindParam(':book_descr', $book['book_descr'], PDO::PARAM_STR);
+
+        $result = $stmt->execute();
+
+        if (!$result) {
+            die("Failed to insert data into the database: " . $stmt->errorInfo()[2]);
+        }
+
+        return true;
+    } catch (PDOException $e) {
+        die("Failed to insert data into the database: " . $e->getMessage());
+    }
+}

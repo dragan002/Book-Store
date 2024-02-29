@@ -33,3 +33,5 @@ if (isset($_POST['register'])) {
     }
 }
 ?>
+
+<!-- Ako nije prazan ?  -->
