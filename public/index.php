@@ -53,7 +53,7 @@ $categories = find_all_categories();
                                 <a href="pages/details.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Details</a>
 
                                 <?php if(isset($_SESSION['username'])) { ?>
-                                    <a href="#" class="btn btn-success ml-2">
+                                    <a href="pages/cartItems.php?id=<?php echo $book['id']; ?>" class="btn btn-success ml-2">
                                         <i class="fas fa-shopping-cart"></i> Add to Cart
                                     </a>
                                 <?php } ?>

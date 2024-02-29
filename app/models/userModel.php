@@ -199,15 +199,16 @@ function handleSuccessfulLogin($user) {
     }
 }
 
-function addToCart($book) {
+function addToCart($user_id, $book) {
     global $db;
 
     try {
-        $sql = "INSERT INTO cart_items (book_title, book_price, book_author, book_image, book_descr) ";
-        $sql .= "VALUES (:book_title, :book_price, :book_author, :book_image, :book_descr)";
+        $sql = "INSERT INTO cartItems (user_id, book_title, book_price, book_author, book_image, book_descr) ";
+        $sql .= "VALUES (:user_id, :book_title, :book_price, :book_author, :book_image, :book_descr)";
 
         $stmt = $db->prepare($sql);
         
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT); 
         $stmt->bindParam(':book_title', $book['book_title'], PDO::PARAM_STR);
         $stmt->bindParam(':book_price', $book['book_price'], PDO::PARAM_STR);
         $stmt->bindParam(':book_author', $book['book_author'], PDO::PARAM_STR);

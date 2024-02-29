@@ -1,6 +1,7 @@
 <?php 
 require_once('../../app/initialize.php');
-$pageTitle = "About";
+require_once('../../app/controllers/userControllers/userCartItemsController.php');
+$pageTitle = "Cart";
 
 include(SHARED_PATH . '/header.php');
 ?>
