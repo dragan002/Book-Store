@@ -8,7 +8,7 @@
       }
       $id = $_GET['id'];
 
-    $book = find_book_by_id($id);
+    $book = $bookInstance->findBookById($id);
     
     $image = $book['book_image']; 
     
@@ -34,7 +34,7 @@
             'category_id' => $_POST['category']
         ];
 
-        $result = edit_book($book);
+        $result = $bookInstance->editBook($book);
 
         if ($result) {
             header( "Location: admin_homepage.php");
@@ -44,8 +44,8 @@
     }
 
 
-    $categories = find_all_categories();
-    $category = find_category_by_id($book['category_id']);
+    $categories = $bookInstance->findAllCategories();
+    $category = $bookInstance->findCategoryById($book['category_id']);
     $category_name = $category ? $category['category_name'] : 'N/A';
     
     ?>

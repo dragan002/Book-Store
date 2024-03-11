@@ -17,5 +17,9 @@ require('models/userModel.php');
 
 
 $database = new Database();
-$db = $database->getConnection();
+
+$bookInstance = new Book();
+
+$userInstance = new User();
+
 ?>

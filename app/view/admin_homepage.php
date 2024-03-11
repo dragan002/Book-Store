@@ -2,7 +2,7 @@
 require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
-$books = find_all_books();
+$books = $bookInstance->findAllBooks();
 
 ?>
 
@@ -44,7 +44,7 @@ $books = find_all_books();
                     <td><img src="../../public/image/<?php echo $book['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
 
                     <?php
-                    $category = find_category_by_id($book['category_id']);
+                    $category = $bookInstance->findCategoryById($book['category_id']);
                     $category_name = $category ? $category['category_name'] : 'N/A';
                     ?>
                     
