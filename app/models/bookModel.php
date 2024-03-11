@@ -37,7 +37,7 @@ class Book extends Database {
         }
     }
     
-    function create_book($book) {
+    function createBook($book) {
 
         try {
             $sql = "INSERT INTO books (book_title, book_price, book_author, book_image, book_descr, book_quantity, category_id) ";
@@ -65,7 +65,7 @@ class Book extends Database {
         }
     }
     
-    function finnBookById($id) {
+    function findBookById($id) {
 
         try {
             $sql = "SELECT * FROM books WHERE id = :id LIMIT 1";
@@ -81,7 +81,7 @@ class Book extends Database {
             die("Failed to retrieve data from database: " . $e->getMessage());
         }
     }
-    function findBooByCategory($id) {
+    function findBookByCategory($id) {
     
         try {
             $sql = "SELECT * FROM books WHERE category_id = :category_id";

@@ -6,7 +6,9 @@ include(SHARED_PATH . '/header.php');
 
 $categoryId = $_GET['category_id'];
 
-$booksByCategory = find_book_by_category($categoryId);
+$bookInstance = new Book();
+$booksByCategory = $bookInstance->findBookByCategory($categoryId);
+
 ?>
 
 <div class="container mt-5">

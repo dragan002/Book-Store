@@ -3,7 +3,8 @@ require_once('../../app/initialize.php');
 include(SHARED_PATH . '/header.php');
 
 $id = $_GET['id'];
-$book = find_book_by_id($id);
+$bookInstance = new Book();
+$book = $bookInstance->findBookById($id);
 
 ?>
 

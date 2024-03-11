@@ -2,12 +2,10 @@
 require_once('../app/initialize.php');
 $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
-// $books = find_all_books();
 $bookInstance = new Book();
 $books = $bookInstance->findAllBooks();
 
 $categories = $bookInstance->findAllCategories();
-// $categories = find_all_categories();
 
 ?>
 
