@@ -20,7 +20,7 @@ if (isset($_POST['register'])) {
     $errors = array_merge($usernameError, $emailError, $passwordError);
 
     if (empty($errors)) {
-        $createdUser = createUser([
+        $createdUser = $userInstance->createUser([
             'username' => $user['username'],
             'email' => $user['email'],
             'password' => $user['password']

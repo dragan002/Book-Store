@@ -1,16 +1,17 @@
 <?php
 
-function find_all_users() {
-    global $db;
+class User extends Database {
+    
+function findAllUsers() {
 
     try {
         $sql = "SELECT * FROM users";
-        $stmt = $db->prepare($sql);
+        $stmt = $this->getConnection()->prepare($sql);
         $stmt->execute();
     
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-        confirmResultSet($result);
+        $this->confirmResultSet($result);
 
         return $result;
     } catch (PDOException $e) {
@@ -19,11 +20,10 @@ function find_all_users() {
 }
 
 function login($email, $password) {
-    global $db;
 
     try {
         $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt = $db->prepare($sql);
+        $stmt = $this->getConnection()->prepare($sql);
         $stmt->bindParam(1, $email, PDO::PARAM_STR);
 
         $stmt->execute();
@@ -50,13 +50,12 @@ function login($email, $password) {
     }
 }
 function createUser($user) {
-    global $db;
 
     try {
         $sql = "INSERT INTO users (username, email, password) ";
         $sql .= "VALUES (:userUsername, :userEmail, :userPassword)";
 
-        $stmt = $db->prepare($sql);
+        $stmt = $this->getConnection()->prepare($sql);
         
         $stmt->bindParam(':userUsername', $user['username'], PDO::PARAM_STR);
         $stmt->bindParam(':userEmail', $user['email'], PDO::PARAM_STR);
@@ -73,7 +72,7 @@ function createUser($user) {
         die("Failed to insert data into the database: " . $e->getMessage());
     }
 }
-function get_logger_from_form() {
+function getLoggerFromForm() {
     if(!isset($_POST['email']) && !isset($_POST['password'])) {
         return false;
     } 
@@ -85,13 +84,12 @@ function get_logger_from_form() {
     return $logger;
 }
 
-function find_user_by_email($email) {
-    global $db;
+function findUserByEmail($email) {
 
     try {
         $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
     
-        $stmt = $db->prepare($sql);
+        $stmt = $this->getConnection()->prepare($sql);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
     
@@ -104,12 +102,10 @@ function find_user_by_email($email) {
 }
 
 function find_user_by_id($id) {
-    global $db;
-
     try {
         $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
     
-        $stmt = $db->prepare($sql);
+        $stmt = $this->getConnection()->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     
@@ -122,10 +118,9 @@ function find_user_by_id($id) {
 }
 
 function delete_user($user) {
-    global $db;
     try {
         $sql = "DELETE FROM users WHERE id =  :id LIMIT 1";
-        $stmt = $db->prepare($sql);
+        $stmt = $this->getConnection()->prepare($sql);
         $stmt->bindValue(':id', $user['id']);
     
         $result = $stmt->execute();
@@ -139,7 +134,6 @@ function delete_user($user) {
 }
 
 function editUser($user) {
-    global $db;
     try {
         $sql = "UPDATE users SET 
                     username = :username,
@@ -148,7 +142,7 @@ function editUser($user) {
                     role = :role
                 WHERE id = :id"; 
 
-        $stmt = $db->prepare($sql);
+        $stmt = $this->getConnection()->prepare($sql);
         $stmt->bindParam(':username', $user['username'], PDO::PARAM_STR);
         $stmt->bindParam(':email', $user['email'], PDO::PARAM_STR);
         $stmt->bindParam(':password', $user['password'], PDO::PARAM_STR);
@@ -156,7 +150,7 @@ function editUser($user) {
         $stmt->bindParam(':id', $user['id'], PDO::PARAM_INT); 
 
         $result = $stmt->execute();
-        confirmResultSet($result);
+        $this->confirmResultSet($result);
 
         $stmt = null;
 
@@ -167,11 +161,10 @@ function editUser($user) {
 }
 
 function searchUser($search) {
-    global $db;
 
     try {
         $sql = "SELECT * FROM users WHERE id = :id OR username LIKE :username OR email LIKE :email";
-        $stmt = $db->prepare($sql);
+        $stmt = $this->getConnection()->prepare($sql);
 
         $searchTerm = "%" . $search . "%";
 
@@ -200,13 +193,12 @@ function handleSuccessfulLogin($user) {
 }
 
 function addToCart($user_id, $book) {
-    global $db;
 
     try {
         $sql = "INSERT INTO cartItems (user_id, book_title, book_price, book_author, book_image, book_descr) ";
         $sql .= "VALUES (:user_id, :book_title, :book_price, :book_author, :book_image, :book_descr)";
 
-        $stmt = $db->prepare($sql);
+        $stmt = $this->getConnection()->prepare($sql);
         
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT); 
         $stmt->bindParam(':book_title', $book['book_title'], PDO::PARAM_STR);
@@ -225,4 +217,5 @@ function addToCart($user_id, $book) {
     } catch (PDOException $e) {
         die("Failed to insert data into the database: " . $e->getMessage());
     }
+}
 }

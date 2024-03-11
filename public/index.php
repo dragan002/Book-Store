@@ -2,8 +2,10 @@
 require_once('../app/initialize.php');
 $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
-$books = find_all_books();
-$categories = find_all_categories();
+
+$books = $bookInstance->findAllBooks();
+
+$categories = $bookInstance->findAllCategories();
 
 ?>
 
@@ -57,7 +59,6 @@ $categories = find_all_categories();
                                         <i class="fas fa-shopping-cart"></i> Add to Cart
                                     </a>
                                 <?php } ?>
-
                             </div>
                         </div>
                     </div>
@@ -82,5 +83,5 @@ ubacio kada se klikne na odredjenu kategoriju da izbaci sve knjige iz te kategor
 
 <!-- rezervacija knjige -->
 <!-- Logg tabela, info da je neko nesto dodao, radi statistike  -->
-
-
+1. DB switch to oop
+2. User model prebaciti na oop

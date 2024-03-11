@@ -5,7 +5,7 @@ include(SHARED_PATH . '/login_header.php');
 
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
-    $user = find_user_by_email($email);
+    $user = $userInstance->findUserByEmail($email);
 }
 
 $errors = [];
@@ -13,7 +13,7 @@ $errors = [];
 // Negacija prvo
 if (is_post_request()) {
     try {
-        $logger_data = get_logger_from_form();
+        $logger_data = $userInstance->getLoggerFromForm();
 
         if (!$logger_data) {
             $errors[] = "Form submission error: No data received";
@@ -21,13 +21,13 @@ if (is_post_request()) {
             $email = $logger_data['email'];
             $password = $logger_data['password'];
 
-            $match = login($email, $password);
+            $match = $userInstance->login($email, $password);
 
             if (!$match) {
                 throw new Exception("Incorrect email or password");
             }
             
-            handleSuccessfulLogin($user);
+            $userInstance->handleSuccessfulLogin($user);
         }
     } catch (Exception $e) {
         $errors[] = $e->getMessage();

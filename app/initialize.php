@@ -15,5 +15,11 @@ require('database/database.php');
 require('models/bookModel.php');
 require('models/userModel.php');
 
-$db = db_connect();
+
+$database = new Database();
+
+$bookInstance = new Book();
+
+$userInstance = new User();
+
 ?>

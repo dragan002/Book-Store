@@ -2,7 +2,8 @@
 require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
-$categories = find_all_categories();
+
+$categories = $bookInstance->findAllCategories();
 
 if(isset($_FILES['image'])&& $_FILES['image']['name'] != ""){
     $image = $_FILES['image']['name'];
@@ -23,7 +24,7 @@ if (isset($_POST['submit'])) {
         'category_id' => $_POST['category']
     ];
 
-    if (!create_book($book)) {
+    if (!$bookInstance->createBook($book)) {
         echo "There is issue with adding new book";
     } else {
         header( "Location: admin_homepage.php");

@@ -8,6 +8,6 @@ if(is_post_request()) {
     $search = $_GET['search'];
 }
 
-$books = find_all_books();
-$search_results = search_books($search);
+$books = $bookInstance->findAllBooks();
+$search_results = $bookInstance->searchBooks($search);
 
