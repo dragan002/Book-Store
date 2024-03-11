@@ -1,5 +1,7 @@
 <?php
 
+class User {
+    
 function find_all_users() {
     global $db;
 
@@ -225,4 +227,6 @@ function addToCart($user_id, $book) {
     } catch (PDOException $e) {
         die("Failed to insert data into the database: " . $e->getMessage());
     }
+}
+
 }
