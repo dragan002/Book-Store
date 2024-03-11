@@ -11,9 +11,9 @@ if (isset($_POST['register'])) {
         'confirm_password' => $_POST['confirm_password']
     ];
 
-    $usernameError = usernameValidation($user['username']);
-    $emailError = emailValidation($user['email']);
-    $passwordError = passwordValidation($user['password']);
+    $usernameError = $userValidation->usernameValidation($user['username']);
+    $emailError = $userValidation->emailValidation($user['email']);
+    $passwordError = $userValidation->passwordValidation($user['password']);
 
     if(password_verify($user['confirm_password'], $password));
 

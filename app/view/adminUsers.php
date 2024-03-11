@@ -2,7 +2,7 @@
 require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
-$users = find_all_users();
+$users = $userInstance->findAllUsers();
 echo $_SESSION['username'];
 
 ?>

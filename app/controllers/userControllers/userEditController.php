@@ -7,7 +7,7 @@ if (!isset($_GET['id'])) {
 }
 
 $id = $_GET['id'];
-$user = find_user_by_id($id);
+$user = $userInstance->findUserById($id);
 
 if (isset($_POST['edit'])) {
     $editedUser = [
@@ -18,7 +18,7 @@ if (isset($_POST['edit'])) {
         'role' => trim($_POST['role']),
     ];
 
-    $result = editUser($editedUser);
+    $result = $userInstance->editUser($editedUser);
 
     if ($result) {
         header("Location: admin_homepage.php");

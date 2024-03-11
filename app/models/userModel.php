@@ -101,7 +101,7 @@ function findUserByEmail($email) {
     }
 }
 
-function find_user_by_id($id) {
+function findUserById($id) {
     try {
         $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
     
@@ -117,7 +117,7 @@ function find_user_by_id($id) {
     }
 }
 
-function delete_user($user) {
+function deleteUser($user) {
     try {
         $sql = "DELETE FROM users WHERE id =  :id LIMIT 1";
         $stmt = $this->getConnection()->prepare($sql);
