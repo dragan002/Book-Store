@@ -15,5 +15,7 @@ require('database/database.php');
 require('models/bookModel.php');
 require('models/userModel.php');
 
-$db = db_connect();
+
+$database = new Database();
+$db = $database->getConnection();
 ?>
