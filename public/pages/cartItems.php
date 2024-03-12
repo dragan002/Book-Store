@@ -5,30 +5,30 @@ include(SHARED_PATH . '/header.php');
 
 $pageTitle = "Cart";
 
+$userId = $_SESSION['id'];
 
-echo $userId ;
 
 
 //  $knjiga = $bookInstance->findBookById(88);
     $cartItems = $cartInstance->findAllFromCart();
 
-    // $firstBook = $cartInstance->addToCart(23, 88, 2);
     
-
+    
     foreach($cartItems as $cartItem) {
         echo $cartItem['book_id'] . "<hr>";
         echo $cartItem['user_id'];
     }
-
+    
     $book = $bookInstance->findBookById($cartItem['book_id']);
-
-$cartItems = [
-    'book_title' => $book['book_title'],
-    'book_descr' => $book['book_descr'],
-    'book_image' => $book['book_image'],
-    'book_price' => $book['book_price']
-];
+    
+    $cartItems = [
+        'book_title' => $book['book_title'],
+        'book_descr' => $book['book_descr'],
+        'book_image' => $book['book_image'],
+        'book_price' => $book['book_price']
+    ];
     // $example = $bookInstance->findBookById(105);
+    $firstBook = $cartInstance->addToCart($userId, $cartItem['book_id'], 22);
 
 ?>
   <!-- Cart Content Section -->

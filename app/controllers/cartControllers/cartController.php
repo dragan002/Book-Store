@@ -1,6 +1,5 @@
 <?php
 require_once('../../app/initialize.php');
-include(SHARED_PATH . '/header.php');
 
 
 
@@ -9,5 +8,4 @@ include(SHARED_PATH . '/header.php');
 // $userId = $userInstance->findUserById($id);
 // var_dump($userId);
 
-$userId = $_SESSION['id'];
 
