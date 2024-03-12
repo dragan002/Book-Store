@@ -101,7 +101,7 @@ function findUserByEmail($email) {
     }
 }
 
-function find_user_by_id($id) {
+function findUserById($id) {
     try {
         $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
     
@@ -117,7 +117,7 @@ function find_user_by_id($id) {
     }
 }
 
-function delete_user($user) {
+function deleteUser($user) {
     try {
         $sql = "DELETE FROM users WHERE id =  :id LIMIT 1";
         $stmt = $this->getConnection()->prepare($sql);
@@ -189,33 +189,6 @@ function handleSuccessfulLogin($user) {
     } else {
         header("Location: ../../public/index.php");
         exit();
-    }
-}
-
-function addToCart($user_id, $book) {
-
-    try {
-        $sql = "INSERT INTO cartItems (user_id, book_title, book_price, book_author, book_image, book_descr) ";
-        $sql .= "VALUES (:user_id, :book_title, :book_price, :book_author, :book_image, :book_descr)";
-
-        $stmt = $this->getConnection()->prepare($sql);
-        
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT); 
-        $stmt->bindParam(':book_title', $book['book_title'], PDO::PARAM_STR);
-        $stmt->bindParam(':book_price', $book['book_price'], PDO::PARAM_STR);
-        $stmt->bindParam(':book_author', $book['book_author'], PDO::PARAM_STR);
-        $stmt->bindParam(':book_image', $book['book_image'], PDO::PARAM_STR);
-        $stmt->bindParam(':book_descr', $book['book_descr'], PDO::PARAM_STR);
-
-        $result = $stmt->execute();
-
-        if (!$result) {
-            die("Failed to insert data into the database: " . $stmt->errorInfo()[2]);
-        }
-
-        return true;
-    } catch (PDOException $e) {
-        die("Failed to insert data into the database: " . $e->getMessage());
     }
 }
 }

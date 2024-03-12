@@ -8,6 +8,6 @@ if(is_post_request()) {
     $search = $_GET['search'];
 }
 
-$users = find_all_users();
-$search_results = searchUser($search);
+$users = $userInstance->findAllUsers();
+$searchResults = $userInstance->searchUser($search);
 

@@ -7,6 +7,7 @@ $books = $bookInstance->findAllBooks();
 
 $categories = $bookInstance->findAllCategories();
 
+
 ?>
 
 <!-- Jumbotron (Hero Section) -->
@@ -67,8 +68,8 @@ $categories = $bookInstance->findAllCategories();
         </div>
     </div>
 </div>
-
 <?php include(SHARED_PATH . '/footer.php'); ?>
+
 
 
 

@@ -9,5 +9,5 @@ if(is_post_request()) {
 }
 
 $books = $bookInstance->findAllBooks();
-$search_results = $bookInstance->searchBooks($search);
+$searchResults = $bookInstance->searchBooks($search);
 

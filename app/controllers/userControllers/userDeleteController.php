@@ -8,9 +8,9 @@ if(!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-$user = find_user_by_id($id);
+$user = $userInstance->findUserById($id);
 
-if(delete_user($user)) {
+if($userInstance->deleteUser($user)) {
     header('Location: ../../view/adminUsers.php');
 } else {
     echo "Error deleting user";

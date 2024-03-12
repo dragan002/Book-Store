@@ -1,6 +1,5 @@
 <?php
 
-
 class Book extends Database {
 
     public function findAllBooks() {
@@ -68,7 +67,7 @@ class Book extends Database {
     function findBookById($id) {
 
         try {
-            $sql = "SELECT * FROM books WHERE id = :id LIMIT 1";
+            $sql = "SELECT * FROM books WHERE id = :id";
         
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);

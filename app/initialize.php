@@ -10,10 +10,11 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'], 0 , $public_end);
 define('WWW_ROOT', $doc_root); 
 
 require('functionsHelpers.php');
-require('functionsValidation.php');
+require('FunctionsValidation.php');
 require('database/database.php');
-require('models/bookModel.php');
-require('models/userModel.php');
+require('models/BookModel.php');
+require('models/UserModel.php');
+require('models/CartModel.php');
 
 
 $database = new Database();
@@ -21,5 +22,9 @@ $database = new Database();
 $bookInstance = new Book();
 
 $userInstance = new User();
+
+$cartInstance = new Cart();
+
+$userValidation = new FunctionsValidation();
 
 ?>
