@@ -14,6 +14,7 @@ require('FunctionsValidation.php');
 require('database/database.php');
 require('models/BookModel.php');
 require('models/UserModel.php');
+require('models/CartModel.php');
 
 
 $database = new Database();
@@ -21,6 +22,8 @@ $database = new Database();
 $bookInstance = new Book();
 
 $userInstance = new User();
+
+$cartInstance = new Cart();
 
 $userValidation = new FunctionsValidation();
 

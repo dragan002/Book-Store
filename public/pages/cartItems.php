@@ -4,7 +4,8 @@ require_once('../../app/controllers/cartControllers/cartController.php');
 $pageTitle = "Cart";
 
 //  $knjiga = $bookInstance->findBookById(88);
-
+    $cartItems = $cartInstance->findAllFromCart();
+    var_dump($cartItems);
 
 include(SHARED_PATH . '/header.php');
 ?>
