@@ -9,5 +9,5 @@ if(is_post_request()) {
 }
 
 $users = $userInstance->findAllUsers();
-$search_results = $userInstance->searchUser($search);
+$searchResults = $userInstance->searchUser($search);
 

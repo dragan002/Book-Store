@@ -1,6 +1,5 @@
 <?php
 
-
 class Book extends Database {
 
     public function findAllBooks() {

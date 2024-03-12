@@ -6,9 +6,9 @@ if(is_get_request()) {
     $search = $_GET['search'];
 }
 
-$books = find_all_books();
+$books = $bookInstance->findAllBooks();
 
-$search_results = search_books($search);
+$searchResults = $bookInstance->searchBooks($search);
 ?>
 
 <!-- Featured Books Section -->
@@ -31,8 +31,8 @@ $search_results = search_books($search);
             <tbody>
             <?php
 
-                if (mysqli_num_rows($search_results) > 0) {
-                    while ($searched = mysqli_fetch_assoc($search_results)) {
+                if (mysqli_num_rows($searchResults) > 0) {
+                    while ($searched = mysqli_fetch_assoc($searchResults)) {
                 ?>
                         <tr>
                             <td><?php echo $searched['id']; ?></td>

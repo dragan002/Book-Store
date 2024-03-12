@@ -1,7 +1,10 @@
 <?php 
 require_once('../../app/initialize.php');
-require_once('../../app/controllers/userControllers/userCartItemsController.php');
+require_once('../../app/controllers/cartControllers/cartController.php');
 $pageTitle = "Cart";
+
+//  $knjiga = $bookInstance->findBookById(88);
+
 
 include(SHARED_PATH . '/header.php');
 ?>
@@ -17,13 +20,18 @@ include(SHARED_PATH . '/header.php');
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="path/to/item1/image.jpg" class="card-img" alt="Item 1 Image">
+                            <img src="../../public/image/<?php echo $book['book_image']; ?>?>" class="card-img" alt="Item 1 Image">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Item 1</h5>
-                                <p class="card-text">Description of Item 1.</p>
-                                <p class="card-text">Price: $19.99</p>
+                                
+                                <h5 class="card-title"><?php echo $book['book_title']; ?></h5>
+                                <p class="card-text"><?php echo $book['book_descr']; ?></p>
+                                <p class="card-text"><?php echo $book['book_price']; ?></p>
+                                <form action="delete_from_cart.php" method="post">
+                                    <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
                             </div>
                         </div>
                     </div>

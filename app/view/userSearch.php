@@ -19,8 +19,8 @@
             </thead>
             <tbody>
             <?php 
-                if (!empty($search_results)) {
-                    foreach($search_results as $searched) : 
+                if (!empty($searchResults)) {
+                    foreach($searchResults as $searched) : 
             ?>
                     <tr>
                         <td><?php echo $searched['id']; ?></td>

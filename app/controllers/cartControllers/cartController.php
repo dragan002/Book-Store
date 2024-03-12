@@ -3,8 +3,7 @@
 $id = $_GET['id'];
 echo $id;
 
-$book = find_book_by_id($id);
-echo $book['book_title'];
+$book = $bookInstance->findBookById($id);
 
 $cartItems = [
     'book_title' => $book['book_title'],
@@ -12,4 +11,3 @@ $cartItems = [
     'book_image' => $book['book_image'],
     'book_price' => $book['book_price']
 ];
-addToCart($id, $book);

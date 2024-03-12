@@ -9,9 +9,9 @@ if(!isset($_GET['id'])) {
     $id = $_GET['id'];
 }
 
-$book = find_book_by_id($id);
+$book = $bookInstance->findBookById($id);
 
-if(delete_book($book)) {
+if($bookInstance->deleteBook($book)) {
     header('Location: ../view/admin_homepage.php');
 } else {
     echo "Error deleting book.";
