@@ -1,13 +1,35 @@
 <?php 
 require_once('../../app/initialize.php');
 require_once('../../app/controllers/cartControllers/cartController.php');
+include(SHARED_PATH . '/header.php');
+
 $pageTitle = "Cart";
+
+
+echo $userId ;
+
 
 //  $knjiga = $bookInstance->findBookById(88);
     $cartItems = $cartInstance->findAllFromCart();
-    var_dump($cartItems);
 
-include(SHARED_PATH . '/header.php');
+    // $firstBook = $cartInstance->addToCart(23, 88, 2);
+    
+
+    foreach($cartItems as $cartItem) {
+        echo $cartItem['book_id'] . "<hr>";
+        echo $cartItem['user_id'];
+    }
+
+    $book = $bookInstance->findBookById($cartItem['book_id']);
+
+$cartItems = [
+    'book_title' => $book['book_title'],
+    'book_descr' => $book['book_descr'],
+    'book_image' => $book['book_image'],
+    'book_price' => $book['book_price']
+];
+    // $example = $bookInstance->findBookById(105);
+
 ?>
   <!-- Cart Content Section -->
   <div class="container mt-5">

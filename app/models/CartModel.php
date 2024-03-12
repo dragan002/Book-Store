@@ -19,11 +19,11 @@ class Cart extends Database {
 
     public function addToCart($userId, $bookId, $bookQuantity) {
         try {
-            $sql = "INSERT INTO `cartItems` (user_id, book_id, book_quantity) VALUES(:userId, bookId, bookQuantity)";
+            $sql = "INSERT INTO `cartItems` (user_id, book_id, book_quantity) VALUES(:userId, :bookId, :bookQuantity)";
             $stmt = $this->getConnection()->prepare($sql);
-            $stmt->bindParam(":userid", $userId, PDO::PARAM_INT);
-            $stmt->bindValue(":bookid", $bookId, PDO::PARAM_INT);
-            $stmt->bindParam( ":quantity" , $bookQuantity, PDO::PARAM_INT);
+            $stmt->bindParam(":userId", $userId, PDO::PARAM_INT);
+            $stmt->bindValue(":bookId", $bookId, PDO::PARAM_INT);
+            $stmt->bindParam( ":bookQuantity" , $bookQuantity, PDO::PARAM_INT);
 
             $result = $stmt->execute();
 

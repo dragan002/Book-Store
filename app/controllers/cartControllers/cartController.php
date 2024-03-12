@@ -1,13 +1,13 @@
 <?php
+require_once('../../app/initialize.php');
+include(SHARED_PATH . '/header.php');
 
-$id = $_GET['id'];
-echo $id;
 
-$book = $bookInstance->findBookById($id);
 
-$cartItems = [
-    'book_title' => $book['book_title'],
-    'book_descr' => $book['book_descr'],
-    'book_image' => $book['book_image'],
-    'book_price' => $book['book_price']
-];
+
+// $id = $_SESSION['id'];
+// $userId = $userInstance->findUserById($id);
+// var_dump($userId);
+
+$userId = $_SESSION['id'];
+
