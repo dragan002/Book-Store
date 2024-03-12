@@ -17,6 +17,8 @@ class Cart extends Database {
         }
     }
 
+    
+
     public function addToCart($userId, $bookId, $bookQuantity) {
         try {
             $sql = "INSERT INTO `cartItems` (user_id, book_id, book_quantity) VALUES(:userId, :bookId, :bookQuantity)";
