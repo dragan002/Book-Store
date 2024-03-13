@@ -4,11 +4,13 @@ require_once('../../app/controllers/cartControllers/cartController.php');
 include(SHARED_PATH . '/header.php');
 
 $pageTitle = "Cart";
-echo $userId = $_SESSION['id'];
-echo $bookId = $_GET['id'];
+(isset($_SESSION['id']))  ? $userId = $_SESSION['id'] : "";
+(isset($_GET['id'])) ? $bookId = $_GET['id'] : '';
 
-$item = $cartInstance->addToCart($userId, $bookId, '');
-
+if(isset($userId) && isset($bookId)) {
+    $item = $cartInstance->addToCart($userId, $bookId, '');
+    header("Location: ../index.php");
+} 
 
 $cartItems = $cartInstance->findAllFromCart();
 ?>
@@ -17,25 +19,11 @@ $cartItems = $cartInstance->findAllFromCart();
 <div class="container mt-5">
     <h2>Your Shopping Cart</h2>
     <hr>
-    <?php
-                if (isset($_SESSION['alert_message']['success'])) {
-                    echo '<div class="alert alert-success" role="alert">';
-                    echo $_SESSION['alert_message']['success'];
-                    echo '</div>';
-                    unset($_SESSION['alert_message']['success']); // Remove the message from the session
-                } elseif (isset($_SESSION['alert_message']['error'])) {
-                    echo '<div class="alert alert-danger" role="alert">';
-                    echo $_SESSION['alert_message']['error'];
-                    echo '</div>';
-                    unset($_SESSION['alert_message']['error']); // Remove the message from the session
-                } ?>
-
     <!-- Cart Items -->
     <div class="row">
         <div class="col-md-8">
             <?php foreach ($cartItems as $cartItem) {
                 $book = $bookInstance->findBookById($cartItem['book_id']);
-                var_dump($book);
             ?>
                 <!-- Item 1 -->
                 <div class="card mb-3">

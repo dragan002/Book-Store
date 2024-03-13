@@ -17,6 +17,19 @@ $categories = $bookInstance->findAllCategories();
     <a class="btn btn-light btn-lg" href="#" role="button">Explore Books</a>
 </div>
 
+<?php if (isset($_SESSION['alert_message']['success'])) { ?>
+    <div class="alert alert-success" role="alert">
+        <?php echo $_SESSION['alert_message']['success']; ?>
+    </div>
+    <?php unset($_SESSION['alert_message']['success']); ?>
+<?php } elseif (isset($_SESSION['alert_message']['error'])) { ?>
+    <div class="alert alert-danger" role="alert">
+        <?php echo $_SESSION['alert_message']['error']; ?>
+    </div>
+    <?php unset($_SESSION['alert_message']['error']); ?>
+<?php } ?>
+
+
 
 <div class="container mt-4">
     <form class="form-inline my-2 my-lg-0" action="../app/view/bookSearch.php" method="GET">
