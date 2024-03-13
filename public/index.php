@@ -59,7 +59,8 @@ $categories = $bookInstance->findAllCategories();
                                     <a href="pages/cartItems.php?id=<?php echo $book['id']; ?>" class="btn btn-success ml-2">
                                         <i class="fas fa-shopping-cart"></i> Add to Cart
                                     </a>
-                                <?php } ?>
+                                    
+                                <?php  } ?>
                             </div>
                         </div>
                     </div>
@@ -69,6 +70,7 @@ $categories = $bookInstance->findAllCategories();
     </div>
 </div>
 <?php include(SHARED_PATH . '/footer.php'); ?>
+
 
 
 
