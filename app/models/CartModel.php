@@ -32,9 +32,36 @@ class Cart extends Database {
             if(!$result) {
                 die('Failed to insert into cart' . $stmt->errorInfo()[2]);
             }
+
+            if ($result) {
+                $_SESSION['alert_message']['success'] = 'Product added to cart successfully.';
+            } else {
+                $_SESSION['alert_message']['error'] = 'Error adding item to cart.';
+            }
             return true;
         } catch(PDOException $e) {
             die("Failed to insert in card" . $e->getMessage());
+        }
+    }
+
+    public function deleteFromCart($bookId) {
+        try {
+            $sql = "DELETE FROM `cartItems` WHERE book_id =  :id LIMIT 1";
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->bindValue(':id', $bookId);
+        
+            $result = $stmt->execute();
+            
+            
+            if ($result) {
+                $_SESSION['alert_message']['success'] = 'Product deleted from cart successfully.';
+            } else {
+                $_SESSION['alert_message']['error'] = 'Error deleting item from cart.';
+            }
+            $stmt = null;
+            return true;
+        }  catch (PDOException $e) {
+            die("ERROR: Could not execute $sql. " . $e->getMessage());
         }
     }
 }

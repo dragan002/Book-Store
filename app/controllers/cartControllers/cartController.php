@@ -8,4 +8,3 @@ require_once('../../app/initialize.php');
 // $userId = $userInstance->findUserById($id);
 // var_dump($userId);
 
-

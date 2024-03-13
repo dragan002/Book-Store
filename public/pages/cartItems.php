@@ -4,8 +4,13 @@ require_once('../../app/controllers/cartControllers/cartController.php');
 include(SHARED_PATH . '/header.php');
 
 $pageTitle = "Cart";
-$userId = $_SESSION['id'];
-$bookId = $_GET['id'];
+(isset($_SESSION['id'])) ? $userId = $_SESSION['id'] : '';
+(isset($_GET['id'])) ? $bookId = $_GET['id'] : '';
+
+if(isset($userId) && isset($bookId)) {
+    $item = $cartInstance->addToCart($userId, $bookId, '');
+    header("Location: ../index.php");
+} 
 
 $cartItems = $cartInstance->findAllFromCart();
 ?>
@@ -14,8 +19,21 @@ $cartItems = $cartInstance->findAllFromCart();
 <div class="container mt-5">
     <h2>Your Shopping Cart</h2>
     <hr>
-
     <!-- Cart Items -->
+
+    <?php if (isset($_SESSION['alert_message']['success'])) { ?>
+    <div class="alert alert-success" role="alert">
+        <?php echo $_SESSION['alert_message']['success']; ?>
+    </div>
+    <?php unset($_SESSION['alert_message']['success']); ?>
+<?php } elseif (isset($_SESSION['alert_message']['error'])) { ?>
+    <div class="alert alert-danger" role="alert">
+        <?php echo $_SESSION['alert_message']['error']; ?>
+    </div>
+    <?php unset($_SESSION['alert_message']['error']); ?>
+<?php } ?>
+
+
     <div class="row">
         <div class="col-md-8">
             <?php foreach ($cartItems as $cartItem) {
@@ -32,10 +50,7 @@ $cartItems = $cartInstance->findAllFromCart();
                                 <h5 class="card-title"><?php echo $book['book_title']; ?></h5>
                                 <p class="card-text"><?php echo $book['book_descr']; ?></p>
                                 <p class="card-text"><?php echo $book['book_price']; ?></p>
-                                <form action="delete_from_cart.php" method="post">
-                                    <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
+                                    <td><a href="../../app/controllers/cartControllers/cartDeleteController.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
                             </div>
                         </div>
                     </div>
