@@ -7,7 +7,6 @@ $books = $bookInstance->findAllBooks();
 
 $categories = $bookInstance->findAllCategories();
 
-
 ?>
 
 <!-- Jumbotron (Hero Section) -->

@@ -13,18 +13,22 @@ if(isset($userId) && isset($bookId)) {
 } 
 
 $cartItems = $cartInstance->findAllFromCart($userId);
+
+$totalPrice = 0;
 ?>
 
 <!-- Cart Content Section -->
 <div class="container mt-5">
     <h2>Your Shopping Cart</h2>
     <!-- Cart Items -->
-
+    
     <div class="row">
         <div class="col-md-8">
             <?php foreach ($cartItems as $cartItem) {
                 $book = $bookInstance->findBookById($cartItem['book_id']);
-            ?>
+                $totalPrice += $book['book_price'];
+                ?>
+  
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
@@ -48,8 +52,8 @@ $cartItems = $cartInstance->findAllFromCart($userId);
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Order Summary</h5>
-                    <p class="card-text">Total Items: </p>
-                    <p class="card-text">Total Price: $</p>
+                    <p class="card-text">Total Items: <?php echo count($cartItems); ?> </p>
+                    <p class="card-text">Total Price: $<?php echo $totalPrice; ?></p>
                     <a href="checkout.html" class="btn btn-primary">Proceed to Checkout</a>
                 </div>
             </div>
