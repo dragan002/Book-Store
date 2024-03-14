@@ -27,4 +27,8 @@ $cartInstance = new Cart();
 
 $userValidation = new FunctionsValidation();
 
+spl_autoload_register(function($class) {
+    var_dump($class);
+});
+
 ?>

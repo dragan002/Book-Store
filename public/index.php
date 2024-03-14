@@ -16,17 +16,7 @@ $categories = $bookInstance->findAllCategories();
     <a class="btn btn-light btn-lg" href="#" role="button">Explore Books</a>
 </div>
 
-<?php if (isset($_SESSION['alert_message']['success'])) { ?>
-    <div class="alert alert-success" role="alert">
-        <?php echo $_SESSION['alert_message']['success']; ?>
-    </div>
-    <?php unset($_SESSION['alert_message']['success']); ?>
-<?php } elseif (isset($_SESSION['alert_message']['error'])) { ?>
-    <div class="alert alert-danger" role="alert">
-        <?php echo $_SESSION['alert_message']['error']; ?>
-    </div>
-    <?php unset($_SESSION['alert_message']['error']); ?>
-<?php } ?>
+<?php cartMessage() ?>
 
 
 
@@ -71,7 +61,6 @@ $categories = $bookInstance->findAllCategories();
                                     <a href="pages/cartItems.php?id=<?php echo $book['id']; ?>" class="btn btn-success ml-2">
                                         <i class="fas fa-shopping-cart"></i> Add to Cart
                                     </a>
-                                    
                                 <?php  } ?>
                             </div>
                         </div>

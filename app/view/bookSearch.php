@@ -14,7 +14,7 @@
                     <th>Image</th>
                     <th>Description</th>
                     <th>Quantity</th>
-                    <?php if(is_post_request()) : ?>
+                    <?php if(isPostRequest()) : ?>
                         <th>Update</th>
                         <th>Delete</th>
                     <?php endif; ?>
@@ -33,7 +33,7 @@
                         <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
                         <td><?php echo $searched['book_descr']; ?></td>
                         <td><?php echo $searched['book_quantity']; ?></td>
-                        <?php if(is_post_request()) : ?>
+                        <?php if(isPostRequest()) : ?>
                             <td><a href="bookEdit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
                             <td><a href="../controllers/bookControllers/bookDeleteController.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
                         <?php endif;?>

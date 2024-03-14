@@ -13,7 +13,7 @@ $booksByCategory = $bookInstance->findBookByCategory($categoryId);
 
 <div class="container mt-5">
     <h2>Books by Category - <?php echo displayCategoryName($categoryId); ?></h2>
-    <hr>
+    <?php cartMessage() ?>
 
     <div class="row">
         <?php foreach ($booksByCategory as $book) : ?>
@@ -26,9 +26,11 @@ $booksByCategory = $bookInstance->findBookByCategory($categoryId);
                         <p class="card-text"><strong>Price:</strong> $<?php echo $book['book_price']; ?></p>
                         <a href="details.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Details</a>
                         
-                        <button class="btn btn-success ml-2" onclick="addToCart(<?php echo $book['id']; ?>)">
-                            <i class="fas fa-shopping-cart"></i> Add to Cart
-                        </button>
+                        <?php if(isset($_SESSION['username'])) { ?>
+                                    <a href="cartItems.php?id=<?php echo $book['id']; ?>" class="btn btn-success ml-2">
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                    </a>
+                        <?php  } ?>
                     </div>
                 </div>
             </div>
