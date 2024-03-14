@@ -2,7 +2,7 @@
 require_once('../../app/initialize.php');
 include(SHARED_PATH . '/header.php');
 
-if(!is_post_request()) {
+if(!isPostRequest()) {
     $search = $_GET['search'];
 } 
 $search = $_POST['search'];

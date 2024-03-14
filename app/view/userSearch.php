@@ -11,7 +11,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Role</th>
-                    <?php if(is_post_request()) : ?>
+                    <?php if(isPostRequest()) : ?>
                         <th>Update</th>
                         <th>Delete</th>
                     <?php endif; ?>
@@ -27,7 +27,7 @@
                         <td><?php echo $searched['username']; ?></td>
                         <td><?php echo $searched['email']; ?></td>
                         <td><?php echo $searched['role']; ?></td>
-                        <?php if(is_post_request()) : ?>
+                        <?php if(isPostRequest()) : ?>
                             <td><a href="userEdit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
                             <td><a href="../controllers/userControllers/userDeleteController.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
                         <?php endif;?>

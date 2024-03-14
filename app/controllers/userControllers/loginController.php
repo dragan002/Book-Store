@@ -11,7 +11,7 @@ if (isset($_POST['email'])) {
 $errors = [];
 
 // Negacija prvo
-if (is_post_request()) {
+if (isPostRequest()) {
     try {
         $logger_data = $userInstance->getLoggerFromForm();
 
