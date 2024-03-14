@@ -12,38 +12,23 @@ if(isset($userId) && isset($bookId)) {
     header("Location: ../index.php");
 } 
 
-$cartItems = $cartInstance->findAllFromCart();
+$cartItems = $cartInstance->findAllFromCart($userId);
 ?>
 
 <!-- Cart Content Section -->
 <div class="container mt-5">
     <h2>Your Shopping Cart</h2>
-    <hr>
     <!-- Cart Items -->
-
-    <?php if (isset($_SESSION['alert_message']['success'])) { ?>
-    <div class="alert alert-success" role="alert">
-        <?php echo $_SESSION['alert_message']['success']; ?>
-    </div>
-    <?php unset($_SESSION['alert_message']['success']); ?>
-<?php } elseif (isset($_SESSION['alert_message']['error'])) { ?>
-    <div class="alert alert-danger" role="alert">
-        <?php echo $_SESSION['alert_message']['error']; ?>
-    </div>
-    <?php unset($_SESSION['alert_message']['error']); ?>
-<?php } ?>
-
 
     <div class="row">
         <div class="col-md-8">
             <?php foreach ($cartItems as $cartItem) {
                 $book = $bookInstance->findBookById($cartItem['book_id']);
             ?>
-                <!-- Item 1 -->
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="../../public/image/<?php echo $book['book_image']; ?>" class="card-img" alt="Item 1 Image">
+                            <img src="../../public/image/<?php echo $book['book_image']; ?>" class="card-img" alt="Item Image">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

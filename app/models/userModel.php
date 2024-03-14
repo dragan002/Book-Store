@@ -28,20 +28,20 @@ function login($email, $password) {
 
         $stmt->execute();
 
-        $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$user_data) {
+        if (!$userData) {
             throw new Exception('Login failed. Email not found.');
         }
 
-        if (!password_verify($password, $user_data['password'])) {
+        if (!password_verify($password, $userData['password'])) {
             throw new Exception('Login failed. Invalid password.');
         }
         $_SESSION["loggedin"] = true;
-        $_SESSION["id"] = $user_data['id'];
-        $_SESSION["username"] = $user_data['username'];
+        $_SESSION["id"] = $userData['id'];
+        $_SESSION["username"] = $userData['username'];
         
-        return $user_data;
+        return $userData;
 
     } catch (PDOException $e) {
         die("Something went wrong with login: " . $e->getMessage());
