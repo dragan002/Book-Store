@@ -20,8 +20,6 @@
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadDirectory);
     }
 
-
-
     if (isset($_POST['edit'])) {
         $book = [
             'id' => $id,
@@ -36,11 +34,10 @@
 
         $result = $bookInstance->editBook($book);
 
-        if ($result) {
-            header( "Location: admin_homepage.php");
-            } else {
+        if (!$result) {
             echo '<script>alert("Error editing the book.");</script>';
-        }
+        } 
+        header( "Location: admin_homepage.php");
     }
 
 

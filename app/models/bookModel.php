@@ -138,9 +138,7 @@ class Book extends Database {
         
                 $result = $stmt->execute();
                 $this->confirmResultSet($result);
-        
-                $stmt = null;
-        
+
                 return true;
             }  catch (PDOException $e) {
                 die("ERROR: Could not execute $sql. " . $e->getMessage());
@@ -155,9 +153,7 @@ class Book extends Database {
         
             $result = $stmt->execute();
             
-            $stmt = null;
-        
-            return true;
+            return $result;
         }  catch (PDOException $e) {
             die("ERROR: Could not execute $sql. " . $e->getMessage());
         }
@@ -177,9 +173,8 @@ class Book extends Database {
     
             $stmt->execute();
     
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-            return $result;
         } catch (PDOException $e) {
             die("Database query failed: " . $e->getMessage());
         }
