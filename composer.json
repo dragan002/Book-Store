@@ -1,0 +1,15 @@
+{
+    "name": "dragan/composer",
+    "autoload": {
+        "psr-4": {
+            "Dragan\\Composer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dragan002",
+            "email": "draganvujic29@gmail.com"
+        }
+    ],
+    "require": {}
+}

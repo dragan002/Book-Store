@@ -18,8 +18,6 @@ $categories = $bookInstance->findAllCategories();
 
 <?php cartMessage() ?>
 
-
-
 <div class="container mt-4">
     <form class="form-inline my-2 my-lg-0" action="../app/view/bookSearch.php" method="GET">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" required>
