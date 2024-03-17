@@ -20,8 +20,12 @@ if (isset($_POST['register'])) {
     $errors = array_merge($usernameError, $emailError, $passwordError);
 
     if (empty($errors)) {
+<<<<<<< Updated upstream
         $createdUser = $userInstance->createUser([
             'username' => $user['username'],
+=======
+        $createdUser = createUser([
+>>>>>>> Stashed changes
             'email' => $user['email'],
             'password' => $user['password']
         ]);
