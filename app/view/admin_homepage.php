@@ -62,3 +62,4 @@ $books = $bookInstance->findAllBooks();
 <?php 
 
 include(SHARED_PATH . '/footer.php');
+

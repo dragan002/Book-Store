@@ -11,7 +11,6 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'], 0 , $public_end);
 define('WWW_ROOT', $doc_root); 
 
 require('functionsHelpers.php');
-require('models/classes/Validation/functionsValidation.class.php');
 
 $database = new Database\Database();
 
@@ -21,6 +20,6 @@ $userInstance = new User\User();
 
 $cartInstance = new Cart\Cart();
 
-$userValidation = new FunctionsValidation();
+$userValidation = new Validation\FunctionsValidation();
 
 ?>

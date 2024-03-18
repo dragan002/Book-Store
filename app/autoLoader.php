@@ -2,10 +2,17 @@
 spl_autoload_register('autoLoader');
 
 function autoLoader($className) {
-    $path = "models/classes/";
-    $extension = ".class.php";
-    $fullPath = $path . $className . $extension;
+    $className = str_replace('\\', DIRECTORY_SEPARATOR, $className);
 
-    include_once($fullPath);
+    $baseDir = __DIR__ . '/models/classes/';
+
+    $extension = '.class.php';
+
+    $fullPath = $baseDir . $className . $extension;
+    if (file_exists($fullPath)) {
+        include_once($fullPath);
+    } else {
+        throw new Exception("Class $className not found.");
+    }
 }
 ?>
