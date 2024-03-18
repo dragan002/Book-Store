@@ -1,5 +1,10 @@
 <?php
 
+namespace Book;
+
+use Database\Database;
+
+use \PDO;
 class Book extends Database {
 
     public function findAllBooks() {

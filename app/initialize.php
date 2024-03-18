@@ -1,4 +1,5 @@
 <?php
+include 'autoLoader.php';
 
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
@@ -10,25 +11,15 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'], 0 , $public_end);
 define('WWW_ROOT', $doc_root); 
 
 require('functionsHelpers.php');
-require('FunctionsValidation.php');
-require('database/database.php');
-require('models/BookModel.php');
-require('models/UserModel.php');
-require('models/CartModel.php');
 
+$database = new Database\Database();
 
-$database = new Database();
+$bookInstance = new Book\Book();
 
-$bookInstance = new Book();
+$userInstance = new User\User();
 
-$userInstance = new User();
-
-$cartInstance = new Cart();
+$cartInstance = new Cart\Cart();
 
 $userValidation = new FunctionsValidation();
-
-spl_autoload_register(function($class) {
-    var_dump($class);
-});
 
 ?>

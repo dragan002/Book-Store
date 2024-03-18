@@ -1,5 +1,10 @@
 <?php
 
+namespace User;
+
+use Database\Database;
+
+use \PDO;
 class User extends Database {
     
 function findAllUsers() {

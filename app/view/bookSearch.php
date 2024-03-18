@@ -23,7 +23,7 @@
             <tbody>
             <?php 
                 if (!empty($searchResults)) {
-                    foreach($searcResults as $searched) : 
+                    foreach($searchResults as $searched) : 
             ?>
                     <tr>
                         <td><?php echo $searched['id']; ?></td>

@@ -2,12 +2,11 @@
 require_once('../../app/initialize.php');
 include(SHARED_PATH . '/header.php');
 
-
 if (isset($_POST['register'])) {
     $user = [
         'username' => $_POST['username'],
         'email' => $_POST['email'],
-        'password' => $password = (password_hash($_POST['password'], PASSWORD_DEFAULT)),
+        'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
         'confirm_password' => $_POST['confirm_password']
     ];
 
@@ -15,17 +14,15 @@ if (isset($_POST['register'])) {
     $emailError = $userValidation->emailValidation($user['email']);
     $passwordError = $userValidation->passwordValidation($user['password']);
 
-    if(password_verify($user['confirm_password'], $password));
+    if ($user['password'] !== $user['confirm_password']) {
+        $passwordError[] = "Passwords do not match";
+    }
 
     $errors = array_merge($usernameError, $emailError, $passwordError);
 
     if (empty($errors)) {
-<<<<<<< Updated upstream
         $createdUser = $userInstance->createUser([
             'username' => $user['username'],
-=======
-        $createdUser = createUser([
->>>>>>> Stashed changes
             'email' => $user['email'],
             'password' => $user['password']
         ]);
@@ -34,8 +31,7 @@ if (isset($_POST['register'])) {
             die("Error creating user");
         }
         header("Location: login.php?registration=success");
+        exit;
     }
 }
 ?>
-
-<!-- Ako nije prazan ?  -->

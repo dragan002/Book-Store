@@ -1,7 +1,10 @@
 <?php
 
+namespace Database;
+
 require_once('dbCredentials.php');
 
+use \PDO;
 class Database {
     private $conn;
 
