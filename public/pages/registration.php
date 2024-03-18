@@ -4,6 +4,17 @@ include('../../app/controllers/userControllers/registrationController.php');
 
 <div class="container">
         <h2>Register for the Book Store</h2>
+
+        <?php if (!empty($errors)) : ?>
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    <?php foreach ($errors as $error) : ?>
+                        <li><?php echo $error; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+         <?php endif; ?>
+
         <form action="" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Username:</label>

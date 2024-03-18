@@ -1,4 +1,6 @@
 <?php
+
+// namespace Validation;
 class FunctionsValidation {
     function usernameValidation($username) {
         $errors = [];
