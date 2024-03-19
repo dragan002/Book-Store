@@ -1,7 +1,10 @@
 <?php
 require_once('../app/initialize.php');
+require_once "../vendor/autoload.php";
 $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
+
+$bookInstance = new App\models\classes\Book\Book();
 
 $books = $bookInstance->findAllBooks();
 

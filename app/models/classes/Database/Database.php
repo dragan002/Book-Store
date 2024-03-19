@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace App\models\classes\Database;
 
 require_once('dbCredentials.php');
 

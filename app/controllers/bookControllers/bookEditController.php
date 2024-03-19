@@ -10,15 +10,24 @@
 
     $book = $bookInstance->findBookById($id);
     
-    $image = $book['book_image']; 
+    $image = $book['book_image'];
+
+    // -> dodaj ga u temp
+    // preimenuj -> .exe -> .jpg, .jpeg, .png. .gif
+ // Pomeri ga u moj folder
     
-    if(isset($_FILES['image']) && $_FILES['image']['name'] != ""){
+    if(isset($_FILES['image']) && $_FILES['image']['name'] !== ""){
         $image = $_FILES['image']['name'];
+
+        // C:\Users\PC\AppData\Local\Temp -> xampp://book-store/controllers/bookController/../../public/image/mojaSlika.jpg
         $directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
         $uploadDirectory = $_SERVER['DOCUMENT_ROOT'] . $directory_self . "../../public/image/";
+        // time()."jpg -> pathinfo($image, PATHINFO_EXTENSION);
         $uploadDirectory .= $image;
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadDirectory);
     }
+
+    // slika.jpg
 
     if (isset($_POST['edit'])) {
         $book = [

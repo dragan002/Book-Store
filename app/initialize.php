@@ -1,5 +1,5 @@
 <?php
-include 'autoLoader.php';
+require_once '../vendor/autoload.php';
 
 define("PRIVATE_PATH", dirname(__FILE__));
 define("PROJECT_PATH", dirname(PRIVATE_PATH));
@@ -12,14 +12,14 @@ define('WWW_ROOT', $doc_root);
 
 require('functionsHelpers.php');
 
-$database = new Database\Database();
+$database = new App\models\classes\Database\Database();
 
-$bookInstance = new Book\Book();
+// $bookInstance = new Book\Book();
 
-$userInstance = new User\User();
+// $userInstance = new User\User();
 
-$cartInstance = new Cart\Cart();
+// $cartInstance = new Cart\Cart();
 
-$userValidation = new Validation\FunctionsValidation();
+// $userValidation = new Validation\FunctionsValidation();
 
 ?>

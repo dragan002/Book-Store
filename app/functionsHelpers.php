@@ -9,15 +9,19 @@ function isGetRequest() {
 }
 
 function displayCategoryName( $categoryId ) {
-    if($categoryId == 1) {
-        return "Fiction";
-    } elseif($categoryId == 2) {
-        return "Non-Fiction";
-    } elseif($categoryId == 3) {
-        return "Mystery";
-    } elseif($categoryId == 4) {
-        return "Science Fiction";
+
+    if(!array_key_exists($categoryId, $categories)) {
+        throw new Error("Invalid category");
     }
+
+    $categories = [
+        1 => "Fiction",
+        2 => "Non-Fiction",
+        3 => "Mystery",
+        4 => "Science Fiction"
+    ];
+
+    return $categories[$categoryId];
 }
 
 function cartMessage() {

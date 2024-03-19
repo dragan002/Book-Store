@@ -1,10 +1,11 @@
 <?php
+namespace App\models\classes\Book;
 
-namespace Book;
-
-use Database\Database;
-
+use App\models\classes\Database;
 use \PDO;
+
+use PDOException;
+
 class Book extends Database {
 
     public function findAllBooks() {
@@ -24,7 +25,7 @@ class Book extends Database {
         }
     }
     
-    function findAllCategories() {
+    public function findAllCategories() {
 
         try {
             $sql = "SELECT * FROM categories";
@@ -41,7 +42,7 @@ class Book extends Database {
         }
     }
     
-    function createBook($book) {
+    public function createBook($book) {
 
         try {
             $sql = "INSERT INTO books (book_title, book_price, book_author, book_image, book_descr, book_quantity, category_id) ";
@@ -69,7 +70,7 @@ class Book extends Database {
         }
     }
     
-    function findBookById($id) {
+    public function findBookById($id) {
 
         try {
             $sql = "SELECT * FROM books WHERE id = :id";
@@ -85,7 +86,7 @@ class Book extends Database {
             die("Failed to retrieve data from database: " . $e->getMessage());
         }
     }
-    function findBookByCategory($id) {
+    public function findBookByCategory($id) {
     
         try {
             $sql = "SELECT * FROM books WHERE category_id = :category_id";
@@ -93,15 +94,13 @@ class Book extends Database {
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindParam(':category_id', $id, PDO::PARAM_INT);
             $stmt->execute();
-        
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-            return $result;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }  catch (PDOException $e) {
             die("Failed to retrieve data from database: " . $e->getMessage());
         }
     }
-    function findCategoryById($id) {
+    public function findCategoryById($id) {
 
         try {
             $sql = "SELECT * FROM categories WHERE id =  :id LIMIT 1";
@@ -119,7 +118,7 @@ class Book extends Database {
         }
     }
     
-    function editBook($book) {
+    public function editBook($book) {
             try {
                 $sql = "UPDATE books SET 
                             book_title = :book_title,
@@ -150,7 +149,7 @@ class Book extends Database {
             }
     }
         
-    function deleteBook($book) {
+    public function deleteBook($book) {
         try {
             $sql = "DELETE FROM books WHERE id =  :id LIMIT 1";
             $stmt = $this->getConnection()->prepare($sql);
@@ -164,7 +163,7 @@ class Book extends Database {
         }
     }
     
-    function searchBooks($search) {
+    public function searchBooks($search) {
     
         try {
             $sql = "SELECT * FROM books WHERE id = :id OR book_title LIKE :title OR book_author LIKE :author";

@@ -24,10 +24,9 @@ if (isset($_POST['submit'])) {
     ];
 
     if (!$bookInstance->createBook($book)) {
-        echo "There is issue with adding new book";
-    } else {
-        header( "Location: admin_homepage.php");
+        die("There is issue with adding new book");
     }
+    header( "Location: admin_homepage.php");
 }
 
 ?>

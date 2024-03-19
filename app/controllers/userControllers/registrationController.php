@@ -8,9 +8,11 @@ if (isset($_POST['register'])) {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
 
-    $usernameError = $userValidation->usernameValidation($username);
-    $emailError = $userValidation->emailValidation($email);
-    $passwordError = $userValidation->passwordValidation($password);
+    $userValidation->usernameValidation($username);
+    $userValidation->emailValidation($email);
+    $userValidation->passwordValidation($password);
+
+    $errors = $userValidation->getErrors();
 
     if ($password !== $confirmPassword) {
         $passwordError[] = "Passwords do not match";
