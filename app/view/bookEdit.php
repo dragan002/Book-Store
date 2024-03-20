@@ -1,5 +1,5 @@
 <?php
-    include('../controllers/bookControllers/bookEditController.php');
+    include('../controllers/bookControllers/editController.php');
 ?>
 
     <div class="container mt-5">

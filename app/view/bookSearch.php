@@ -1,5 +1,5 @@
 <?php
-    include('../controllers/bookControllers/bookSearchController.php');
+    include('../controllers/bookControllers/searchController.php');
 ?>
 
 <div class="container mt-5">
@@ -35,7 +35,7 @@
                         <td><?php echo $searched['book_quantity']; ?></td>
                         <?php if(isPostRequest()) : ?>
                             <td><a href="bookEdit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>
-                            <td><a href="../controllers/bookControllers/bookDeleteController.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
+                            <td><a href="../controllers/bookControllers/deleteController.php?id=<?php echo $searched['id']?>" class="btn btn-danger">Delete</a></td>
                         <?php endif;?>
                     </tr>
                 <?php endforeach; } ?>
