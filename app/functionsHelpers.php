@@ -23,8 +23,6 @@ function displayCategoryName($categoryId) {
     return $categories[$categoryId];
 }
 
-
-
 function cartMessage() {
     if (isset($_SESSION['alert_message']['success'])) { ?>
         <div class="alert alert-success" role="alert">
