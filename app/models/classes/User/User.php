@@ -1,8 +1,8 @@
 <?php
 
-namespace User;
+namespace App\models\classes\User;
 
-use Database\Database;
+use App\models\classes\Database\Database;
 
 use \PDO;
 

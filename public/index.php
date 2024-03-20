@@ -1,6 +1,6 @@
 <?php
 require_once('../app/initialize.php');
-require_once "../vendor/autoload.php";
+// require_once "../vendor/autoload.php";
 $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
 

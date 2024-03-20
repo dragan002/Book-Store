@@ -7,6 +7,8 @@ if(!isset($_GET['id'])) {
 
 $bookId = $_GET['id'];
 
+$cartInstance = new App\models\classes\Cart\Cart();
+
 if($cartInstance->deleteFromCart($bookId)) {
     header("Location: ../../../public/pages/cartItems.php");
 } else {

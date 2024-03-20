@@ -2,6 +2,8 @@
     require_once('../initialize.php');
     include(SHARED_PATH . '/admin_header.php');
 
+    $bookInstance = new App\models\classes\Book\Book();
+    
     if(!isset($_GET['id'])) {
         echo "debugging";
         exit();

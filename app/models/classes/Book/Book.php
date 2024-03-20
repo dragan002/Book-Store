@@ -1,10 +1,9 @@
 <?php
 namespace App\models\classes\Book;
 
-use App\models\classes\Database;
 use \PDO;
-
 use PDOException;
+use App\models\classes\Database\Database;
 
 class Book extends Database {
 

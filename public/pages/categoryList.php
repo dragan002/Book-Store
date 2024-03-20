@@ -6,7 +6,8 @@ include(SHARED_PATH . '/header.php');
 
 $categoryId = $_GET['category_id'];
 
-$bookInstance = new Book();
+$bookInstance = new App\models\classes\Book\Book();
+
 $booksByCategory = $bookInstance->findBookByCategory($categoryId);
 
 ?>

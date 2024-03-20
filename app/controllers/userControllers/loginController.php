@@ -3,6 +3,8 @@
 require_once('../../app/initialize.php');
 include(SHARED_PATH . '/login_header.php');
 
+$userInstance = new App\models\classes\User\User();
+
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
     $user = $userInstance->findUserByEmail($email);

@@ -1,10 +1,11 @@
 <?php
 
-namespace Cart;
+namespace App\models\classes\Cart;
 
-use Database\Database;
 
 use \PDO;
+use PDOException;
+use App\models\classes\Database\Database;
 class Cart extends Database {
     
   public function findAllFromCart($userId) {

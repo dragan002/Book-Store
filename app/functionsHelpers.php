@@ -10,19 +10,20 @@ function isGetRequest() {
 
 function displayCategoryName( $categoryId ) {
 
-    if(!array_key_exists($categoryId, $categories)) {
-        throw new Error("Invalid category");
-    }
-
     $categories = [
         1 => "Fiction",
         2 => "Non-Fiction",
         3 => "Mystery",
         4 => "Science Fiction"
     ];
-
+    
+    if(!array_key_exists($categoryId, $categories)) {
+        throw new Error("Invalid category");
+    }
     return $categories[$categoryId];
 }
+
+
 
 function cartMessage() {
     if (isset($_SESSION['alert_message']['success'])) { ?>

@@ -2,8 +2,9 @@
 require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
-$books = $bookInstance->findAllBooks();
+$bookInstance = new App\models\classes\Book\Book();
 
+$books = $bookInstance->findAllBooks();
 ?>
 
 <div class="container mt-5">
@@ -52,7 +53,7 @@ $books = $bookInstance->findAllBooks();
                     <td><?php echo $book['book_descr']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
                     <td><a href="bookEdit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>
-                    <td><a href="../controllers/bookDeleteController.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
+                    <td><a href="../controllers/bookControllers/bookDeleteController.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

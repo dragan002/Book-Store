@@ -1,9 +1,13 @@
 <?php 
 require_once('../../app/initialize.php');
+// require_once "../../vendor/autoload.php";
+
 include(SHARED_PATH . '/header.php');
 
 $id = $_GET['id'];
-$bookInstance = new Book\Book();
+// $bookInstance = new App/Book();
+$bookInstance = new App\models\classes\Book\Book();
+
 $book = $bookInstance->findBookById($id);
 
 ?>

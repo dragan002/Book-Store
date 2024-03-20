@@ -7,6 +7,9 @@ $pageTitle = "Cart";
 (isset($_SESSION['id'])) ? $userId = $_SESSION['id'] : '';
 (isset($_GET['id'])) ? $bookId = $_GET['id'] : '';
 
+$cartInstance = new App\models\classes\Cart\Cart();
+$bookInstance = new App\models\classes\Book\Book();
+
 if(isset($userId) && isset($bookId)) {
     $item = $cartInstance->addToCart($userId, $bookId, '');
     header("Location: ../index.php");

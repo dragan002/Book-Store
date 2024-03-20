@@ -8,6 +8,7 @@ if(!isPostRequest()) {
 } else {
     $search = $_POST['search'];
 }
+$bookInstance = new App\models\classes\Book\Book();
 
 $books = $bookInstance->findAllBooks();
 $searchResults = $bookInstance->searchBooks($search);
