@@ -11,11 +11,9 @@ if(!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-
 $book = $bookInstance->findBookById($id);
 
-if($bookInstance->deleteBook($book)) {
-    header('Location: ../../view/admin_homepage.php');
-} else {
+if(!$bookInstance->deleteBook($book)) {
     echo "Error deleting book.";
-}
+} 
+header('Location: ../../view/admin_homepage.php');

@@ -8,10 +8,11 @@ if(!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
+$userInstance = new App\models\classes\User\User();
+
 $user = $userInstance->findUserById($id);
 
-if($userInstance->deleteUser($user)) {
-    header('Location: ../../view/adminUsers.php');
-} else {
+if(!$userInstance->deleteUser($user)) {
     echo "Error deleting user";
-}
+} 
+header('Location: ../../view/adminUsers.php');

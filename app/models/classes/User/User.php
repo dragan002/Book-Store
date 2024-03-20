@@ -137,8 +137,8 @@ class User extends Database
             $sql = "DELETE FROM users WHERE id =  :id LIMIT 1";
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindValue(':id', $user['id']);
-
-            $stmt = null;
+            $stmt->execute();
+            $stmt->close();
 
             return true;
         } catch (PDOException $e) {

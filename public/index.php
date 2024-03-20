@@ -75,18 +75,3 @@ $categories = $bookInstance->findAllCategories();
 
 
 
-
-
-<!-- registraciju napravio - user je default
-Login kreirao da se mogu posebno ulogati user i admin 
-logout uradjen
-ubacio kada se klikne na odredjenu kategoriju da izbaci sve knjige iz te kategorije -->
-<!-- Sessije postavljene -->
-<!-- User CRUD -->
-<!-- User Search -->
-
-
-<!-- rezervacija knjige -->
-<!-- Logg tabela, info da je neko nesto dodao, radi statistike  -->
-1. DB switch to oop
-2. User model prebaciti na oop

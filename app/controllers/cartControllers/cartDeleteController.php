@@ -9,14 +9,7 @@ $bookId = $_GET['id'];
 
 $cartInstance = new App\models\classes\Cart\Cart();
 
-if($cartInstance->deleteFromCart($bookId)) {
-    header("Location: ../../../public/pages/cartItems.php");
-} else {
+if(!$cartInstance->deleteFromCart($bookId)) {
     echo "error";
-}
-
-// if($bookInstance->deleteBook($book)) {
-//     header('Location: ../view/admin_homepage.php');
-// } else {
-//     echo "Error deleting book.";
-// }
+} 
+header("Location: ../../../public/pages/cartItems.php");

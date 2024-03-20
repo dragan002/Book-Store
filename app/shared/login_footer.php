@@ -12,5 +12,7 @@
 </body>
 </html>
 <?php 
-    $database->dbDisconnect();
+    $databaseInstance = new App\models\classes\Database\Database();
+
+    $databaseInstance->dbDisconnect();
 ?>

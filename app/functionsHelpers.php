@@ -8,7 +8,7 @@ function isGetRequest() {
     return $_SERVER['REQUEST_METHOD'] == "GET";
 }
 
-function displayCategoryName( $categoryId ) {
+function displayCategoryName($categoryId) {
 
     $categories = [
         1 => "Fiction",

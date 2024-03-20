@@ -2,6 +2,8 @@
 require_once('../initialize.php');
 include(SHARED_PATH . '/admin_header.php');
 
+$userInstance = new App\models\classes\User\User();
+
 $users = $userInstance->findAllUsers();
 echo $_SESSION['username'];
 

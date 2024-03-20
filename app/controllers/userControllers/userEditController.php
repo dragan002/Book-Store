@@ -7,6 +7,9 @@ if (!isset($_GET['id'])) {
 }
 
 $id = $_GET['id'];
+
+$userInstance = new App\models\classes\User\User();
+
 $user = $userInstance->findUserById($id);
 
 if (isset($_POST['edit'])) {
@@ -20,10 +23,9 @@ if (isset($_POST['edit'])) {
 
     $result = $userInstance->editUser($editedUser);
 
-    if ($result) {
-        header("Location: admin_homepage.php");
-    } else {
+    if(!$result) {
         echo '<script>alert("Error editing the user.");</script>';
     }
+    header("Location: ../view/adminUsers.php");
 }
 ?>

@@ -35,4 +35,5 @@ if (isPostRequest()) {
         $errors[] = $e->getMessage();
     }
 }
-// PRvi put kada kliknem na login uvijek ce biti  bez podataka o useru jer nisam kliknuo na post i ne mogu negaciju da uradim 
+
+// PRvi put kada kliknem na login uvijek ce biti bez podataka o useru jer nisam kliknuo na post i ne mogu negaciju da uradim 
