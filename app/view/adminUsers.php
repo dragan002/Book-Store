@@ -20,7 +20,6 @@ echo $_SESSION['username'];
             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
 
-
         <table class="table table-striped">
             <thead>
                 <tr>

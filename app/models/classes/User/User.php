@@ -9,7 +9,7 @@ use \PDO;
 class User extends Database
 {
 
-    function findAllUsers()
+    function findAllUsers(): array
     {
 
         try {
@@ -27,7 +27,7 @@ class User extends Database
         }
     }
 
-    function login($email, $password)
+    function login(string $email, string  $password): ?array
     {
 
         try {
@@ -59,7 +59,7 @@ class User extends Database
         }
     }
 
-    function createUser($user)
+    function createUser(array $user)
     {
 
         try {
@@ -84,7 +84,7 @@ class User extends Database
         }
     }
 
-    function getLoggerFromForm()
+    function getLoggerFromForm(): ?array
     {
         if (!isset($_POST['email']) && !isset($_POST['password'])) {
             return false;
@@ -96,7 +96,7 @@ class User extends Database
         ];
     }
 
-    function findUserByEmail($email)
+    function findUserByEmail(string $email): ?array
     {
 
         try {
@@ -114,7 +114,7 @@ class User extends Database
         }
     }
 
-    function findUserById($id)
+    function findUserById(int $id): ?array
     {
         try {
             $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
@@ -131,31 +131,25 @@ class User extends Database
         }
     }
 
-    function deleteUser($user)
+    function deleteUser(array $userId)
     {
         try {
-            $sql = "DELETE FROM users WHERE id =  :id LIMIT 1";
+            $sql = "DELETE FROM users WHERE id = :id LIMIT 1";
             $stmt = $this->getConnection()->prepare($sql);
-            $stmt->bindValue(':id', $user['id']);
+            $stmt->bindValue(':id', $userId, PDO::PARAM_INT);
             $stmt->execute();
-            $stmt->close();
-
+    
             return true;
         } catch (PDOException $e) {
             die("ERROR: Could not execute $sql. " . $e->getMessage());
         }
     }
+    
 
-    function editUser($user)
+    function editUser(array $user): bool
     {
         try {
-            $sql = "UPDATE users SET 
-                    username = :username,
-                    email = :email,
-                    password = :password,
-                    role = :role
-                WHERE id = :id";
-
+            $sql = "UPDATE users SET username = :username, email = :email, password = :password, role = :role WHERE id = :id";
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindParam(':username', $user['username'], PDO::PARAM_STR);
             $stmt->bindParam(':email', $user['email'], PDO::PARAM_STR);
@@ -174,7 +168,7 @@ class User extends Database
         }
     }
 
-    function searchUser($search)
+    function searchUser(string $search): ?array
     {
 
         try {
@@ -197,7 +191,7 @@ class User extends Database
         }
     }
 
-    function handleSuccessfulLogin($user)
+    function handleSuccessfulLogin($user): void
     {
         if ($user['role'] == 'admin') {
             header("Location: ../../app/view/admin_homepage.php");

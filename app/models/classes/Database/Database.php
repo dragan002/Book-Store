@@ -22,17 +22,17 @@ class Database {
         }
     }
 
-    public function confirmResultSet($resultSet) {
+    public function confirmResultSet($resultSet): void {
         if(!$resultSet) {
             die("Error in query" . $this->conn->errorInfo()[2]);
         }
     }
 
-    public function getConnection() {
+    public function getConnection(): PDO {
         return $this->conn;
     }
 
-    public function dbDisconnect() {
+    public function dbDisconnect(): void {
         $this->conn = null;
     }
 }

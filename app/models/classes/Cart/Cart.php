@@ -8,7 +8,7 @@ use PDOException;
 use App\models\classes\Database\Database;
 class Cart extends Database {
     
-  public function findAllFromCart($userId) {
+  public function findAllFromCart(int $userId): ?array {
         try {
             $sql = "SELECT * FROM `cartItems` WHERE user_id=:user_id";
             $stmt = $this->getConnection() -> prepare($sql);
@@ -26,13 +26,13 @@ class Cart extends Database {
 
     
 
-    public function addToCart($userId, $bookId, $bookQuantity) {
+    public function addToCart(int $userId, int $bookId, int $bookQuantity): array {
         try {
             $sql = "INSERT INTO `cartItems` (user_id, book_id, book_quantity) VALUES(:userId, :bookId, :bookQuantity)";
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindParam(":userId", $userId, PDO::PARAM_INT);
-            $stmt->bindPAram(":bookId", $bookId, PDO::PARAM_INT);
-            $stmt->bindParam( ":bookQuantity" , $bookQuantity, PDO::PARAM_INT);
+            $stmt->bindParam(":bookId", $bookId, PDO::PARAM_INT);
+            $stmt->bindParam( ":bookQuantity", $bookQuantity, PDO::PARAM_INT);
 
             $result = $stmt->execute();
 
@@ -51,11 +51,11 @@ class Cart extends Database {
         }
     }
 
-    public function deleteFromCart($bookId) {
+    public function deleteFromCart(int $bookId): bool {
         try {
             $sql = "DELETE FROM `cartItems` WHERE book_id = :id LIMIT 1";
             $stmt = $this->getConnection()->prepare($sql);
-            $stmt->bindValue(':id', $bookId);
+            $stmt->bindValue(':id', $bookId, PDO::PARAM_INT);
         
             $result = $stmt->execute();
             
