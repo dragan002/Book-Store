@@ -1,0 +1,72 @@
+.menu {
+	/* Default Menu CSS - if used without walker */
+
+	list-style: none;
+	padding: 0;
+
+	/* Main Navigation */
+
+	&--main-menu {
+		display: none;
+
+		@include breakpoint(md) {
+			display: block;
+		}
+
+		/* One Menu Item */
+
+		.menu-item {
+			position: relative;
+			display: inline-block;
+
+			/* Show Dropdown Menu Items on hover */
+
+			&:hover {
+				> .menu-item {
+					&__dropdown {
+						transform: translate(0);
+						opacity: 1;
+						visibility: visible;
+					}
+				}
+			}
+
+			&:hover {
+				a {
+					background: white;
+					color: var(--color-secondary);
+				}
+			}
+
+			/* Menu Item Link */
+
+			a {
+				display: block;
+				padding: 15px 20px;
+				font-weight: 400;
+				color: var(--color-grey-100	);
+			}
+		}
+	}
+
+	/* Footer Navigation */
+
+	&--footer-menu{
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		.menu-item {
+			margin-right: 10px;
+			margin-bottom: 5px;
+
+			@include breakpoint(sm) {
+				margin-right: 0;
+			}
+
+			a {
+				color: var(--color-grey-100);
+			}
+		}
+	}
+}

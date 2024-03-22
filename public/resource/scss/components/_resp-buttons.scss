@@ -1,0 +1,122 @@
+/* Vars used in this file */
+
+$button_size: 28px !default;
+$button_transition: 0.3s !default;
+$button_radius: 1px;
+$button_color: var(--color-grey-200) !default;
+
+/* Mixins */
+
+@mixin menu-toggle-lines {
+	display: inline-block;
+	height: 2px;
+	width: 27px;
+	border-radius: 20px;
+	transition: $button_transition;
+	background: $button_color;
+}
+
+/* Responsive Toggle Buttons */
+
+.resp-buttons {
+	position: relative;
+	transition: 0.3s ease-in-out;
+	display: block;
+
+	@include breakpoint(lg) {
+		display: none;
+	}
+}
+
+/* Menu Toggle Button */
+
+.menu-toggle {
+	margin-left: auto;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: $button_size;
+	width: $button_size;
+	background: transparent;
+	outline: none;
+	border: 0;
+	appearance: none;
+	user-select: none;
+	transition: $button_transition;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
+
+	> * {
+		display: block;
+	}
+
+	&:hover,
+	&:focus {
+		outline: none;
+	}
+
+	&::-moz-focus-inner {
+		border: 0;
+	}
+
+	&__lines {
+		@include menu-toggle-lines;
+		position: relative;
+
+		&::before,
+		&::after {
+			@include menu-toggle-lines;
+			content: '';
+			position: absolute;
+			left: 0;
+			transform-origin: calc($button_size / 14) center;
+			width: 100%;
+		}
+
+		&::before {
+			top: calc($button_size / 3);
+		}
+
+		&::after {
+			top: calc($button_size / -3);
+		}
+
+		.menu-toggle--active & {
+			transform: scale3d(0.8, 0.8, 0.8);
+		}
+	}
+}
+
+/* Butterfly Effect */
+
+.menu-toggle--xbutterfly {
+	.menu-toggle__lines {
+		&::before,
+		&::after {
+			transform-origin: 50% 50%;
+			transition: top 0.3s 0.6s ease, transform 0.3s ease;
+		}
+	}
+
+	&.menu-toggle--active {
+		.menu-toggle__lines {
+			background: transparent;
+
+			&::before,
+			&::after {
+				top: 0;
+				transition: top 0.3s ease, transform 0.3s 0.5s ease;
+				width: $button_size;
+			}
+
+			&::before {
+				transform: rotate3d(0, 0, 1, 45deg);
+			}
+
+			&::after {
+				transform: rotate3d(0, 0, 1, -45deg);
+			}
+		}
+	}
+}

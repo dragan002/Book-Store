@@ -1,0 +1,27 @@
+.social {
+	display: flex;
+	padding: 0px;
+	gap:20px;
+
+	&__item {
+		list-style-type: none;
+		margin: 0px 4px;
+	}
+
+	&__icon {
+		display: block;
+		transition: 0.2s ease-in-out;
+
+		&:hover {
+			opacity: 0.6;
+		}
+
+		svg {
+			display: block;
+			width: 14px;
+			height: 14px;
+			transition: 0.2s ease-in-out;
+			fill: #ffffff;
+		}
+	}
+}

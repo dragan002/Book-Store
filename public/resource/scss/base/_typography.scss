@@ -1,0 +1,83 @@
+body {
+	line-height: 1.5;
+	font-family: $font_family;
+	@include fluid-type($min_width, $max_width, 1rem, 1.125rem);
+}
+
+a {
+	text-decoration: none;
+	background-color: transparent;
+}
+
+p,
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+	margin-bottom: $spacing-unit * 2;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 700;
+	line-height: 1.2;
+	margin: 0 0 $spacing-unit * 3;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+/* Typography */
+$font_family: 'Roboto', Helvetica, Arial, sans-serif;
+
+$heading_sizes: (
+	'h1': (
+		'min': 2.5rem,
+		'max': 3rem,
+	),
+	'h2': (
+		'min': 2rem,
+		'max': 2.4rem,
+	),
+	'h3': (
+		'min': 1.6rem,
+		'max': 1.75rem,
+	),
+	'h4': (
+		'min': 1.2rem,
+		'max': 1.5rem,
+	),
+	'h5': (
+		'min': 1.08rem,
+		'max': 1.25rem,
+	),
+	'h6': (
+		'min': 1rem,
+		'max': 1rem,
+	),
+) !default;
+
+
+@each $tag, $heading_size in $heading_sizes {
+	#{$tag},
+	.#{$tag} {
+		@include fluid-type($min_width, $max_width, map-get($heading_size, 'min'), map-get($heading_size, 'max'));
+	}
+}
+
+.p-large {
+	@include fluid-type($min_width, $max_width, 1.125rem, 1.25rem);
+}
+
+.p-small {
+	@include fluid-type($min_width, $max_width, 0.7rem, 0.8rem);
+}
