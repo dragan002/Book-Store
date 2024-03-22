@@ -14,14 +14,14 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="header background-primary font-thin ">
     <div class="container">
 
         <!-- Brand Logo -->
         <a class="navbar-brand" href="#">Your Logo</a>
 
         <!-- Toggle Button for Small Screens -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="background-primary" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -32,23 +32,23 @@
         Hello, <?php echo $_SESSION['username']; ?>! Welcome to BookStore.
     </div>
 <?php } ?>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="../../public/index.php">Home</a>
+        <div class="background-secondary" id="navbarNav">
+            <ul class="grid background-secondary">
+                <li class="background-secondary col-span-2">
+                    <a class="h1" href="../../public/index.php">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item col-span-2">
                     <a class="nav-link" href="../../public/pages/about.php">About Us</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item col-span-2">
                     <a class="nav-link" href="../../public/pages/services.php">Services</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item col-span-2">
                     <a class="nav-link" href="../../public/pages/contact.php">Contact</a>
                 </li>
 
                 <!-- Cart Link -->
-                <li class="nav-item">
+                <li class="nav-item col-span-2">
                     <a class="nav-link" href="../../public/pages/cartItems.php">
                         <i class="fas fa-shopping-cart"></i> Cart
                     </a>
@@ -56,7 +56,7 @@
 
                 <!-- Login and Register Buttons -->  
                 <?php if(!isset($_SESSION['username'])) { ?>               
-                    <li class="nav-item">
+                    <li class="c-button col-span-4">
                         <a class="nav-link btn btn-outline-primary" href="../../public/pages/login.php">Login</a>
                     </li>
                 <?php } ?>
@@ -76,4 +76,10 @@
         </div>
     </div>
 </nav>
+
+<li class="c-button col-span-10">
+                    <a class="nav-link" href="../../public/pages/cartItems.php">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
+                </li>
 <!-- The rest of your HTML content goes here -->

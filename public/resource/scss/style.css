@@ -3210,7 +3210,7 @@ a img.aligncenter {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  background: #f8f9fa;
+  background: #0a5a46;
   color: var(--color-dark);
   transition: 0.3s ease-out;
 }
