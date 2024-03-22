@@ -1,0 +1,46 @@
+.header {
+	padding-top: $spacing-unit;
+	padding-bottom: $spacing-unit;
+
+	@include breakpoint(sm) {
+		padding-top: $spacing-unit * 2 ;
+		padding-bottom: $spacing-unit * 2;
+	}
+
+	&--site {
+		position: relative;
+	}
+
+	.wrapper {
+		align-items: center;
+		display: flex;
+		gap: $spacing-unit;
+		align-items: center;
+	}
+
+	.logo {
+		display: block;
+
+		img,svg {
+			width: 100px;
+		}
+
+		@include breakpoint($to: lg) {
+			flex: 1;
+		}
+	}
+
+	&__menu {
+		display: none;
+		@include breakpoint(lg) {
+			display: block;
+			flex: 1;
+		}
+	}
+
+	.resp-buttons {
+		@include breakpoint(lg) {
+			display: none;
+		}
+	}
+}

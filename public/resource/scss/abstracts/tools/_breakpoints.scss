@@ -1,0 +1,60 @@
+/*
+    @include breakpoint($from, $to, $and);
+    You can find a list of breakpoints in the file abstracts/variables/_breakpoints.scss
+
+    Usage:
+    a) Min width example
+        @include breakpoint(xs) {
+            color: red;
+        }
+    b) Range example
+        @include breakpoint(xs, xl) {
+            color: red;
+        }
+    c) Max width example
+        @include breakpoint($to: xl) {
+            color: red;
+        }
+    d) Min-width with additional properties
+        @include breakpoint(xs, $and: 'orientation: portrait') {
+            color: red;
+        }
+*/
+
+@function getBreakpoint($breakpoint_key) {
+	@return map-get($breakpoints, $breakpoint_key);
+}
+
+@mixin breakpoint($from: null, $to: null, $and: null) {
+	@if $from != null and $to != null {
+		@if $and != null {
+			@media (min-width: getBreakpoint($from)) and (max-width: (getBreakpoint($to) - 1px)) and ($and) {
+				@content;
+			}
+		} @else {
+			@media (min-width: getBreakpoint($from)) and (max-width: (getBreakpoint($to) - 1px)) {
+				@content;
+			}
+		}
+	} @else if $from != null {
+		@if $and != null {
+			@media (min-width: getBreakpoint($from)) and ($and) {
+				@content;
+			}
+		} @else {
+			@media (min-width: getBreakpoint($from)) {
+				@content;
+			}
+		}
+	} @else if $to != null {
+		@if $and != null {
+			@media (max-width: (getBreakpoint($to) - 1px)) and ($and) {
+				@content;
+			}
+		} @else {
+			@media (max-width: (getBreakpoint($to) - 1px)) {
+				@content;
+			}
+		}
+	}
+}

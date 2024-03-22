@@ -1,0 +1,186 @@
+.grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: $spacing-grid;
+
+	> * {
+		grid-column: 1 / -1;
+	}
+}
+
+
+// Define special cases first
+.col-auto {
+  grid-column: auto;
+}
+.col-span-full {
+  grid-column: 1 / -1;
+}
+.col-start-auto {
+  grid-column-start: auto;
+}
+.col-end-auto {
+  grid-column-end: auto;
+}
+
+/* Helpers */
+
+.text {
+	&-center {
+		text-align: center;
+	}
+
+	&-left {
+		text-align: left;
+	}
+
+	&-right {
+		text-align: right;
+	}
+
+	&-justify {
+		text-align: justify;
+	}
+
+	&-uppercase {
+		text-transform: uppercase;
+	}
+
+	&-lowercase {
+		text-transform: lowercase;
+	}
+
+	&-capitalize {
+		text-transform: capitalize;
+	}
+}
+
+.font {
+	&-thin {
+		font-weight: 100;
+	}
+
+	&-light {
+		font-weight: 300;
+	}
+
+	&-regular {
+		font-weight: 400;
+	}
+
+	&-medium {
+		font-weight: 500;
+	}
+
+	&-semibold {
+		font-weight: 600;
+	}
+
+	&-bold {
+		font-weight: 700;
+	}
+
+	&-black {
+		font-weight: 900;
+	}
+}
+
+
+
+@for $i from 0 through 13 {
+
+	// Margin classes
+	.mt-#{$i} {
+		margin-top: $spacing-unit * $i;
+	}
+
+	.mb-#{$i} {
+		margin-bottom: $spacing-unit * $i;
+	}
+
+	.ml-#{$i} {
+		margin-left: $spacing-unit * $i;
+	}
+
+	.mr-#{$i} {
+		margin-right: $spacing-unit * $i;
+	}
+
+	// Paddings classes
+
+	.p-#{$i} {
+		padding: $spacing-unit * $i;
+	}
+
+	.pt-#{$i} {
+		padding-top: $spacing-unit * $i;
+	}
+
+	.pb-#{$i} {
+		padding-bottom: $spacing-unit * $i;
+	}
+
+	.pl-#{$i} {
+		padding-left: $spacing-unit * $i;
+	}
+
+	.pr-#{$i} {
+		padding-right: $spacing-unit * $i;
+	}
+
+	.z-#{$i * 10} {
+		// Modal - 50
+		// Resp Menu - 40
+		// Header - 30
+		// Above content - 20
+		// Content - 10
+		z-index: $i * 10;
+	}
+
+	// Define col-span classes (up to 12)
+	@if $i <= 12 {
+		.col-span-#{$i} {
+			grid-column: span #{$i};
+		}
+	}
+
+	.col-end-#{$i} {
+		grid-column-end: #{$i};
+	}
+
+	.col-start-#{$i} {
+		grid-column-start: #{$i};
+	}
+
+}
+
+//For each breakpoint in the $breakpoints map, create a media query
+@each $breakpoint, $value in $breakpoints {
+	@for $i from 1 through 13 {
+		@include breakpoint($breakpoint) {
+			.#{$breakpoint}-col-span-#{$i} {
+				grid-column: span #{$i};
+			}
+		}
+	}
+}
+
+@each $breakpoint, $value in $breakpoints {
+    @for $i from 1 through 12 {
+        @include breakpoint($breakpoint) {
+            .#{$breakpoint}-col-start-#{$i} {
+                grid-column-start: #{$i};
+            }
+        }
+    }
+}
+
+@each $breakpoint, $value in $breakpoints {
+    @for $i from 1 through 12 {
+        @include breakpoint($breakpoint) {
+            .#{$breakpoint}-col-end-#{$i} {
+                grid-column-end: #{$i};
+            }
+        }
+    }
+}

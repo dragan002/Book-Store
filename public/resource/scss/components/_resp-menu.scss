@@ -1,0 +1,37 @@
+.resp-menu {
+	background-color: #fff;
+	position: fixed;
+	right: -100%;
+	width: 100%;
+	left: auto;
+	z-index: 80;
+	transition: 0.3s ease-in-out;
+	justify-content: center;
+	align-items: center;
+	bottom: 0;
+	top: 0;
+	padding: $spacing-unit * 2;
+
+	.resp-buttons {
+		.menu-toggle__lines::after,
+		.menu-toggle__lines::before {
+			background: var(--color-dark);
+		}
+	}
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__logo {
+
+		img {
+			width: 100px;
+		}
+	}
+
+	.menu-open & {
+		transform: translateX(-100%);
+	}
+}

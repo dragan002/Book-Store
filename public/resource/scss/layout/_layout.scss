@@ -1,0 +1,22 @@
+.wrapper {
+	width: 100%;
+	max-width: calc(1280px + $spacing-grid * 2);
+	margin: 0 auto;
+	padding: 0px $spacing-grid;
+
+	&--full {
+		max-width: none;
+	}
+
+	&--hd {
+		max-width: calc(1920px + $spacing-grid * 2);
+	}
+
+	&--narrow {
+		max-width: calc(900px + $spacing-grid * 2);
+	}
+
+	.wrapper {
+		padding: 0;
+	}
+}

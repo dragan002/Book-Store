@@ -1,0 +1,119 @@
+.c-button {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border-radius: 2px;
+	white-space: nowrap;
+	font-size: 16px;
+	padding: 12px 18px;
+	font-weight: 500;
+	cursor: pointer;
+	user-select: none;
+	background: getColor(secondary);
+	color: var(--color-dark);
+	transition: 0.3s ease-out;
+
+	&:focus {
+		text-decoration: none;
+		color: var(--color-dark);
+	}
+
+	&:hover {
+		background: lighten(getColor(grey-100), 2%);
+		color: var(--color-dark);
+	}
+
+	&:last-child {
+		margin-right: 0px;
+	}
+
+	span {
+		display: inline-block;
+
+		&:first-child {
+			position: relative;
+			z-index: 20;
+		}
+	}
+
+	&.has-icon {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	&__icon {
+		width: 24px;
+		height: 24px;
+		vertical-align: text-top;
+		display: inline-flex !important;
+		position: relative;
+		z-index: 10;
+
+		svg {
+			width: 7px;
+			height: 10px;
+			stroke: #fff;
+			margin: auto;
+		}
+	}
+
+	&--bordered {
+		background: transparent;
+		color: #000;
+		border: 1px solid #000;
+
+		svg {
+			stroke: #000
+		}
+
+		&:hover {
+			color: #fff;
+			background: #000;
+
+			svg {
+				stroke: #fff
+			}
+		}
+	}
+
+	&--primary {
+		background-color: var(--color-primary);
+		color: var(--color-light);
+
+		&:hover,
+		&:focus {
+			//Darken the color by 10%
+			background-color: darken(getColor(primary), 10%);
+			color: var(--color-light);
+		}
+	}
+
+	&--secondary {
+		background-color: var(--color-secondary);
+		color: var(--color-light);
+
+		&:hover,
+		&:focus {
+			//Darken the color by 10%
+			background-color: darken(getColor(secondary), 10%);
+			color: var(--color-light);
+		}
+	}
+}
+
+button:disabled,
+.button--disabled {
+	opacity: 0.7;
+	pointer-events: none;
+	box-shadow: none;
+
+	&:hover {
+		color: inherit;
+		background-color: inherit;
+	}
+}
