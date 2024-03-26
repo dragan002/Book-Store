@@ -4,7 +4,9 @@ namespace App\models\classes\User;
 
 use App\models\classes\Database\Database;
 
+use Exception;
 use \PDO;
+use PDOException;
 
 class User extends Database
 {
@@ -96,7 +98,7 @@ class User extends Database
         ];
     }
 
-    function findUserByEmail(string $email): ?array
+    function findUserByEmail(string $email): bool
     {
 
         try {
@@ -108,7 +110,7 @@ class User extends Database
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            return $result;
+            return true;
         } catch (PDOException $e) {
             die("Failed to retrieve data from database: " . $e->getMessage());
         }

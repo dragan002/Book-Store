@@ -14,17 +14,12 @@
 
 <body>
 
-<nav class="header background-primary font-thin ">
+<nav class="header">
     <div class="container">
 
         <!-- Brand Logo -->
         <a class="navbar-brand" href="#">Your Logo</a>
-
-        <!-- Toggle Button for Small Screens -->
-        <button class="background-primary" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
+        
         <!-- Navigation Links -->
 
         <?php if(isset($_SESSION['username'])) { ?>

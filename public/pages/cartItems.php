@@ -1,6 +1,5 @@
 <?php 
 require_once('../../app/initialize.php');
-require_once('../../app/controllers/cartControllers/cartController.php');
 include(SHARED_PATH . '/header.php');
 
 $pageTitle = "Cart";
@@ -11,7 +10,7 @@ $cartInstance = new App\models\classes\Cart\Cart();
 $bookInstance = new App\models\classes\Book\Book();
 
 if(isset($userId) && isset($bookId)) {
-    $item = $cartInstance->addToCart($userId, $bookId, '');
+    $item = $cartInstance->addToCart($userId, $bookId);
     header("Location: ../index.php");
 } 
 
