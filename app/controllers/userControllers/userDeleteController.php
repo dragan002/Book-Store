@@ -12,7 +12,7 @@ $userInstance = new App\models\classes\User\User();
 
 $user = $userInstance->findUserById($id);
 
-if(!$userInstance->deleteUser($user)) {
+if(!$userInstance->deleteUser($user['id'])) {
     echo "Error deleting user";
 } 
 header('Location: ../../view/adminUsers.php');

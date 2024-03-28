@@ -100,7 +100,6 @@ class User extends Database
 
     function findUserByEmail(string $email): array
     {
-
         try {
             $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
 
@@ -108,9 +107,7 @@ class User extends Database
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
 
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            return $result;
+            return $result = $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             die("Failed to retrieve data from database: " . $e->getMessage());
         }
@@ -125,29 +122,25 @@ class User extends Database
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
 
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            return $result;
         } catch (PDOException $e) {
             die("Failed to retrieve data from database: " . $e->getMessage());
         }
     }
-
-    function deleteUser(array $userId)
+    function deleteUser(int $userId)
     {
         try {
             $sql = "DELETE FROM users WHERE id = :id LIMIT 1";
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindValue(':id', $userId, PDO::PARAM_INT);
             $stmt->execute();
-    
+
             return true;
         } catch (PDOException $e) {
             die("ERROR: Could not execute $sql. " . $e->getMessage());
         }
     }
-    
-
     function editUser(array $user): bool
     {
         try {
@@ -181,7 +174,7 @@ class User extends Database
 
             $stmt->bindParam(':id', $search, PDO::PARAM_INT);
             $stmt->bindParam(':username', $searchTerm, PDO::PARAM_STR);
-            $stmt->bindParam(':email', $searchTerm, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $searchTerm,  PDO::PARAM_STR);
 
             $stmt->execute();
 
@@ -195,12 +188,11 @@ class User extends Database
 
     function handleSuccessfulLogin($user): void
     {
-        if ($user['role'] == 'admin') {
+        if($user['role'] == 'admin') {
             header("Location: ../../app/view/admin_homepage.php");
             exit();
-        } else {
+        }
             header("Location: ../../public/index.php");
             exit();
-        }
     }
 }
