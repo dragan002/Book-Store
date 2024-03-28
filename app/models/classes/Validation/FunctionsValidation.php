@@ -1,6 +1,6 @@
 <?php
 
-namespace Validation;
+namespace App\models\classes\Validation;
 class FunctionsValidation {
     
     private $errors;

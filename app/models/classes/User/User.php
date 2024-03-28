@@ -98,7 +98,7 @@ class User extends Database
         ];
     }
 
-    function findUserByEmail(string $email): bool
+    function findUserByEmail(string $email): array
     {
 
         try {
@@ -110,7 +110,7 @@ class User extends Database
 
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            return true;
+            return $result;
         } catch (PDOException $e) {
             die("Failed to retrieve data from database: " . $e->getMessage());
         }

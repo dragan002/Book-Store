@@ -1,10 +1,10 @@
 <?php
+global $errors;
 include('../../app/controllers/userControllers/loginController.php');
 
 if(isset($_GET['registration'])) {
     $registrationSuccess = $_GET['registration'];
 }
-
 ?>
 
 <div class="container mt-5">

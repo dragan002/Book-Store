@@ -1,6 +1,5 @@
 <?php
 require_once('../app/initialize.php');
-// require_once "../vendor/autoload.php";
 $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
 
@@ -9,6 +8,7 @@ $bookInstance = new App\models\classes\Book\Book();
 $books = $bookInstance->findAllBooks();
 
 $categories = $bookInstance->findAllCategories();
+
 
 ?>
 
@@ -44,7 +44,7 @@ $categories = $bookInstance->findAllCategories();
                 </div>
             </div>
         </div>
-    
+
         <!-- Featured Books Section -->
         <div class="col-md-9">
             <div class="row">
