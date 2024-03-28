@@ -2,6 +2,10 @@
 require_once('../../app/initialize.php');
 include(SHARED_PATH . '/header.php');
 
+$userValidation = new App\models\classes\Validation\FunctionsValidation();
+$userInstance = new App\models\classes\User\User();
+
+
 if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -18,7 +22,7 @@ if (isset($_POST['register'])) {
         $passwordError[] = "Passwords do not match";
     }
 
-    $errors = array_merge($usernameError, $emailError, $passwordError);
+//    $errors = array_merge($usernameError, $emailError, $passwordError);
 
     if (empty($errors)) {
 

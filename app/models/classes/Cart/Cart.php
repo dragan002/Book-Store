@@ -3,6 +3,7 @@
 namespace App\models\classes\Cart;
 
 
+use Exception;
 use \PDO;
 use PDOException;
 use App\models\classes\Database\Database;
@@ -26,13 +27,12 @@ class Cart extends Database {
 
     
 
-    public function addToCart(int $userId, int $bookId, int $bookQuantity): array {
+    public function addToCart(int $userId, int $bookId): bool {
         try {
-            $sql = "INSERT INTO `cartItems` (user_id, book_id, book_quantity) VALUES(:userId, :bookId, :bookQuantity)";
+            $sql = "INSERT INTO `cartItems` (user_id, book_id) VALUES(:userId, :bookId)";
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindParam(":userId", $userId, PDO::PARAM_INT);
             $stmt->bindParam(":bookId", $bookId, PDO::PARAM_INT);
-            $stmt->bindParam( ":bookQuantity", $bookQuantity, PDO::PARAM_INT);
 
             $result = $stmt->execute();
 
@@ -43,7 +43,7 @@ class Cart extends Database {
 
             $_SESSION['alert_message']['success'] = 'Product added to cart successfully.';
 
-            return $result;
+            return true;
             
         } catch(PDOException $e) {
             error_log('Failed to insert into cart: ' . $e->getMessage());
