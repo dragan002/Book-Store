@@ -35,15 +35,15 @@
 /* Breakpoints */
 /* Colors */
 :root {
-  --color-primary: #69186b;
+  --color-primary: #323;
 }
 
 .color-primary {
-  color: #69186b;
+  color: #323;
 }
 
 .background-primary {
-  background-color: #69186b;
+  background-color: #323;
 }
 
 :root {
@@ -2890,6 +2890,14 @@ a img.aligncenter {
 }
 
 /* @import 'block-name'; */
+.header {
+  font-size: 300px;
+}
+
+.navbar-brand {
+  background-color: red;
+}
+
 .menu {
   /* Default Menu CSS - if used without walker */
   list-style: none;
@@ -3270,7 +3278,7 @@ a img.aligncenter {
   color: var(--color-light);
 }
 .c-button--primary:hover, .c-button--primary:focus {
-  background-color: #400f41;
+  background-color: #140e14;
   color: var(--color-light);
 }
 .c-button--secondary {

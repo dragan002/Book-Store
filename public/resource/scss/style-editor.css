@@ -218,13 +218,13 @@
   padding: calc(20% - 10vw) 0;
 }
 .editor-styles-wrapper :root {
-  --color-primary: #69186b;
+  --color-primary: #323;
 }
 .editor-styles-wrapper .color-primary {
-  color: #69186b;
+  color: #323;
 }
 .editor-styles-wrapper .background-primary {
-  background-color: #69186b;
+  background-color: #323;
 }
 .editor-styles-wrapper :root {
   --color-secondary: #0a5a46;
@@ -2607,6 +2607,12 @@
 .editor-styles-wrapper .footer__menu-second a {
   color: var(--color-grey-100);
 }
+.editor-styles-wrapper .header {
+  font-size: 300px;
+}
+.editor-styles-wrapper .navbar-brand {
+  background-color: red;
+}
 .editor-styles-wrapper .menu {
   /* Default Menu CSS - if used without walker */
   list-style: none;
@@ -2974,7 +2980,7 @@
   color: var(--color-light);
 }
 .editor-styles-wrapper .c-button--primary:hover, .editor-styles-wrapper .c-button--primary:focus {
-  background-color: #400f41;
+  background-color: #140e14;
   color: var(--color-light);
 }
 .editor-styles-wrapper .c-button--secondary {
