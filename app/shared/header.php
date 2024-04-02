@@ -17,19 +17,19 @@
 <nav class="header">
     <div class="header__container">        
        
-    <!-- 
+
         <?php if(isset($_SESSION['username'])) { ?>
     <div class="alert alert-success text-center" role="alert">
         Hello, <?php echo $_SESSION['username']; ?>! Welcome to BookStore.
     </div>
-    <?php } ?> -->
+    <?php } ?> 
 
-        <div class="wrapper background-secondary" id="navbarNav">
+        <div class="background-secondary" id="navbarNav">
             <ul class="grid h6">
-                <a class="navbar-brand col-span-1" href="#">Your Logo</a>
+                <a class="navbar-brand col-span-2" href="#">Your Logo</a>
 
                 <li class="background-secondary col-span-2">
-                    <a class="" href="../../public/index.php">Home</a>
+                    <a class="" href="../../public/index.php"></a>
                 </li>
 
                 <li class="nav-item col-span-1">

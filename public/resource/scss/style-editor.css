@@ -2608,7 +2608,7 @@
   color: var(--color-grey-100);
 }
 .editor-styles-wrapper .header {
-  font-size: 300px;
+  font-size: 20px;
 }
 .editor-styles-wrapper .navbar-brand {
   background-color: red;

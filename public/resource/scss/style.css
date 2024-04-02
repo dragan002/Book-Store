@@ -2890,9 +2890,6 @@ a img.aligncenter {
 }
 
 /* @import 'block-name'; */
-.header {
-  font-size: 300px;
-}
 
 .navbar-brand {
   background-color: red;
