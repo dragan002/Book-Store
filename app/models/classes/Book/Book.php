@@ -44,8 +44,8 @@ class Book extends Database {
     public function createBook(array $book): bool {
 
         try {
-            $sql = "INSERT INTO books (book_title, book_price, book_author, book_image, book_descr, book_quantity, category_id) ";
-            $sql .= "VALUES (:book_title, :book_price, :book_author, :book_image, :book_descr, :book_quantity, :category_id)";
+            $sql = "INSERT INTO books (book_title, book_price, book_author, book_image, book_description, book_quantity, category_id) ";
+            $sql .= "VALUES (:book_title, :book_price, :book_author, :book_image, :book_description, :book_quantity, :category_id)";
     
             $stmt = $this->getConnection()->prepare($sql);
             
@@ -53,7 +53,7 @@ class Book extends Database {
             $stmt->bindParam(':book_price', $book['book_price'], PDO::PARAM_STR);
             $stmt->bindParam(':book_author', $book['book_author'], PDO::PARAM_STR);
             $stmt->bindParam(':book_image', $book['book_image'], PDO::PARAM_STR);
-            $stmt->bindParam(':book_descr', $book['book_descr'], PDO::PARAM_STR);
+            $stmt->bindParam(':book_description', $book['book_description'], PDO::PARAM_STR);
             $stmt->bindParam(':book_quantity', $book['book_quantity'], PDO::PARAM_INT);
             $stmt->bindParam(':category_id', $book['category_id'], PDO::PARAM_INT);
     
@@ -124,7 +124,7 @@ class Book extends Database {
                             book_price = :book_price,
                             book_author = :book_author,
                             book_image = :book_image,
-                            book_descr = :book_descr,
+                            book_description = :book_description,
                             book_quantity = :book_quantity,
                             category_id = :category_id
                         WHERE id = :id"; 
@@ -134,7 +134,7 @@ class Book extends Database {
                 $stmt->bindParam(':book_price', $book['book_price'], PDO::PARAM_STR);
                 $stmt->bindParam(':book_author', $book['book_author'], PDO::PARAM_STR);
                 $stmt->bindParam(':book_image', $book['book_image'], PDO::PARAM_STR);
-                $stmt->bindParam(':book_descr', $book['book_descr'], PDO::PARAM_STR);
+                $stmt->bindParam(':book_description', $book['book_description'], PDO::PARAM_STR);
                 $stmt->bindParam(':book_quantity', $book['book_quantity'], PDO::PARAM_INT);
                 $stmt->bindParam(':category_id', $book['category_id'], PDO::PARAM_INT);
                 $stmt->bindParam(':id', $book['id'], PDO::PARAM_INT); 

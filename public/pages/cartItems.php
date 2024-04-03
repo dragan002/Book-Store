@@ -39,7 +39,7 @@ $totalPrice = 0;
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $book['book_title']; ?></h5>
-                                <p class="card-text"><?php echo $book['book_descr']; ?></p>
+                                <p class="card-text"><?php echo $book['book_description']; ?></p>
                                 <p class="card-text"><?php echo $book['book_price']; ?></p>
                                     <td><a href="../../app/controllers/cartControllers/cartDeleteController.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>
                             </div>

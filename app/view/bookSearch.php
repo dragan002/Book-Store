@@ -31,7 +31,7 @@
                         <td><?php echo $searched['book_price']; ?></td>
                         <td><?php echo $searched['book_author']; ?></td>
                         <td><img src="../../public/image/<?php echo $searched['book_image']; ?>" alt="Uploaded Image" style="width: 150px;"/></td>
-                        <td><?php echo $searched['book_descr']; ?></td>
+                        <td><?php echo $searched['book_description']; ?></td>
                         <td><?php echo $searched['book_quantity']; ?></td>
                         <?php if(isPostRequest()) : ?>
                             <td><a href="bookEdit.php?id=<?php echo $searched['id']; ?>" class="btn btn-warning">Update</a></td>

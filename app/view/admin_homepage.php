@@ -50,7 +50,7 @@ $books = $bookInstance->findAllBooks();
                     ?>
                     
                     <td><?php echo $category_name; ?></td>
-                    <td><?php echo $book['book_descr']; ?></td>
+                    <td><?php echo $book['book_description']; ?></td>
                     <td><?php echo $book['book_quantity']; ?></td>
                     <td><a href="bookEdit.php?id=<?php echo $book['id']; ?>" class="btn btn-warning">Update</a></td>
                     <td><a href="../controllers/bookControllers/deleteController.php?id=<?php echo $book['id']?>" class="btn btn-danger">Delete</a></td>

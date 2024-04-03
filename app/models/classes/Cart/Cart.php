@@ -11,7 +11,7 @@ class Cart extends Database {
     
   public function findAllFromCart(int $userId): ?array {
         try {
-            $sql = "SELECT * FROM `cartItems` WHERE user_id=:user_id";
+            $sql = "SELECT * FROM `cart_items` WHERE user_id=:user_id";
             $stmt = $this->getConnection() -> prepare($sql);
             $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
 
@@ -29,7 +29,7 @@ class Cart extends Database {
 
     public function addToCart(int $userId, int $bookId): bool {
         try {
-            $sql = "INSERT INTO `cartItems` (user_id, book_id) VALUES(:userId, :bookId)";
+            $sql = "INSERT INTO `cart_items` (user_id, book_id) VALUES(:userId, :bookId)";
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindParam(":userId", $userId, PDO::PARAM_INT);
             $stmt->bindParam(":bookId", $bookId, PDO::PARAM_INT);
@@ -53,7 +53,7 @@ class Cart extends Database {
 
     public function deleteFromCart(int $bookId): bool {
         try {
-            $sql = "DELETE FROM `cartItems` WHERE book_id = :id LIMIT 1";
+            $sql = "DELETE FROM `cart_items` WHERE book_id = :id LIMIT 1";
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindValue(':id', $bookId, PDO::PARAM_INT);
         

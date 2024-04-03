@@ -36,7 +36,7 @@
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description:</label>
-                    <textarea class="form-control" id="description" name="description" rows="3"><?= $book['book_descr']; ?></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="3"><?= $book['book_description']; ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity:</label>

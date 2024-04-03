@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
         'book_price' => htmlspecialchars(floatval(trim($_POST['price']))),
         'book_author' => htmlspecialchars(trim($_POST['author'])),
         'book_image' => $image,
-        'book_descr' => htmlspecialchars(trim($_POST['description'])),
+        'book_description' => htmlspecialchars(trim($_POST['description'])),
         'book_quantity' => htmlspecialchars(intval(trim($_POST['quantity']))),
         'category_id' => $_POST['category']
     ];

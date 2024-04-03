@@ -38,7 +38,7 @@
             'book_price' => floatval(trim($_POST['price'])),
             'book_author' => trim($_POST['author']),
             'book_image' => $image,
-            'book_descr' => trim($_POST['description']),
+            'book_description' => trim($_POST['description']),
             'book_quantity' => intval(trim($_POST['quantity'])),
             'category_id' => $_POST['category']
         ];

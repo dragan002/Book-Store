@@ -50,7 +50,7 @@ $categories = $bookInstance->findAllCategories();
                 <?php foreach ($books as $book) : ?>
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="../../public/image/<?php echo $book['book_image']; ?>" class="card-img-top" alt="<?php echo $book['book_title']; ?>">
+                            <img src="../../public/image/<?php echo $book['book_image']; ?>" class="card__image card-img-top" alt="<?php echo $book['book_title']; ?>">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $book['book_title']; ?></h5>
                                 <p class="card-text"><strong>Author:</strong> <?php echo $book['book_author']; ?></p>
@@ -58,7 +58,7 @@ $categories = $bookInstance->findAllCategories();
                                 <a href="pages/details.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Details</a>
 
                                 <?php if(isset($_SESSION['username'])) { ?>
-                                    <a href="pages/cartItems.php?id=<?php echo $book['id']; ?>" class="btn btn-success ml-2">
+                                    <a href="pages/cartItems.php?id=<?php echo $book['id']; ?>" class="btn btn-success ml-1">
                                         <i class="fas fa-shopping-cart"></i> Add to Cart
                                     </a>
                                 <?php  } ?>

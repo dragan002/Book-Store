@@ -35,7 +35,7 @@ $book = $bookInstance->findBookById($id);
 
                     <div class="mb-3">
                         <label for="description" class="form-label"><strong class="text-warning">Description:</strong></label>
-                        <p class="card-text"><?= $book['book_descr']; ?></p>
+                        <p class="card-text"><?= $book['book_description']; ?></p>
                     </div>
 
                 </div>

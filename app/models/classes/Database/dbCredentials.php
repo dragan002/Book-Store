@@ -3,6 +3,6 @@
 define("DB_SERVER", 'localhost');
 define("DB_USERNAME", 'root');
 define("DB_PASSWORD", '');
-define("DB_DATABASE", 'isp');
+define("DB_DATABASE", 'book_store');
 
 ?>
