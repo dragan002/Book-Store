@@ -14,8 +14,27 @@ function displayCategoryName($categoryId) {
         1 => "Fiction",
         2 => "Non-Fiction",
         3 => "Mystery",
-        4 => "Science Fiction"
+        4 => "Science Fiction",
+        5 => "Adventure",
+        6 => "Biography",
+        7 => "Children",
+        8 => "Comics",
+        9 => "Drama",
+        10 => "Fantasy",
+        11 => "Historical Fiction",
+        12 => "Horror",
+        13 => "Romance",
+        14 => "Self-Help",
+        15 => "Thriller",
+        16 => "Travel",
+        17 => "Cookbooks",
+        18 => "Art",
+        19 => "Science",
+        20 => "Business",
+        21 => "Poetry",
+        22 => "Religion"
     ];
+    
     
     if(!array_key_exists($categoryId, $categories)) {
         throw new Error("Invalid category");

@@ -1,5 +1,0 @@
-/* Used to retrieve SCSS Colors from _variables.scss */
-
-@function getColor($color_name: default) {
-	@return map-get($colors, $color_name);
-}

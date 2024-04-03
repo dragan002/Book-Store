@@ -98,20 +98,22 @@ class User extends Database
         ];
     }
 
-    function findUserByEmail(string $email): array
+    function findUserByEmail(string $email): ?array
     {
         try {
             $sql = "SELECT * FROM users WHERE email = :email LIMIT 1";
-
+    
             $stmt = $this->getConnection()->prepare($sql);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
-
+    
             return $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
         } catch (PDOException $e) {
             die("Failed to retrieve data from database: " . $e->getMessage());
         }
     }
+    
 
     function findUserById(int $id): ?array
     {
