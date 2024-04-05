@@ -33,7 +33,6 @@ class Book extends Database {
             $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
     
             if (!$stmt->execute()) {
-                // Return false or throw an exception based on your error handling strategy
                 die("Error executing statement");
             }
     
