@@ -20,13 +20,6 @@ $categories = $bookInstance->findAllCategories();
 
 <?php cartMessage() ?>
 
-<div class="container mt-4">
-    <form class="form-inline my-2 my-lg-0" action="../app/view/bookSearch.php" method="GET">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" required>
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-</div>
-
 <!-- Main Content Section -->
 <div class="container mt-4">
     <div class="row">

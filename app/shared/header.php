@@ -1,10 +1,10 @@
-<?php session_start();
+<?php
+session_start();
 $bookInstance = new App\models\classes\Book\Book();
-
 $books = $bookInstance->findAllBooks();
-
 $categories = $bookInstance->findAllCategories();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,28 +28,23 @@ $categories = $bookInstance->findAllCategories();
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- Welcome Message -->
-        <?php if (isset($_SESSION['username'])) { ?>
-            <div class="alert alert-success text-center mx-auto mb-0" role="alert">
-                Hello, <?php echo $_SESSION['username']; ?>! Welcome to BookStore.
-            </div>
-        <?php } ?>
-        <!-- End Welcome Message -->
         <ul class="navbar-nav mr-auto">
             <!-- Home link -->
             <li class="nav-item active">
                 <a class="nav-link" href="../../public/index.php">Home</a>
             </li>
-            <!-- Categories dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories
-                </a>
-            </li>
         </ul>
 
-        <ul class="navbar-nav">
+        <!-- Search form -->
+        <form class="form-inline my-2 my-lg-0 mx-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" required>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav ml-auto">
+            <!-- Cart link -->
             <?php if(isset($_SESSION['username'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link" href="../../public/pages/cartItems.php">
@@ -57,6 +52,8 @@ $categories = $bookInstance->findAllCategories();
                     </a>
                 </li>
             <?php } ?>
+            
+            <!-- Login/Register or Logout links -->
             <?php if (!isset($_SESSION['username'])) { ?>
                 <li class="nav-item">
                     <a class="nav-link btn btn-primary text-white mr-2" href="../../public/pages/login.php">Login</a>
@@ -69,9 +66,23 @@ $categories = $bookInstance->findAllCategories();
                     <a class="nav-link" href="../../app/controllers/userControllers/logOutController.php">Logout</a>
                 </li>
             <?php } ?>
+            
+            <!-- Welcome Message -->
+            <?php if (isset($_SESSION['username'])) { ?>
+                <li class="nav-item">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="rounded-circle bg-success d-flex justify-content-center align-items-center" style="width: 40px; height: 40px; overflow: hidden;">
+                            <i class="fa-regular fa-user"></i>
+                        </div>
+                    </div>
+                </li>
+            <?php } ?>
+
+            <!-- End Welcome Message -->
         </ul>
     </div>
 </nav>
+
 
 </body>
 
