@@ -4,15 +4,18 @@ $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
 
 $bookInstance = new App\models\classes\Book\Book();
-$books = $bookInstance->findAllBooks();
+// $books = $bookInstance->findAllBooks();
 $totalItems = count($books); // total number of books in the database, used for $paginationInstance
-
-$paginationInstance = new App\models\classes\Pagination\Pagination($totalItems, 5);
+//14 is total
+$paginationInstance = new App\models\classes\Pagination\Pagination($totalItems, 2);
 $offset = $paginationInstance->getOffset();
+$totalPages = $paginationInstance->getTotalPages();
 var_dump($offset);
-$paginationLinks = $paginationInstance->generatePagination();
+var_dump($totalPages);
 $categories = $bookInstance->findAllCategories();
 
+
+$books = $bookInstance->findBooksByOffset($offset, 5);
 ?>
 
 <!-- Jumbotron (Hero Section) -->
@@ -63,7 +66,10 @@ $categories = $bookInstance->findAllCategories();
                     </div>
                 <?php endforeach; ?>
             </div>
-            
+                  <!-- Pagination -->
+            <ul class="pagination">
+                <?php echo $paginationInstance->generatePagination(); ?>
+            </ul>
         </div>
     </div>
 </div>

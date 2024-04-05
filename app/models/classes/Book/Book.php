@@ -23,6 +23,26 @@ class Book extends Database {
             die("Error in query: " . $sql . " - " . $e->getMessage());
         }
     }
+
+    public function findBooksByOffset(int $offset, int $limit): array {
+        try {
+            $sql = "SELECT * FROM books LIMIT :limit OFFSET :offset";
+            $stmt = $this->getConnection()->prepare($sql);
+            
+            $stmt->bindParam(':limit',  $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    
+            if (!$stmt->execute()) {
+                // Return false or throw an exception based on your error handling strategy
+                die("Error executing statement");
+            }
+    
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            die("Failed to fetch books: " . $e->getMessage());
+        }
+    }
+    
     
     public function findAllCategories(): array {
 
