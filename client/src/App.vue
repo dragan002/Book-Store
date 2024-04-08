@@ -14,13 +14,13 @@
     <router-view></router-view>
   </div>
   
-  
   </template>
   
   <script setup>
   </script>
   
   <style scoped>
+
   .navigation_container{
     height: 100px;
   }
@@ -58,4 +58,5 @@
       justify-content: center;
       align-items: center;
     }
+ 
   </style>
