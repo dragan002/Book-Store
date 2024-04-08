@@ -4,9 +4,10 @@ $pageTitle = "Book Store";
 include(SHARED_PATH . '/header.php');
 
 $bookInstance = new App\models\classes\Book\Book();
-$itemsPerPage = 12;
-// $books = $bookInstance->findAllBooks();
-echo $totalItems = count($bookInstance->findAllBooks()); // total number of books in the database, used for $paginationInstance
+
+$itemsPerPage = 9;
+
+$totalItems = count($bookInstance->findAllBooks()); // total number of books in the database, used for $paginationInstance
 
 $paginationInstance = new App\models\classes\Pagination\Pagination($totalItems, $itemsPerPage); // create an instance of P items per page
 $offset = $paginationInstance->getOffset();
@@ -72,6 +73,8 @@ $books = $bookInstance->findBooksByOffset($offset, $itemsPerPage);
         </div>
     </div>
 </div>
+
+
 <?php include(SHARED_PATH . '/footer.php'); ?>
 
 

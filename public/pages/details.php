@@ -44,7 +44,47 @@ $book = $bookInstance->findBookById($id);
     </div>
 </div>
 
-
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h1 class="text-center mb-4">Reader Views, Impressions, and Impressions</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Book Title</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum lectus eget lacus elementum placerat.</p>
+                    <p class="card-text">Author: John Doe</p>
+                    <hr>
+                    <!-- Reader views, impressions, and comments -->
+                    <div class="reader-comments">
+                        <div class="media mb-3">
+                            <img src="..." class="mr-3 rounded-circle" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">Reader Name</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum lectus eget lacus elementum placerat.</p>
+                            </div>
+                        </div>
+                        <!-- Add more comments here -->
+                    </div>
+                    <!-- End of reader views, impressions, and comments -->
+                    <hr>
+                    <!-- Comment form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="readerName">Your Name</label>
+                            <input type="text" class="form-control" id="readerName" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="readerComment">Your Comment</label>
+                            <textarea class="form-control" id="readerComment" rows="3" placeholder="Enter your comment"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <!-- End of comment form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 
