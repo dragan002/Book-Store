@@ -31,9 +31,12 @@
       align-items: center;
     }
     .nav_item{
-      margin: 20px;
+      margin: 80px;
       text-decoration: none;
       color: black;
+      font-size: large;
+      font-weight: bold;
+      font-family: "Roboto Mono", monospace;
     }
    
     .nav_item_special{
