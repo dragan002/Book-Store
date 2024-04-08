@@ -10,7 +10,9 @@
       <router-link to="/catalogue" class="nav_item_special">Sign in/up</router-link>
     </nav>
   </div>
-  <router-view></router-view>
+  <div class="content_container">
+    <router-view></router-view>
+  </div>
   
   
   </template>
@@ -49,5 +51,11 @@
       align-items: center;
       position: absolute;
       left: 1vw;
+    }
+    .content_container{
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
     }
   </style>
