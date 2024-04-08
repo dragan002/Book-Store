@@ -47,6 +47,7 @@
       border-radius: 8px;
       text-decoration: none;
       color: black;
+      font-family: "Roboto Mono", monospace;
     }
     .logo_container{
       display: flex;
